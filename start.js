@@ -36,5 +36,6 @@ if (cluster.isMaster) {
     });
   }
 } else {
+  console.log("%%% calling the app %%%");
   require('./bin/www');
 }
