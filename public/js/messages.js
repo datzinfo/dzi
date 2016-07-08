@@ -125,15 +125,6 @@ var strings = {
 		contact_main_questions_title: 'Have any questions?',
 		contact_main_questions_desc: 'desc',
 		contact_info_title: 'Contact Info'
-
-		
-
-		
-		
-		
-		
-		
-		
-		
-		
 }
+
+module.exports = strings;

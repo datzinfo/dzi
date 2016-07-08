@@ -9,7 +9,10 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-console.log("%%% env: " + app.get('env') +" %%%");
+
+//resourced out strings setup
+var messages = require('./public/js/messages')
+app.set('messages', messages);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
