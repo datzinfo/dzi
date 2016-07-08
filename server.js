@@ -10,7 +10,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = process.env.NODE_IP || 8080;
+var port = process.env.NODE_PORT || 8080;
 app.set('port', port);
 
 /**
