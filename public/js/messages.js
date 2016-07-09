@@ -1,4 +1,10 @@
 var strings = {
+		//Menu//
+		menu_service1: 'service1',
+		menu_service2: 'service2',
+		menu_service3: 'service3',
+		menu_service4: 'service4',
+		
 		//Index--Slider Text//
 		index_slider1_title1: 'Creative Design & Best Feature',
 		index_slider1_title2: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since',
@@ -51,6 +57,8 @@ var strings = {
 		aboutus_why_reason2_desc: 'Desc',
 		aboutus_why_reason3_header: 'Header',
 		aboutus_why_reason3_desc: 'Desc',
+		
+		
 		
 		//Services--Banner Text//
 		services_banner_title: 'Service',

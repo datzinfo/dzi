@@ -23,7 +23,7 @@ html(lang='en')
     // Theme color
     link#switcher(href='css/theme-color/datzInfo_theme.css', rel='stylesheet')
     // Main Style
-    link(href='js/style.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
     // Fonts
     // Open Sans for body font
     link(href='https://fonts.googleapis.com/css?family=Open+Sans', rel='stylesheet', type='text/css')
@@ -37,7 +37,7 @@ html(lang='en')
   body
     // BEGAIN PRELOADER
     #preloader
-      #status  
+      #status Â 
     // END PRELOADER
     // SCROLL TOP BUTTON
     a.scrollToTop(href='#')
@@ -55,31 +55,31 @@ html(lang='en')
               span.icon-bar
               span.icon-bar
             // LOGO
-            a.navbar-brand(href='index.html')
+            a.navbar-brand(href='index')
               img(src='images/datzinfo_logo.png', alt='DataInfo')
           #navbar.navbar-collapse.collapse
             ul#top-menu.nav.navbar-nav.navbar-right.main-nav
               li.active
-                a(href='index.html') Home
+                a(href='index') Home
               li
-                a(href='aboutUs.html') About Us
+                a(href='aboutUs') About Us
               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown')
                   | Services 
                   span.fa.fa-angle-down
                 ul.dropdown-menu(role='menu')
                   li
-                    a(href='service.html') Service 1
+                    a(href='service') #{ message.menu_service1 }
                   li
-                    a(href='@') Service 2
+                    a(href='@') #{ message.menu_service2 }
                   li
-                    a(href='@') Service 3
+                    a(href='@') #{ message.menu_service3 }
                   li
-                    a(href='@') Service 4
+                    a(href='@') #{ message.menu_service4 }
               li
-                a(href='blog.html') Blog
+                a(href='blog') Blog
               li
-                a(href='contact.html') Contact
+                a(href='contact') Contact
           // /.nav-collapse
           a#search-icon(href='#')
             i.fa.fa-search
@@ -257,7 +257,7 @@ html(lang='en')
                 a(href='http://www.markups.io/') MarkUps.io
           .col-md-6.col-sm-6
             .footer-right
-              a(href='index.html')
+              a(href='index')
                 i.fa.fa-facebook
               a(href='#')
                 i.fa.fa-twitter

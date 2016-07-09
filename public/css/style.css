@@ -519,7 +519,7 @@ img{
 }
 
 .slide-content {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
   height: 100%;
   left: 0;
   position: absolute;
@@ -537,7 +537,7 @@ img{
 
 .main-slider .slick-prev,
 .main-slider .slick-next {
-  background-color: rgba(0,0,0,0.5);
+  background-color: transparent;
   top: 48%;
   height: 50px;
   width: 50px;
@@ -1582,7 +1582,7 @@ img{
 }
 
 .overlay{
-  background-color: rgba(0,0,0,0.6); 
+  background-color: rgba(0,0,0,0.5); 
   padding: 90px 0;
   float: left;
   width: 100%;
@@ -2330,7 +2330,7 @@ img{
     font-size: 18px;    
   }
   .main-slider {  
-    height: auto;    
+/*     height: auto;     */
   }  
 }
 

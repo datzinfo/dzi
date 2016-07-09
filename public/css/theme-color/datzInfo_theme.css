@@ -12,10 +12,22 @@ Author URI : http://www.markups.io/
   color: #ff871c !important; 
   margin-top: 0 !important;
   max-width: 100%;
-  height: auto;
-  width: auto\9; /* ie8 */
+/*   height: auto; */
+/*   width: auto\9; ie8 */
 }
 
+.slide-content {
+  background-color: transparent;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.navbar-brand > img {
+	height: 55px;
+}
 .navbar-brand:hover,
 .navbar-brand:focus{
   color: #ff871c !important;  
