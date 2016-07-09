@@ -1,0 +1,96 @@
+body
+    // BEGAIN PRELOADER
+    #preloader
+      #status  
+    // END PRELOADER
+    // SCROLL TOP BUTTON
+    a.scrollToTop(href='#')
+      i.fa.fa-angle-up
+    // END SCROLL TOP BUTTON
+    // Start login modal window
+    #login-form.modal.leread-modal.fade.in(aria-hidden='false', role='dialog', tabindex='-1')
+      .modal-dialog
+        // Start login section
+        #login-content.modal-content
+          .modal-header
+            button.close(aria-label='Close', data-dismiss='modal', type='button')
+              span(aria-hidden='true') ×
+            h4.modal-title
+              i.fa.fa-unlock-alt
+              | Login
+          .modal-body
+            form
+              .form-group
+                input.form-control(type='text', placeholder='User name')
+              .form-group
+                input.form-control(type='password', placeholder='Password')
+              .loginbox
+                label
+                  input(type='checkbox')
+                  span Remember me
+                button.btn.signin-btn(type='button') SIGN IN
+          .modal-footer.footer-box
+            a(href='#') Forgot password ?
+            span
+              | No account ? 
+              a#signup-btn(href='#') Sign Up.
+        // Start signup section
+        #signup-content.modal-content
+          .modal-header
+            button.close(aria-label='Close', data-dismiss='modal', type='button')
+              span(aria-hidden='true') ×
+            h4.modal-title
+              i.fa.fa-lock
+              | Sign Up
+          .modal-body
+            form
+              .form-group
+                input.form-control(placeholder='Name')
+              .form-group
+                input.form-control(placeholder='Username')
+              .form-group
+                input.form-control(placeholder='Email')
+              .form-group
+                input.form-control(type='password', placeholder='Password')
+              .signupbox
+                span
+                  | Already got account? 
+                  a#login-btn(href='#') Sign In.
+              .loginbox
+                label
+                  input(type='checkbox')
+                  span Remember me
+                  i.fa
+                button.btn.signin-btn(type='button') SIGN UP
+    // End login modal window
+    // BEGIN MENU
+    section#menu-area
+      nav.navbar.navbar-default(role='navigation')
+        .container
+          .navbar-header
+            // FOR MOBILE VIEW COLLAPSED BUTTON
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            // LOGO
+            // TEXT BASED LOGO
+            a.navbar-brand(href='index.html') DatzInfo
+            // IMG BASED LOGO
+            // <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"></a>
+          #navbar.navbar-collapse.collapse
+            ul#top-menu.nav.navbar-nav.navbar-right.main-nav
+              li.active
+                a(href='index.html') Home
+              li
+                a(href='service.html') Services
+              li
+                a(href='blog.html') Blog
+              li
+                a(href='aboutUs.html') About Us
+              li
+                a(href='contact.html') Contact
+          // /.nav-collapse
+    // END MENU
+ 
