@@ -1,5 +1,4 @@
 angular.module('dziws').constant('messages', {
-	aboutUs: 'About Us',
 	//Menu//
 	menu_service1: 'service1',
 	menu_service2: 'service2',
@@ -89,11 +88,11 @@ angular.module('dziws').constant('messages', {
 	
 	//Blog--Categories Text//
 	blog_categories_title: 'Catagories',
-	blog_categories_category1: 'Multimedia',
-	blog_categories_category2: 'Business Intelligence',
-	blog_categories_category3: 'Application Development',
-	blog_categories_category4: 'Category 4',
-	blog_categories_category5: 'Category 5',
+	blog_categories_catagory1: 'Multimedia',
+	blog_categories_catagory2: 'Business Intelligence',
+	blog_categories_catagory3: 'Application Development',
+	blog_categories_catagory4: 'Catagory 4',
+	blog_catagories_catagory5: 'Catagory 5',
 	
 	//Blog--Text Widget Text//
 	blog_widget_title: 'Title',
@@ -116,7 +115,7 @@ angular.module('dziws').constant('messages', {
 	blog_archive_title: 'Archive',
 	blog_archive_date1: 'June 2016',
 	blog_archive_num1: '#',
-	blog_archive_date2: 'July 2016',
+	blog_arvice_date2: 'July 2016',
 	blog_archive_num2: '#',
 	
 	//Blog--Link Text//

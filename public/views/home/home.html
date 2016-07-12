@@ -1,3 +1,113 @@
-Home Page
-<br>
-{{ ctrl.messages.services_main_title }}
+  <div ng-include="'views/navigator/navigator.html'" ></div>
+  <!-- Start slider -->
+  <section id="slider">
+    <div class="main-slider">
+      <div class="single-slide">
+        <img src="images/slider-3.jpg" alt="img">
+        <div class="slide-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="slide-article">
+                  <h1 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">{{ ctrl.messages.index_slider1_title1 }}</h1>
+                  <p class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.75s">{{ ctrl.messages.index_slider1_title2 }}</p>
+                  <a class="read-more-btn wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s" href="#">Read More</a>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="slider-img wow fadeInUp">
+                  <img src="images/person1.png" alt="business man">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide">
+        <img src="images/slider-2.jpg" alt="img">
+        <div class="slide-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="slide-article">
+                  <h1 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">{{ ctrl.messages.index_slider2_title1 }}</h1>
+                  <p class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.75s">{{ ctrl.messages.index_slider2_title2 }}</p>
+                  <a class="read-more-btn wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s" href="#">Read More</a>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="slider-img wow fadeInUp">
+                  <img src="images/person2.png" alt="business man">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>          
+    </div>
+  </section>
+  <!-- End slider -->
+
+  <!-- Start Feature -->
+  <section id="feature">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-area">
+            <h2 class="title">{{ ctrl.messages.index_feature_title }}</h2>
+            <span class="line"></span>
+            <p>{{ ctrl.messages.index_feature_description }}</p>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="feature-content">
+            <div class="row">
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-leaf feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box1_title }}</h4>
+                  <p>{{ ctrl.messages.index_box1_desc }}</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-mobile feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box2_title }}</h4>
+                  <p>{{ ctrl.messages.index_box2_desc }}</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-thumbs-o-up feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box3_title }}</h4>
+                  <p>{{ ctrl.messages.index_box3_desc }}</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-gears feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box4_title }}</h4>
+                  <p>{{ ctrl.messages.index_box4_desc }}</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-code feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box5_title }}</h4>
+                  <p>{{ ctrl.messages.index_box5_desc }}</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="single-feature wow zoomIn">
+                  <i class="fa fa-smile-o feature-icon"></i>
+                  <h4 class="feat-title">{{ ctrl.messages.index_box6_title }}</h4>
+                  <p>{{ ctrl.messages.index_box6_desc }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Feature -->
