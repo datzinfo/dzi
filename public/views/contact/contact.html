@@ -50,18 +50,18 @@
                </div>
                <div class="col-md-8">
                  <div class="contact-area-right">
-                   <form action="" class="comments-form contact-form">
+                   <form ng-submit="ctrl.submit()" class="comments-form contact-form">
                     <div class="form-group">                        
-                      <input type="text" class="form-control" placeholder="Your Name">
+                      <input type="text" class="form-control" placeholder="Your Name" ng-model="ctrl.data.name">
                     </div>
                     <div class="form-group">                        
-                      <input type="email" class="form-control" placeholder="Email">
+                      <input type="email" class="form-control" placeholder="Email" ng-model="ctrl.data.email">
                     </div>
                      <div class="form-group">                        
-                      <input type="text" class="form-control" placeholder="Subject">
+                      <input type="text" class="form-control" placeholder="Subject" ng-model="ctrl.data.subject">
                     </div>
                     <div class="form-group">                        
-                      <textarea placeholder="Comment" rows="3" class="form-control"></textarea>
+                      <textarea placeholder="Comment" rows="3" class="form-control" ng-model="ctrl.data.msg"></textarea>
                     </div>
                     <button class="comment-btn">Submit Comment</button>
                   </form>

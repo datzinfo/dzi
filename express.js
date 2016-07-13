@@ -4,26 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 
 var routes = require('./routes/index');
-//var users = require('./routes/users');
-//var aboutUs = require('./routes/aboutUs');
-//var service = require('./routes/service');
-//var blog = require('./routes/blog');
-//var contact = require('./routes/contact');
 
 var app = express();
-
-//resourced out strings setup
-var messages = require('./public/js/messages')
-app.set('messages', messages);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,11 +22,39 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-//app.use('/users', users);
-//app.use('/aboutUs', aboutUs);
-//app.use('/service', service);
-//app.use('/blog', blog);
-//app.use('/contact', contact);
+
+// email
+app.post('/sendEmail',function(req, res){
+	var mailOptions={
+	        from : "kkkkk97855@yahoo.com",
+	        to : "kkkkk97855@yahoo.com",
+	        subject : req.body['subject'],
+	        text : "Msg from: " + req.body['name'] + "<" + req.body['email'] + "> " + req.body['msg'],
+	        html : "&#128538; Msg from " + req.body['name'] + "<" + req.body['email'] + ">: " + req.body['msg']
+	     }
+	console.log('Sending email: ' + JSON.stringify(mailOptions));
+
+	var transporter = nodemailer.createTransport({
+	    host : "smtp.mail.yahoo.com",
+	    secureConnection : true,
+	    port: 465,
+	    auth : {
+	        user : "kkkkk97855@yahoo.com",
+	        pass : "buyNbuy88"
+	    }
+	});
+
+	transporter.sendMail(mailOptions, function(error, response){
+	    if (error) {
+	        console.log(error);
+			res.end("error");
+	    } else {
+	        console.log(response.response.toString());
+			res.end("success");
+	    }
+	    transporter.close();	// close connection pool
+	});
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,6 +86,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
