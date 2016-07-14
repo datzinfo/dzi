@@ -1,9 +1,8 @@
 angular.module('dziws').constant('messages', {
-	aboutUs: 'About Us',
 	//Menu//
-	menu_service1: 'service1',
-	menu_service2: 'service2',
-	menu_service3: 'service3',
+	menu_service1: 'Consultation',
+	menu_service2: 'Support',
+	menu_service3: 'Products',
 	menu_service4: 'service4',
 	
 	//Index--Slider Text//
@@ -83,6 +82,72 @@ angular.module('dziws').constant('messages', {
 	services_box6_title: 'title',
 	services_box6_desc: 'desc',
 	
+	//Consulting--Banner Text//
+	consulting_banner_title: 'Consulting',
+	consulting_banner_desc: 'desc',
+	
+	//Consulting--Title Text//
+	consulting_main_title: 'Our Services',
+	consulting_main_desc: 'desc',
+	
+	//Consulting--Box Text//
+	consulting_box1_title: 'title',
+	consulting_box1_desc: 'desc',
+	consulting_box2_title: 'title',
+	consulting_box2_desc: 'desc',
+	consulting_box3_title: 'title',
+	consulting_box3_desc: 'desc',
+	consulting_box4_title: 'title',
+	consulting_box4_desc: 'desc',
+	consulting_box5_title: 'title',
+	consulting_box5_desc: 'desc',
+	consulting_box6_title: 'title',
+	consulting_box6_desc: 'desc',
+	
+	//Products--Banner Text//
+	products_banner_title: 'Products',
+	products_banner_desc: 'desc',
+	
+	//Products--Title Text//
+	products_main_title: 'Our Services',
+	products_main_desc: 'desc',
+	
+	//Products--Box Text//
+	products_box1_title: 'title',
+	products_box1_desc: 'desc',
+	products_box2_title: 'title',
+	products_box2_desc: 'desc',
+	products_box3_title: 'title',
+	products_box3_desc: 'desc',
+	products_box4_title: 'title',
+	products_box4_desc: 'desc',
+	products_box5_title: 'title',
+	products_box5_desc: 'desc',
+	products_box6_title: 'title',
+	products_box6_desc: 'desc',
+	
+	//Support--Banner Text//
+	support_banner_title: 'Support',
+	support_banner_desc: 'desc',
+	
+	//Support--Title Text//
+	support_main_title: 'Our Services',
+	support_main_desc: 'desc',
+	
+	//Support--Box Text//
+	support_box1_title: 'title',
+	support_box1_desc: 'desc',
+	support_box2_title: 'title',
+	support_box2_desc: 'desc',
+	support_box3_title: 'title',
+	support_box3_desc: 'desc',
+	support_box4_title: 'title',
+	support_box4_desc: 'desc',
+	support_box5_title: 'title',
+	support_box5_desc: 'desc',
+	support_box6_title: 'title',
+	support_box6_desc: 'desc',
+	
 	//Blog--Banner Text//
 	blog_banner_title: 'title',
 	blog_banner_desc: 'desc',
@@ -92,8 +157,8 @@ angular.module('dziws').constant('messages', {
 	blog_categories_category1: 'Multimedia',
 	blog_categories_category2: 'Business Intelligence',
 	blog_categories_category3: 'Application Development',
-	blog_categories_category4: 'Category 4',
-	blog_categories_category5: 'Category 5',
+	blog_categories_category4: 'Catagory 4',
+	blog_catagories_category5: 'Catagory 5',
 	
 	//Blog--Text Widget Text//
 	blog_widget_title: 'Title',

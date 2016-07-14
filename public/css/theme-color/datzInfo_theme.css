@@ -365,6 +365,42 @@ Author URI : http://www.markups.io/
   background-color: #ff871c;  
 }
 
+.adminpanel {
+	color: gray;
+	min-height: 920px;
+}
+
+.form-top {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.form-bottom {
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#admin label {
+	padding: 1px;
+}
+
+#admin body {
+	height: 100%;
+}
+
+.form-button {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.video-icon {
+	background: url(../../images/favicon.ico) no-repeat;
+    float: left;
+    width: 10px;
+    height: 40px;
+}
+
+
 /*=======================================
 Template Design By MarkUps.
 Author URI : http://www.markups.io/

@@ -25,14 +25,14 @@
             <li ng-class="{active : ctrl.util.getActive() === 'Home'}">
             	<a href="#/" ng-click="ctrl.util.setActive('Home')">Home</a></li>
             <li ng-class="{active : ctrl.util.getActive() === 'About Us'}">
-            	<a href="#/aboutUs" ng-click="ctrl.util.setActive('About Us')">{{ ctrl.messages.aboutUs }}</a></li>
+            	<a href="#/aboutUs" ng-click="ctrl.util.setActive('About Us')">{{ ctrl.messages.aboutUs }}About Us</a></li>
             <li ng-class="{active : ctrl.util.getActive() === 'Services'}" class="dropdown">
               <a href="" ng-click="ctrl.util.setActive('Services')" class="dropdown-toggle" data-toggle="dropdown">Services <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#/service">{{ ctrl.messages.menu_service1 }}</a></li>                
-                <li><a href="@">{{ ctrl.messages.menu_service2 }}</a></li>
-                <li><a href="@">{{ ctrl.messages.menu_service3 }}</a></li>
-                <li><a href="@">{{ ctrl.messages.menu_service4 }}</a></li>           
+                <li><a href="#/consulting">{{ ctrl.messages.menu_service1 }}</a></li>                
+                <li><a href="#/support">{{ ctrl.messages.menu_service2 }}</a></li>
+                <li><a href="#/products">{{ ctrl.messages.menu_service3 }}</a></li>
+                <li><a href="#/products">{{ ctrl.messages.menu_service4 }}</a></li>           
               </ul>
             </li>
             <li ng-class="{active : ctrl.util.getActive() === 'Blog'}">

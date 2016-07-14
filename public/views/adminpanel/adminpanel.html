@@ -1,0 +1,25 @@
+
+<div ng-include="'views/navigator/navigator.html'"></div>
+<form id="admin" class='adminpanel'>
+	<div class="form-group form-top">
+		<label for="usr">Title:</label> <input type="text"
+			class="form-control" id="usr"> <label for="pwd">Author:</label>
+		<input type="password" class="form-control" id="pwd"> <label
+			for="sel1">State:</label> <select class="form-control" id="sel1">
+			<option>Draft</option>
+			<option>Published</option>
+			<option>Archive</option>
+		</select>
+	</div>
+
+
+	<div class="form-group form-bottom">
+		<label for="content">Content:</label>
+		<ng-wig id="content" ng-model="text1"></ng-wig>
+	</div>
+	<div class="form-group form-button">
+		<button type="button" class="btn btn-warning">Save</button>
+	</div>
+
+
+</form>

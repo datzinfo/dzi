@@ -3,11 +3,16 @@ angular.module('dziws', [
         'home',
         'about',
         'service',
+        'consulting',
+        'products',
+        'support',
         'blog',
-        'contact'
+        'contact',
+        'adminpanel',
+        'ngWig'
         ])
 	.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-		$routeProvider.otherwise({ redirectTo: '/home' });
+		$routeProvider.otherwise({ redirectTo: '/' });
 	}])
 	.service('util', ['$http', function($http) {
 
