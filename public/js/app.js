@@ -1,5 +1,6 @@
 angular.module('dziws', [
         'ngRoute',
+        'ngAnimate',
         'home',
         'about',
         'service',

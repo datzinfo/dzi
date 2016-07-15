@@ -400,6 +400,160 @@ Author URI : http://www.markups.io/
     height: 40px;
 }
 
+.slider-container {
+	width: 100%;
+  	height: 100%;
+  	position: relative;
+}
+
+.slider-image {
+	min-width: 1200px;
+	min-height: 650px;
+}
+
+#slider-img {
+  width: 100%;
+  height: 650px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#slider-text {
+  position: absolute;
+  z-index: 9999;
+  font-size: xx-large;
+  top: 100px;
+  left: 100px;
+  width: 30%;
+}
+
+.slider-readme {
+	font-size: large;
+	color: #ff871c;
+}
+
+/* .enter { animation: slideInUp 0.5s both ease-in; z-index: 9999; } */
+
+.enter {
+   animation: 
+      slideInUp 0.5s both ease-in; z-index: 9999, 
+      slideInLeft 0.5s both ease-in; z-index: 9999;
+}
+/* #slider .fade { */
+/*   transition: 1s linear all; */
+/*   -webkit-transition: 1s linear all; */
+/* } */
+
+/* #slider .fade.ng-enter { */
+/*   { animation: scaleUp 0.5s both ease-in; z-index: 8888; } */
+/* } */
+/* #slider .fade.ng-enter.ng-enter-active { */
+/*   opacity: 1; */
+/* } */
+
+/* #slider .fade.ng-leave { */
+/*   { animation: rotateFall 0.5s both ease-in; z-index: 9999; } */
+/* } */
+
+/* #slider .fade.ng-leave.ng-leave-active { */
+/*   opacity: 0; */
+/* } */
+
+/* ANIMATIONS
+============================================================================= */
+
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+    0%      { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%    { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(100%); }
+    to      { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+    from    { transform:translateX(0); }
+    to      { transform: translateX(100%); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUpToRight {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+    from    { transform:translateX(80%); }
+    to      { transform: translateX(0); }
+}
+
+/*
+ * Shake animation
+*/
+@-webkit-keyframes shake {
+    0%, 100% {-webkit-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+/*
+ * FadeIn animation
+*/
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+/*
+ * FadeOut animation
+*/
+@-webkit-keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes fadeOut{
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+/* .ng-enter { animation: slideInRight 0.5s both ease-in; z-index: 8888; } */
+.ng-leave { animation: slideInLeft 0.5s both ease-in; z-index: 9999; }
 
 /*=======================================
 Template Design By MarkUps.

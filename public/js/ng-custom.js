@@ -1,12 +1,11 @@
    angular.module('ngWig').config(['ngWigToolbarProvider', function(ngWigToolbarProvider) {
-    ngWigToolbarProvider.addCustomButton('forecolor', 'nw-forecolor-button');
+    ngWigToolbarProvider.addCustomButton('video', 'video-button');
   }])
-  .component('nwForecolorButton', {
+  .component('videoButton', {
     template: '<button ng-click="onclick()" class="video-icon" title="video" ></button>',
     controller: function($scope) {
       $scope.onclick = function() {
-    	  console.log("hellossss");
-    	  alert("hello");
+    	  pasteHtmlAtCaret("<h1>hello</h1>");
       }
     }
   });
