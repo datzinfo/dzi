@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
+var Sequelize = require('sequelize');
 
 var routes = require('./routes/index');
 
@@ -22,9 +23,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.post('/addPost', routes.addPost);
+app.get('/getPosts', routes.getPosts);
+app.get('/getOnePost', routes.getOnePost);
+app.post('/addComment', routes.addComment);
+app.get('/getAdminPanelData', routes.getAdminPanelData);
 
 // email
-app.post('/sendEmail',function(req, res){
+app.post('/sendEmail', function(req, res){
 	var mailOptions={
 	        from : "kkkkk97855@yahoo.com",
 	        to : "kkkkk97855@yahoo.com",
@@ -55,6 +61,10 @@ app.post('/sendEmail',function(req, res){
 	    transporter.close();	// close connection pool
 	});
 });
+
+// db APIs
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

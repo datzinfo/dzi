@@ -2,9 +2,11 @@
  * Module dependencies.
  */
 
+var isMaster='h3llo';
 var app = require('./express');
 var debug = require('debug')('website:server');
 var http = require('http');
+var models = require("./models");
 
 /**
  * Get port from environment and store in Express.
@@ -14,37 +16,27 @@ var port = process.env.NODE_PORT || 8080;
 app.set('port', port);
 
 /**
- * Get db connection string and store in Express.
- */
-
-//default to a 'localhost' configuration:
-var connection_string = '127.0.0.1:27017/YOUR_APP_NAME';
-// if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-  process.env.OPENSHIFT_APP_NAME;
-}
-app.set('db', connection_string);
-
-/**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
+models.sequelize.sync().then(function () {
+    // seed the db
+    require('./config/seed')(models);
+    
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
 
-var server_ip_address = process.env.NODE_IP || '127.0.0.1'
-server.listen(port, server_ip_address, function () {
-	  console.log( "Listening on " + server_ip_address + ", server_port " + port )
-	});
-server.on('error', onError);
-server.on('listening', onListening);
+    var server_ip_address = process.env.NODE_IP || '127.0.0.1'
+    server.listen(port, server_ip_address, function () {
+    	  console.log( "Listening on " + server_ip_address + ", server_port " + port )
+    	});
+    server.on('error', onError);
+    server.on('listening', onListening);
+});
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -103,6 +95,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
   console.log('%%% Listening on ' + bind);
 }
