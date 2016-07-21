@@ -1,4 +1,4 @@
-var VideoCtl = function($scope) {
+var VideoCtl = function($scope, $window) {
 	var ctrl = this;
 	ctrl.videoUrl = '';	
 	
@@ -19,11 +19,39 @@ var VideoCtl = function($scope) {
  
 };
 
+var ImgCtl = function($scope, $window) {
+	var ctrl2 = this;
+	ctrl2.imgUrl = '';	
+	
+	ctrl2.onclick = function() { 
+    	if (ctrl2.imgUrl){
+    		var imagelink = "<img src='" + ctrl2.imgUrl + "'"
+    						+ "style='width:304px;height:228px;'>";
+    		
+    		document.getElementById ('content').focus();
+    		pasteHtmlAtCaret(imagelink);
+    	}
+    	else{
+    		alert ("No URL pasted")
+    	}
+    	
+    
+    }
+ 
+};
+
 angular.module('ngWig').config(['ngWigToolbarProvider', function(ngWigToolbarProvider) {
     ngWigToolbarProvider.addCustomButton('videoButton', 'video-button');
+    ngWigToolbarProvider.addCustomButton('imgButton', 'img-button');
+
   }])
   .component('videoButton', {
     templateUrl: '/common/ngwig/custom.html',
 	controller: VideoCtl,
 	controllerAs: 'ctrl'
+  })
+  .component('imgButton', {
+    templateUrl: '/common/ngwig/img.html',
+	controller: ImgCtl,
+	controllerAs: 'ctrl2'
   });
