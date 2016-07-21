@@ -10,13 +10,24 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
+module.exports.addEnquiry = function(req, res) {
+	var enquiry = models.enquiry.build();
+	
+	enquiry.username = req.body.name;
+	enquiry.email = req.body.email;
+	enquiry.subject = req.body.subject;
+	enquiry.message = req.body.msg;
+	
+	enquiry.add(models);
+};
+
 module.exports.getAdminPanelData = function(req, res) {
 	var post = models.post.build();
 	var states = post.getStateEnum();
 	
 	var category = models.category.build();
 	var onSuccess = function(categories) {
-		console.log("++getAdminPanelData++: " + success);
+		console.log("++getAdminPanelData++");
 		res.status(200).json({
 			'states': states,
 			'categories': categories

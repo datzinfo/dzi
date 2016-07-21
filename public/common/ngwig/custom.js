@@ -8,7 +8,9 @@ var VideoCtl = function($scope) {
     		var videolink = "<iframe width='420' height='315'"
 				 +"src='" + spot + "'>"
 				 +"</iframe>";
+        	$window.document.getElementById("ng-wig-editable").focus();
     		pasteHtmlAtCaret(videolink);
+    		ctrl.videoUrl = '';
     	}
     	else{
     		alert ("No URL pasted")

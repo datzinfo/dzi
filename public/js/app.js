@@ -49,6 +49,16 @@ angular.module('dziws', [
           		.success(callback);
     	     },
     	     
+          	addEnquiry: function(enquiryData, onSuccess, onError) {
+      	       $http({
+      	    	   method  : 'POST',
+      	    	   url     : '/addEnquiry/',
+      	    	   data    : $.param(enquiryData),  // pass in data as strings
+      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+      	    	  })
+            		.success(onSuccess).error(onError);
+      	     },
+      	         	     
          	addPost: function(postData, onSuccess, onError) {
      	       $http({
      	    	   method  : 'POST',
