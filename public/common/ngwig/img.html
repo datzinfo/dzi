@@ -1,0 +1,30 @@
+<div class="buttonDiv"></div>
+<button type="button" class="btn image-icon" data-toggle="modal"
+	data-target="#imgDialog"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="imgDialog" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Image Url</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+					<label>Paste url here: 
+						<input type="text" name="input"
+							ng-model="ctrl2.imgUrl"
+							ng-trim="true"/>
+					</label>
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-click="ctrl2.onclick()" class="btn btn-default" data-dismiss="modal">Add</button>
+			</div>
+		</div>
+
+	</div>
+</div>

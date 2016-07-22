@@ -10,6 +10,15 @@ var AdminpanelCtl = function($scope, messages, util) {
 	populate(ctrl, util);
 	save(ctrl, util);
 	
+	
+	ctrl.isAuthenticated = false;
+	ctrl.onSignIn = function() {
+		ctrl.isAuthenticated = true;
+	};
+	
+	ctrl.onclick = function() { 
+		alert("Hello!")
+	}
 }
 
 var populate = function(ctrl, util) {
