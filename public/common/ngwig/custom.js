@@ -30,7 +30,7 @@ var ImgCtl = function($scope, $window) {
     		var imagelink = "<img src='" + ctrl2.imgUrl + "'"
     						+ "style='width:304px;height:228px;'>";
     		
-    		document.getElementById ('content').focus();
+           	$window.document.getElementById("ng-wig-editable").focus();
     		pasteHtmlAtCaret(imagelink);
     	}
     	else{

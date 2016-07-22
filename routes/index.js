@@ -21,6 +21,23 @@ module.exports.addEnquiry = function(req, res) {
 	enquiry.add(models);
 };
 
+module.exports.getCategories = function(req, res) {
+	var post = models.post.build();
+	
+	var category = models.category.build();
+	var onSuccess = function(categories) {
+		console.log("++getCategories++");
+		res.status(200).json(categories);		
+	};
+	
+	var onError = function(error) {
+		console.log("--getCategories--: " + error);
+		res.status(500).send(error);
+	};
+	
+	category.getAllCategories(onSuccess, onError);
+};
+
 module.exports.getAdminPanelData = function(req, res) {
 	var post = models.post.build();
 	var states = post.getStateEnum();
@@ -43,7 +60,6 @@ module.exports.getAdminPanelData = function(req, res) {
 	};
 	
 	category.getAllCategories(onSuccess, onError);
-
 };
 
 module.exports.addComment = function(req, res) {

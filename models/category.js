@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 			
 			getAllCategories : function(onSuccess, onError) {
 				Category.findAll({
-					attributes : [ 'type', 'desc' ]
+					attributes : [ 'id', 'type', 'desc' ]
 				})
 				.then(
 					function(categories) {

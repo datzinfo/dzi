@@ -28,6 +28,12 @@ Author URI : http://www.markups.io/
 .navbar-brand > img {
 	height: 55px;
 }
+
+.mobileLogo {
+	height: auto;
+	width: 40px;
+}
+
 .navbar-brand:hover,
 .navbar-brand:focus{
   color: #ff871c !important;  
@@ -170,6 +176,10 @@ Author URI : http://www.markups.io/
 
 .testimonial-slider .slick-dots li {
   border: 1px solid #ff871c; 
+}
+
+.blog-news-title p {
+  color: #ff871c; 
 }
 
 .blog-news-title h2>a:hover{

@@ -1416,6 +1416,7 @@ img{
 
 .blog-news-title .blog-date{}
 .blog-news-details{
+  color: #838282;
   display: inline;
   float: left;
   padding: 0 15px;

@@ -29,6 +29,7 @@ app.get('/getOnePost', routes.getOnePost);
 app.post('/addComment', routes.addComment);
 app.get('/getAdminPanelData', routes.getAdminPanelData);
 app.post('/addEnquiry', routes.addEnquiry);
+app.get('/getCategories', routes.getCategories);
 
 // email
 app.post('/sendEmail', function(req, res){
