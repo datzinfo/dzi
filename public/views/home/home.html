@@ -7,26 +7,38 @@
 		<div class="slider-container">
 			<div id="slider-img">
 				<img ng-repeat="slide in ctrl.slides"
-					ng-hide="!ctrl.isCurrentSlideIndex($index)" class="img-responsive slider-image"
-					ng-src="{{slide.image}}"/>
+					ng-hide="!ctrl.isCurrentSlideIndex($index)"
+					class="img-responsive slider-image" ng-src="{{slide.image}}" />
 			</div>
-			<div id="slider-text"
-					ng-repeat="slide in ctrl.slides"
-					ng-hide="!ctrl.isCurrentSlideIndex($index)" 
-					ng-class="ctrl.isCurrentSlideIndex($index) ? 'enter' : ''" class="img-responsive">
-					<div>{{ slide.description }}</div>
-					<div><a class="slider-readme" href="#">Read More</a></div>
+			<div id="slider-text" ng-repeat="slide in ctrl.slides"
+				ng-hide="!ctrl.isCurrentSlideIndex($index)"
+				ng-class="ctrl.isCurrentSlideIndex($index) ? 'enter' : ''"
+				class="img-responsive">
+				<div>{{ slide.description }}</div>
+				<div>
+					<a class="slider-readme" href="#">Read More</a>
+				</div>
 			</div>
 		</div>
-		<!-- 		<nav class="nav"> -->
-		<!-- 			<div class="wrapper"> -->
-		<!-- 				<ul class="dots"> -->
-		<!-- 					<li class="dot" ng-repeat="slide in ctrl.slides"><a href="#" -->
-		<!-- 						ng-class="{'active':ctrl.isCurrentSlideIndex(ctrl.currentIndex)}" -->
-		<!-- 						ng-click="ctrl.setCurrentSlideIndex(ctrl.currentIndex);">{{slide.description}}</a></li> -->
-		<!-- 				</ul> -->
-		<!-- 			</div> -->
-		<!-- 		</nav> -->
+		<!-- Left and right controls -->
+		<a class="sliderLeft left carousel-control"
+			ng-click="ctrl.gotoSlide(ctrl.currentIndex-1)"
+			href="" role="button"
+			data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"
+			aria-hidden="true"></span> <span class="sr-only">Previous</span>
+		</a> 
+		<a class="right carousel-control" 
+			ng-click= "ctrl.gotoSlide(ctrl.currentIndex+1)" href= "" role="button"
+			data-slide="next"> <span
+			class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+		<ol id="dot" class="carousel-indicators" >
+			<li ng-repeat="slide in ctrl.slides"
+				ng-click="ctrl.gotoSlide($index)"
+				href="" data-target="" ng-class="{ 'active': ctrl.currentIndex==$index }"/>
+		</ol>
+
 	</div>
 </section>
 <!-- End slider -->

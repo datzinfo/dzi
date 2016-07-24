@@ -6,14 +6,14 @@ angular.module('dziws').constant('messages', {
 	menu_service4: 'service4',
 	
 	//Index--Slider Text//
-	index_slider1_title1: 'Creative Design & Best Feature',
-	index_slider1_title2: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since',
-	index_slider2_title1: 'We are Best Team & Support you always',
-	index_slider2_title2: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since',
+	index_slider1_title1: 'Your Business Is Unique.  Knowing Your Business Is The Key To Success',
+	index_slider1_title2: 'Turn your data into valuable business insight, because your business decisions often means more than just profit and loss.',
+	index_slider2_title1: "In Today's Fast Moving World, Communication is a 24/7 Activity",
+	index_slider2_title2: 'We empower your business to use the most effective media to reach your audience inside and outside of your company.',
 	
 	//Index--Feature Text//
-	index_feature_title: 'Features',
-	index_feature_description: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour',
+	index_feature_title: 'What is DatzInfo all about?',
+	index_feature_description: 'We do not try to be all things to all businesses.  We focus on delivering the best solutions in the area of Business Intelligence and Web Application.  We differentiate ourselves with other consulting firms by focusing on understanding business, your business, and applying the right technology to fit your business needs.',
 	
 	//Index--Box Text//
 	index_box1_title: 'index_box1_title',
