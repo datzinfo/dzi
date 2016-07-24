@@ -13,6 +13,12 @@ var ContactCtl = function($scope, messages, util) {
 	ctrl.submit = function(data) {
 		util.sendEmail(ctrl.data, submitCb);
 	};
+	
+	ctrl.submitText = "Submit";
+
+	ctrl.displayMessage = function() {
+		 ctrl.submitText = "Message sent";
+	}
 }
 
 
