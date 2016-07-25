@@ -14,8 +14,12 @@
     "cookie-parser": "^1.4.3",
     "debug": "^2.2.0",
     "express": "^4.14.0",
+    "fs": "0.0.2",
     "jade": "^1.11.0",
     "morgan": "^1.7.0",
+    "mysql": "^2.11.1",
+    "nodemailer": "^2.5.0",
+    "sequelize": "^3.23.4",
     "serve-favicon": "^2.3.0"
   }
 }
