@@ -68,9 +68,9 @@ module.exports.addComment = function(req, res) {
 	comment.message = req.body.message;
 	comment.postId = req.body.postId;
 	
-	var onSuccess = function(success) {
-		console.log("++addComment++: " + success);
-		res.sendStatus(200);
+	var onSuccess = function(comment) {
+		console.log("++addComment++: " + JSON.stringify(comment));
+		res.json(comment);
 	};
 	var onError = function(error) {
 		console.log("--addComment--: " + error);

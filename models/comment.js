@@ -28,9 +28,9 @@ module.exports = function(sequelize, DataTypes) {
 								userId : user[0].id,
 								postId : postId
 							}).save().then(
-								function(success) {
+								function(comment) {
 									if (onSuccess) {
-										onSuccess("Comment successfully saved.");
+										onSuccess(comment);
 									}
 								}, 
 								function(error) {

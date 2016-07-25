@@ -20,6 +20,9 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	var onPostList = function(data) {
 //		console.log("Got-> " + JSON.stringify(data));
 		ctrl.posts = data;
+		if (ctrl.posts && ctrl.posts.length == 0) {
+			ctrl.noPost = "No post yet.";
+		}
 	};
 	
 	var onPostDetails = function(data) {
@@ -45,7 +48,24 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 		util.getPosts(ctrl.categoryType, onPostList, onError);
 		ctrl.subview = ctrl.templates[0];
 	}
+
+	var onPostComment = function(comment) {
+		ctrl.toggleAddComment();
+		ctrl.details.comments.unshift(comment);
+	}
 	
+	ctrl.comment = {};
+	ctrl.addComment = function() {
+		ctrl.comment.postId = ctrl.details.id;
+		util.addComment(ctrl.comment, onPostComment, onError);
+	}
+
+	ctrl.modalShown = false;
+	ctrl.toggleAddComment = function() {
+	    ctrl.modalShown = !ctrl.modalShown;
+		ctrl.comment = {};
+	};
+	  
 //	ctrl.data = {};
 //	ctrl.data.message = "Posting a comment";
 //	ctrl.data.email = "abc@xyz.com";
@@ -66,6 +86,21 @@ angular.module('blog', ['ngRoute'])
 			controller:  BlogCtl,
 			controllerAs: 'ctrl'
 		});
+	}])
+	.filter('clipped', ['$sce', function($sce) {
+		return function(html) {
+		   var tmp = document.createElement("DIV");
+		   tmp.innerHTML = html;
+		   var plainText = tmp.textContent || tmp.innerText || "";
+		   var idx = 150;
+		   if (plainText.length > idx) {
+			   while (idx < plainText.length && plainText[idx] != ' ') {
+				   idx++
+			   }
+			   plainText = plainText.substr(0, idx) + '...';
+		   }
+		   return $sce.trustAsHtml(plainText);
+		};
 	}])
 	.filter('trusted', ['$sce', function($sce) {
 		return function(text) {

@@ -298,6 +298,10 @@ Author URI : http://www.markups.io/
   background-color: #ff871c;
 }
 
+.comments-box-area {
+	padding: 0;
+	margin-top: 0;
+}
 .comment-btn:hover{
   background-color: #ff871c;
   border-color: #ff871c;  
@@ -750,6 +754,59 @@ Author URI : http://www.markups.io/
     border-radius: 0;
 }
 
+/////
+// dzi modal dialog
+/////
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.8;
+}
+.ng-modal-dialog {
+  A centered div above the overlay with a box shadow.
+  z-index:10000;
+  position: absolute;
+  width: 50%; Default
+
+  Center the dialog
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 2px 2px 5px gray;
+  transition: transform 0.3s ease-out 0s;
+}
+.ng-modal-dialog-content {
+  padding:10px;
+  text-align: left;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+}
+
+#leaveComment {
+	font-size: small;
+	margin-top: 50px;
+	color: gray;
+}
+
 .comment-list {
 	margin-top: 50px;
 	color: gray;
@@ -769,9 +826,10 @@ Author URI : http://www.markups.io/
 	color: #ff871c;
 }
 
-/* @media screen and (max-width: 300px) { */
-/*  .navbar-brand > img { */
-/*   width: 90px; */
-/*   height: auto; */
-/* } */
-/* } */
+.default-text {
+	color: gray;
+}
+
+.blog-news-details > div {
+	font-size: small;
+}

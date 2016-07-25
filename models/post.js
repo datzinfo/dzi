@@ -27,9 +27,10 @@ module.exports = function(sequelize, DataTypes) {
 						state : 'published'
 					},
 					include: [ 
-						{ model: models.comment, as: 'comments',
+						{ model: models.comment, as: 'comments', 
 							include: [models.user]}
-					]
+					],
+					order : '`comments.updatedAt` DESC'
 				})
 				.then(function(post) {
 					onSuccess(post);
@@ -54,10 +55,7 @@ module.exports = function(sequelize, DataTypes) {
 							where : {
 								categoryId : category.id,
 								state : 'published'
-							},
-							include: [ 
-								{ model: models.comment, as: 'comments' }
-							]
+							}
 						})
 						.then(function(posts) {
 							onSuccess(posts);
@@ -73,6 +71,9 @@ module.exports = function(sequelize, DataTypes) {
 					console.log("%%% selective asc");
 					Post.findAll({
 						order : '`updatedAt` DESC',
+						where : {
+							state : 'published'
+						},
 						include: [ 
 							{ model: models.comment, as: 'comments' }
 						]

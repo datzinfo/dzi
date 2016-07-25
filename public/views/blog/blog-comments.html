@@ -1,18 +1,19 @@
-<div class="comment-list">
+<div class="comment-list" ng-repeat="comment in ctrl.details.comments">
 	<div class="row-xs-5">
 		<div class="panel noborder">
 			<div class="panel-heading">
-				<strong>myusername1</strong> <span class="text-muted">commented
-					5 days ago</span>
+				<strong>{{ comment.user.username }}</strong> <span class="text-muted">wrote on
+					{{ comment.user.updatedAt | date:'short' }}</span>
 			</div>
 			<div class="panel-body">
-				<div class="comment-content">Comment 1</div>
+				<div class="comment-content">{{ comment.message }}</div>
 				<div>
 					<a class="reply-link" data-toggle="collapse"
 						data-target="#postReply">Write a reply</a>
 				</div>
 			</div>
 			<div class="panel-footer">
+					<i class="fa fa-long-arrow-down reply-link"></i>
 					<a class="reply-link" data-toggle="collapse"
 						data-target="#replyList">Replies</a>
 				<div id="replyList" class="collapse reply-list">
@@ -56,17 +57,5 @@
 			</div>
 		</div>
 		<!-- /panel panel-default -->
-	</div>
-
-	<div class="row-xs-5">
-		<div class="panel noborder">
-			<div class="panel-heading">
-				<strong>myusername2</strong> <span class="text-muted">commented
-					5 days ago</span>
-			</div>
-			<div class="panel-body">Panel content</div>
-			<!-- /panel-body -->
-		</div>
-		<div class="panel-footer">Panel Footer</div>
 	</div>
 </div>
