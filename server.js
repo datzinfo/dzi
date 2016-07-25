@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 
-var isMaster='h3llo';
 var app = require('./express');
 var debug = require('debug')('website:server');
 var http = require('http');

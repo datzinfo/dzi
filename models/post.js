@@ -23,7 +23,8 @@ module.exports = function(sequelize, DataTypes) {
 			findById : function(models, postId, onSuccess, onError) {
 				Post.find({
 					where : {
-						id : postId
+						id : postId,
+						state : 'published'
 					},
 					include: [ 
 						{ model: models.comment, as: 'comments',
@@ -47,9 +48,12 @@ module.exports = function(sequelize, DataTypes) {
 				if (categoryType && categoryType != "*") {
 					cat.findIdByType(categoryType)
 					.then (function(category) {
+						console.log("%%% selective asc");
 						Post.findAll({
+							order : '`updatedAt` DESC',
 							where : {
-								categoryId : category.id
+								categoryId : category.id,
+								state : 'published'
 							},
 							include: [ 
 								{ model: models.comment, as: 'comments' }
@@ -66,7 +70,9 @@ module.exports = function(sequelize, DataTypes) {
 					});
 				}
 				else {
+					console.log("%%% selective asc");
 					Post.findAll({
+						order : '`updatedAt` DESC',
 						include: [ 
 							{ model: models.comment, as: 'comments' }
 						]

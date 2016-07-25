@@ -11,10 +11,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "admin",
-    "database": "dziws_prod",
-    "host": "127.0.0.1",
+    "username": "admindPthlH1",
+    "password": "8BpQgcqsgwKP",
+    "database": "dziws_dev",
+    "host": "process.env.OPENSHIFT_MYSQL_DB_HOST",
+    "port": "process.env.OPENSHIFT_MYSQL_DB_PORT",
     "dialect": "mysql"
   }
 }

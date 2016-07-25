@@ -735,3 +735,43 @@ Author URI : http://www.markups.io/
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.panel {
+    border: none;
+    box-shadow: none;
+}
+.panel.noborder > .panel-heading {
+    border: none;
+    border-radius: 0;
+	border-top: 1px solid lightgray;
+}
+.panel.noborder > .panel-footer {
+    border: none;
+    border-radius: 0;
+}
+
+.comment-list {
+	margin-top: 50px;
+	color: gray;
+	font-size: 12px;
+	width: 60%;
+}
+
+.comment-content, .reply-content {
+	margin-bottom: 4px;
+}
+
+.reply-list {
+	margin-left: 12px;
+}
+.reply-link {
+	font-size: x-small;
+	color: #ff871c;
+}
+
+/* @media screen and (max-width: 300px) { */
+/*  .navbar-brand > img { */
+/*   width: 90px; */
+/*   height: auto; */
+/* } */
+/* } */

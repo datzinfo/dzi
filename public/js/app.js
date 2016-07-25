@@ -21,6 +21,13 @@ angular.module('dziws', [
 	.config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise('/');
 	}])
+	.run(function($rootScope, $location, $anchorScroll, $routeParams) {
+	  //when the route is changed scroll to the proper element.
+	  $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+	    $location.hash($routeParams.scrollTo);
+	    $anchorScroll();  
+	  });
+	})
 	.service('util', ['$http', function($http) {
 
 		var menuItems = ['Home', 'About Us', 'Services', 'Blog','Contact'];

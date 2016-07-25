@@ -1,41 +1,48 @@
 'use strict';
 
-var BlogCtl = function($scope, messages, util) {
+var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
 	
+	ctrl.isCollapsed = false;
+	
 	// populate page
 	var onPopulate = function(data) {
-		console.log(JSON.stringify(data));
 		ctrl.categories = data;
 	};	
 	var onError = function(error) {
 		ctrl.errorMsg = error;
 	};	
-	var onSuccess = function(data) {
-//		console.log("Got-> " + JSON.stringify(data));
-		ctrl.posts = data;
-	};
 
 	util.getCategories(onPopulate, onError);	
 	// populate all posts by default
+	var onPostList = function(data) {
+//		console.log("Got-> " + JSON.stringify(data));
+		ctrl.posts = data;
+	};
+	
+	var onPostDetails = function(data) {
+//		console.log("Got-> " + JSON.stringify(data));
+		ctrl.details = data;
+	};
+
 	ctrl.categoryType = "*";
-	util.getPosts(ctrl.categoryType, onSuccess, onError);
+	util.getPosts(ctrl.categoryType, onPostList, onError);
 	
 	// populate subviews
 	ctrl.templates =
 		    [ { name: 'blog-list', url: 'views/blog/blog-list.html'},
 		      { name: 'blog-details', url: 'views/blog/blog-details.html'} ];
 	ctrl.subview = ctrl.templates[0];	
-	ctrl.onDetails = function(categoryId) {
-		ctrl.categoryType = categoryId
-		util.getPosts(ctrl.categoryType, onSuccess, onError);
+	
+	ctrl.onDetails = function(postId) {
+		util.getOnePost(postId, onPostDetails, onError);
 		ctrl.subview = ctrl.templates[1];
 	}	
 	ctrl.onList = function(categoryId) {
 		ctrl.categoryType = categoryId
-		util.getPosts(ctrl.categoryType, onSuccess, onError);
+		util.getPosts(ctrl.categoryType, onPostList, onError);
 		ctrl.subview = ctrl.templates[0];
 	}
 	
