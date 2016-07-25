@@ -5,8 +5,7 @@
   "private": false,
   "main": "start.js",
   "scripts": {
-    "start": "nodemon --use_strict start.js",
-    "stop": "killall node"
+    "start": "node --use_strict start.js"
   },
   "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
   "license": "ISC",
@@ -17,8 +16,6 @@
     "express": "^4.14.0",
     "jade": "^1.11.0",
     "morgan": "^1.7.0",
-    "mysql": "^2.11.1",
-    "sequelize": "^3.23.4",
     "serve-favicon": "^2.3.0"
   }
 }
