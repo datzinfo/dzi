@@ -18,10 +18,10 @@ Here are single category blogs
 
 <!-- Start Comment box -->
 <div class="comments-box-area">
-	<button class="btn btn-default active"
+	<button class="comment-btn"
 		ng-click='ctrl.toggleAddComment()'>Leave a comment</button>
-	<dzi-dialog id="leaveComment" show='ctrl.modalShown' width='750px'
-		height='25%'>
+	<dzi-dialog id="leaveComment" show='ctrl.modalShown' width=inherit
+		height='auto'>
 		<p class="default-text">Your email address will not be published.</p>
 		<form action="" class="comments-form" ng-submit="ctrl.addComment()">
 			<div class="form-group">
@@ -33,7 +33,7 @@ Here are single category blogs
 					ng-model="ctrl.comment.email">
 			</div>
 			<div class="form-group">
-				<textarea placeholder="Comment" rows="3" class="form-control"
+				<textarea placeholder="Comment" rows="3" cols="400" class="form-control"
 					ng-model="ctrl.comment.message"></textarea>
 			</div>
 			<button type="submit" class="comment-btn">Submit Comment</button>
