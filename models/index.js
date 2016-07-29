@@ -6,8 +6,8 @@ var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
-config.host = process.env.OPENSHIFT_MYSQL_DB_HOST || '127.0.0.1';
-config.port = process.env.OPENSHIFT_MYSQL_DB_PORT || '';
+//config.host = process.env.OPENSHIFT_MYSQL_DB_HOST || '192.168.1.11';
+//config.port = process.env.OPENSHIFT_MYSQL_DB_PORT || '';
 
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db        = {};

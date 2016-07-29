@@ -1,6 +1,6 @@
 
   <!-- SCROLL TOP BUTTON -->
-  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+  <a class="scrollToTop" href="" onclick="window.scrollTo(0,0)"><i class="fa fa-angle-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
  
@@ -27,12 +27,11 @@
             <li ng-class="{active : ctrl.util.getActive() === 'About Us'}">
             	<a href="#/aboutUs" ng-click="ctrl.util.setActive('About Us')">{{ ctrl.messages.aboutUs }}About Us</a></li>
             <li ng-class="{active : ctrl.util.getActive() === 'Services'}" class="dropdown">
-              <a href="" ng-click="ctrl.util.setActive('Services')" class="dropdown-toggle" data-toggle="dropdown">Services <span class="fa fa-angle-down"></span></a>
+              <a href="" ng-click="ctrl.util.setActive('Services')" class="dropdown-toggle" data-toggle="dropdown">Offerings <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#/consulting">{{ ctrl.messages.menu_service1 }}</a></li>                
                 <li><a href="#/support">{{ ctrl.messages.menu_service2 }}</a></li>
-                <li><a href="#/products">{{ ctrl.messages.menu_service3 }}</a></li>
-                <li><a href="#/products">{{ ctrl.messages.menu_service4 }}</a></li>           
+                <li><a href="#/products">{{ ctrl.messages.menu_service3 }}</a></li>           
               </ul>
             </li>
             <li ng-class="{active : ctrl.util.getActive() === 'Blog'}">

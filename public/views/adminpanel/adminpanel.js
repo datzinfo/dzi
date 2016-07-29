@@ -1,14 +1,11 @@
 'use strict';
 
-var AdminpanelCtl = function($scope, messages, util) {
+var AdminBlogListCtl = function($scope, $window, messages, util) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
 	
 	ctrl.data = {};
-	
-	populate(ctrl, util);
-	save(ctrl, util);
 	
 	
 	ctrl.isAuthenticated = false;
@@ -16,8 +13,47 @@ var AdminpanelCtl = function($scope, messages, util) {
 		ctrl.isAuthenticated = true;
 	};
 	
-	ctrl.onclick = function() { 
-		alert("Hello!")
+	//
+	var onError = function(error) {
+		ctrl.errorMsg = error;
+	};	
+
+	// populate all posts by default
+	var onPostList = function(data) {
+		ctrl.posts = data;
+		if (ctrl.posts && ctrl.posts.length == 0) {
+			ctrl.noPost = "No post yet.";
+		}
+	};
+	
+	ctrl.categoryType = '*';
+	util.getPosts(ctrl.categoryType, onPostList, onError);
+}
+
+var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
+	var ctrl = this;
+	ctrl.messages = messages;
+	ctrl.util = util;
+	
+	ctrl.data = {};
+	var postId = $routeParams.postId;
+	if (postId == -1) {
+		populate(ctrl, util);
+		save(ctrl, util);
+	}
+	else{
+		var onError = function(error) {
+			ctrl.errorMsg = error;
+		};
+		
+		ctrl.data = {};
+		var onPostDetails = function(data) {
+			console.log("Got-> " + JSON.stringify(data));
+			ctrl.data = data;
+		};
+
+		util.getOnePost(postId, onPostDetails, onError);	
+
 	}
 }
 
@@ -63,11 +99,47 @@ var save = function(ctrl, util) {
 	};	
 }
 
+
+
+var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, util) {
+	var ctrl = this;
+	ctrl.messages = messages;
+	ctrl.util = util;
+	
+	ctrl.data = {};
+	
+	var postId = $routeParams.postId;
+	
+	//
+	var onError = function(error) {
+		ctrl.errorMsg = error;
+	};	
+	
+	ctrl.comments = {};
+	var onPostDetails = function(data) {
+		console.log("Got-> " + JSON.stringify(data));
+		ctrl.comments = data.comments;
+	};
+
+	util.getOnePost(postId, onPostDetails, onError);	
+
+}
+
 angular.module('adminpanel', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.when('/adminpanel', {
+		$routeProvider.when('/adminpanel/:postId', {
 			templateUrl: 'views/adminpanel/adminpanel.html',
 			controller:  AdminpanelCtl,
+			controllerAs: 'ctrl'
+		})
+		.when('/adminbloglist', {
+			templateUrl: 'views/adminpanel/adminBlogList.html',
+			controller:  AdminBlogListCtl,
+			controllerAs: 'ctrl'
+		})
+		.when('/adminblogcomments/:postId', {
+			templateUrl: 'views/adminpanel/adminBlogComments.html',
+			controller:  AdminBlogCommentsCtl,
 			controllerAs: 'ctrl'
 		});
 	}]);
