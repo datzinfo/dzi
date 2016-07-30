@@ -67,6 +67,7 @@ module.exports.addComment = function(req, res) {
 	
 	comment.message = req.body.message;
 	comment.postId = req.body.postId;
+	comment.replyId = req.body.replyId;
 	
 	var onSuccess = function(comment) {
 		console.log("++addComment++: " + JSON.stringify(comment));
@@ -117,6 +118,7 @@ module.exports.addPost = function(req, res) {
 	
 	post.title = req.body.title;
 	post.contents = req.body.contents;
+	post.imageurl = req.body.imageurl;
 	post.state = req.body.state;
 	post.author = req.body.author;
 	
@@ -132,4 +134,22 @@ module.exports.addPost = function(req, res) {
 	post.add(models, req.body.email, req.body.categoryType, onSuccess, onError);
 };
 
+module.exports.addReply = function(req, res) {
+	var reply = models.reply.build();
+console.log("^^^" + JSON.stringify(req.body));
+	reply.message = req.body.message;
+	reply.commentId = req.body.commentId;
+	reply.replyId = req.body.replyId;
+	
+	var onSuccess = function(reply) {
+		console.log("++addReply++: " + JSON.stringify(reply));
+		res.json(reply);
+	};
+	var onError = function(error) {
+		console.log("--addReply--: " + error);
+		res.status(500).send(error);
+	};
+	
+	reply.add(models, req.body.name, req.body.email, onSuccess, onError);
+};
 

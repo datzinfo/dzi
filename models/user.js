@@ -25,6 +25,9 @@ module.exports = function(sequelize, DataTypes) {
 				User.hasMany(models.enquiry, {
 					as : 'enquiries'
 				});
+				User.hasMany(models.reply, {
+					as : 'replies'
+				});
 			}
 		},
 

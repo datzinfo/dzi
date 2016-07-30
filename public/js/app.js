@@ -108,13 +108,23 @@ angular.module('dziws', [
               	.success(onSuccess).error(onError);
       	     },
       	     
-      	   getCategories: function(onSuccess, onError) {
+      	     getCategories: function(onSuccess, onError) {
             	$http({
         	    	   method  : 'GET',
         	    	   url     : '/getCategories/',
          	    	  })
               	.success(onSuccess).error(onError);
-      	     }
+      	     },
+      	     
+          	addReply: function(replyData, onSuccess, onError) {
+      	       $http({
+      	    	   method  : 'POST',
+      	    	   url     : '/addReply/',
+      	    	   data    : $.param(replyData),  // pass in data as strings
+      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+      	    	  })
+      	    	 .success(onSuccess).error(onError);
+      	     },
             	     
 		};
 	}]);

@@ -4,7 +4,8 @@ module.exports = function(sequelize, DataTypes) {
 	var Post = sequelize.define('post', {
 		title : DataTypes.STRING,
 		author: DataTypes.STRING,
-		contents: DataTypes.TEXT,
+		contents: DataTypes.TEXT('medium'),
+		imageurl: DataTypes.STRING,
 		state : {
 		    type:   DataTypes.ENUM,
 		    values: ['draft', 'published', 'archive']
@@ -28,9 +29,10 @@ module.exports = function(sequelize, DataTypes) {
 					},
 					include: [ 
 						{ model: models.comment, as: 'comments', 
-							include: [models.user]}
+							include: [{model: models.reply, as: 'replies',
+								include: [{model: models.reply, as: 'replies'}]}]}
 					],
-					order : '`comments.updatedAt` DESC'
+					order : '`comments.updatedAt` DESC, `comments.replies.updatedAt` DESC, `comments.replies.replies.updatedAt` DESC'
 				})
 				.then(function(post) {
 					onSuccess(post);
@@ -49,7 +51,6 @@ module.exports = function(sequelize, DataTypes) {
 				if (categoryType && categoryType != "*") {
 					cat.findIdByType(categoryType)
 					.then (function(category) {
-						console.log("%%% selective asc");
 						Post.findAll({
 							order : '`updatedAt` DESC',
 							where : {
@@ -68,7 +69,6 @@ module.exports = function(sequelize, DataTypes) {
 					});
 				}
 				else {
-					console.log("%%% selective asc");
 					Post.findAll({
 						order : '`updatedAt` DESC',
 						where : {
@@ -94,6 +94,7 @@ module.exports = function(sequelize, DataTypes) {
 				var contents = this.contents;
 				var state = this.state;
 				var author = this.author;
+				var imageurl = this.imageurl;
 				var categoryId;
 				var userId;
 				
@@ -109,6 +110,7 @@ module.exports = function(sequelize, DataTypes) {
 								title : title,
 								author: author,
 								contents : contents,
+								imageurl : imageurl,
 								state : state,
 								userId : userId,
 								categoryId : categoryId

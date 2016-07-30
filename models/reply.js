@@ -1,46 +1,46 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-	var Comment = sequelize.define('comment', {
+	var Reply = sequelize.define('reply', {
 		writer: DataTypes.STRING,
 		message : DataTypes.TEXT,
 		deleted: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false}
 	}, {
 		classMethods : {
 			associate : function(models) {
-				Comment.belongsTo(models.post);
-				Comment.belongsTo(models.user);
-				Comment.hasMany(models.reply, {
-					as: 'replies'
-				});
+				Reply.belongsTo(models.comment);
+				Reply.belongsTo(models.reply);
+				Reply.hasMany(models.reply);
+				Reply.belongsTo(models.user);
 			}
 		},
 
 		instanceMethods : {
-			add : function(models, name, email, postId, onSuccess, onError) {
+			add : function(models, name, email, onSuccess, onError) {
 				var message = this.message;
-				var deleted = this.deleted;
+				var commentId = this.commentId;
+				var replyId = this.replyId;
 				
 				var usr = models.user.build();
 
 				usr.findOrCreateByNameEmail(name, email)
 				.then(function(user) {
 				    if (user) {
-						Comment.build({
+						Reply.build({
 								writer : name,
 								message : message,
-								deleted: deleted,
 								userId : user[0].id,
-								postId : postId
+								commentId : commentId,
+								replyId : replyId
 							}).save().then(
-								function(comment) {
+								function(reply) {
 									if (onSuccess) {
-										onSuccess(comment);
+										onSuccess(reply);
 									}
 								}, 
 								function(error) {
 									if (onError) {
-										onError("Error adding a comment: " + error);
+										onError("Error adding a reply: " + error);
 									}
 								}
 							);
@@ -60,5 +60,5 @@ module.exports = function(sequelize, DataTypes) {
 		}
 	});
 
-	return Comment;
+	return Reply;
 };

@@ -1,54 +1,64 @@
 <div class="comment-list" ng-repeat="comment in ctrl.comments">
 	<div class="row-xs-5">
-		<div class="panel noborder">
+		<div class="panel ">
 			<div class="panel-heading">
-				<strong>{{ comment.user.username }}</strong> <span class="text-muted">wrote on
-					{{ comment.user.updatedAt | date:'short' }}</span>
+				<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote on
+					{{ comment.updatedAt | date:'short' }}</span>
 			</div>
 			<div class="panel-body">
 				<div class="comment-content">{{ comment.message }}</div>
 				<div>
-					<a class="reply-link" data-toggle="collapse"
-						data-target="#postReply">Write a reply</a>
+					<a id="replyLink{{$index}}" class="reply-link" href="" 
+							ng-click="ctrl.openAddReply($event, {'level': 1, 'commentId': comment.id}, $index)">
+						Write a reply
+					</a>
 				</div>
 			</div>
 			<div class="panel-footer">
 					<i class="fa fa-long-arrow-down reply-link"></i>
 					<a class="reply-link" data-toggle="collapse"
-						data-target="#replyList">Replies</a>
-				<div id="replyList" class="collapse reply-list">
+						data-target="#replyList_{{$index}}">Replies ({{ comment.replies? comment.replies.length : 0 }})</a>
+				<div id="replyList_{{$index}}" class="collapse slide-animate reply-list">
 					<ul>
-						<li>
+						<li ng-repeat="reply in comment.replies">
+							<div class="row-xs-5">
+								<div class="panel">
+									<div class="comment-poster">
+										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
+											{{ reply.updatedAt | date:'short' }}</span>
+									</div>
+									<div class="panel-body">
+										<div class="reply-content">{{ reply.message }}</div>
+										<div  style="color: black">
+											<a id="replyLink{{$parent.$index}}_{{$index}}" 
+													class="reply-link" href="" 
+													ng-click="ctrl.openAddReply($event, {'replyId': reply.id}, $parent.$index, $index)">
+												Write a reply
+											</a>
+										</div>
+									</div>
+			<div class="panel-footer">
+					<i class="fa fa-long-arrow-down reply-link"></i>
+					<a class="reply-link" data-toggle="collapse"
+						data-target="#replyList_{{$parent.$index}}_{{$index}}">Replies ({{ reply.replies ? reply.replies.length : 0 }})</a>
+				<div id="replyList_{{$parent.$index}}_{{$index}}" class="collapse slide-animate reply-list">
+					<ul>
+						<li ng-repeat="reply in reply.replies">
 							<div class="row-xs-5">
 								<div class="panel noborder">
 									<div class="comment-poster">
-										<strong>userresponded</strong> <span class="text-muted">replied
-											1 days ago</span>
+										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
+											{{ reply.updatedAt | date:'short' }}</span>
 									</div>
 									<div class="panel-body">
-										<div class="reply-content">#1 reply to comment 1</div>
-										<div>
-											<a class="reply-link" data-toggle="collapse"
-												data-target="#postReply">Reply</a>
-										</div>
+										<div class="reply-content">{{ reply.message }}</div>
 									</div>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class="row-xs-5">
-								<div class="panel noborder">
-									<div class="comment-poster">
-										<strong>userresponded</strong> <span class="text-muted">replied
-											1 days ago</span>
-									</div>
-									<div class="panel-body">
-										<div class="reply-content">#2 reply to comment 1</div>
-										<div>
-											<a class="reply-link" data-toggle="collapse"
-												data-target="#postReply">Reply</a>
-										</div>
-									</div>
+					</ul>
+				</div>
+			</div>
 								</div>
 							</div>
 						</li>

@@ -1,11 +1,23 @@
 doctype html
-html(lang='en', ng-app='dziws')
+html(lang='en', itemscope='', itemtype='http://schema.org/Product', ng-app='dziws')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    title DatzInfo : Home
+    title DatzInfo
+    meta(name='description', content='Knowing Your Business Is The Key To Success.')
+
+    // Open Graph data
+    meta(property='og:title', content='DatzInfo')
+    meta(property='og:type', content='Insights into your business')
+    meta(property='og:url', content='http://dziws-dzisandbox.rhcloud.com')
+    meta(property='og:image', content='images/logo.png')
+    meta(property='og:description', content='Knowing Your Business Is The Key To Success.')
+    meta(property='og:site_name', content='DatzInfo')
+    meta(property='og:price:amount', content='')
+    meta(property='og:price:currency', content='USD')
+    
     // Favicon
     link(rel='shortcut icon', type='image/icon', href='images/favicon.ico')
     // Font Awesome
