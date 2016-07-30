@@ -180,6 +180,10 @@ Author URI : http://www.markups.io/
   border: 1px solid #ff871c; 
 }
 
+.blog-list-admin {
+  margin-left: 20px;
+}
+
 .blog-news-title p {
   color: #ff871c; 
 }
@@ -844,6 +848,10 @@ Author URI : http://www.markups.io/
 	padding: 2px 15px 15px;
 }
 
+.panel-footer {
+	padding: 10px 15px 0;
+}
+
 .ng-modal-dialog {
   z-index: 10000;
 /*   position: absolute; */
@@ -913,6 +921,11 @@ Author URI : http://www.markups.io/
 	width: 60%;
 }
 
+.comment-poster {
+    margin-bottom: 8px;
+    margin-left: 14px;
+}
+
 .comment-content, .reply-content {
 	margin-bottom: 4px;
 }
@@ -974,38 +987,6 @@ textarea.form-control {
   opacity: 0;
 }
 
-.truncate {
-    display: inline-block;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.text-truncate {
-    cursor: pointer;
-    max-height: 6em;
-    overflow: hidden;
-    position: relative;
-}
-.text-truncate::after {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 90%);
-    background-size: 100% auto;
-    bottom: 0;
-    content: "";
-    height: 40px;
-    position: absolute;
-    right: 0;
-    text-align: right;
-    top: 45px;
-    width: 100%;
-}
-.text-truncate-expand {
-    height: auto;
-    max-height: 1024px;
-}
-.text-truncate-expand::after {
-    background-image: none;
-}font-family: 'Open Sans ', sans-serif ;
 .divider {
 	height: 1px;
 	overflow: hidden;
