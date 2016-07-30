@@ -36,7 +36,7 @@
                     <h4 class="widget-title">{{ ctrl.messages.blog_categories_title }}</h4>
                     <ul class="widget-catg">
                    		<li class="animate-repeat" ng-repeat="category in ctrl.categories">
-							<a href="" ng-click="ctrl.onList('{{ category.id }}')">{{ category.type }}</a>
+							<a href="" ng-click="ctrl.onList(category.type)">{{ category.type }}</a>
 						</li>
                     </ul>
                   </div>
@@ -47,7 +47,7 @@
               </div>
               <div class="col-md-8">
                 <div class="blog-archive-left">
-                <div class="default-text"> {{ ctrl.noPost }} </div>
+                <div ng-show="ctrl.posts.length == 0" class="default-text"> No posts yet. </div>
                 <div class="blog-include-container">
  					<div class="blog-include-animation" ng-include="ctrl.subview.url" autoscroll="false"></div>
  				</div>

@@ -2,7 +2,7 @@ Here are single category blogs
 <!-- Start blog news single -->
 <article id="postDetails" class="blog-news-single">
 	<div ng-if="ctrl.details.imageurl" class="blog-news-img">
-		<img src="{{ ctrl.details.imageurl }}" alt="{{ ctrl.details.title }}">
+		<img ng-src="{{ ctrl.details.imageurl }}" alt="{{ ctrl.details.title }}">
 	</div>
 	<div class="blog-news-title">
 		<h2>{{ ctrl.details.title }}</h2>

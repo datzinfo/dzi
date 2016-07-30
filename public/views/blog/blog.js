@@ -19,9 +19,6 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	// populate all posts by default
 	var onPostList = function(data) {
 		ctrl.posts = data;
-		if (ctrl.posts && ctrl.posts.length == 0) {
-			ctrl.noPost = "No post yet.";
-		}
 	};
 	
 	var onPostDetails = function(data) {
