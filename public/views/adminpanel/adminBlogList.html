@@ -1,0 +1,106 @@
+
+<div ng-include="'views/navigator/navigator.html'"></div>
+<!-- Start login modal window -->
+<div aria-hidden="false" role="dialog" tabindex="-1" id="login-form"
+	ng-class="{'login' : !ctrl.isAuthenticated}"
+	class="modal leread-modal fade in">
+	<div class="modal-dialog">
+		<!-- Start login section -->
+		<div id="login-content" class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" data-dismiss="modal" class="close"
+					type="button">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">
+					<i class="fa fa-unlock-alt"></i>Login
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input type="text" placeholder="User name" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" class="form-control">
+					</div>
+					<div class="loginbox">
+						<label><input type="checkbox"><span>Remember
+								me</span></label>
+						<button class="btn signin-btn" ng-click="ctrl.onSignIn()"
+							type="button">SIGN IN</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer footer-box">
+				<a href="#">Forgot password ?</a> <span>No account ? <a
+					id="signup-btn" href="#">Sign Up.</a></span>
+			</div>
+		</div>
+		<!-- Start signup section -->
+		<div id="signup-content" class="modal-content">
+			<div class="modal-header">
+				<button aria-label="Close" data-dismiss="modal" class="close"
+					type="button">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">
+					<i class="fa fa-lock"></i>Sign Up
+				</h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<input placeholder="Name" class="form-control">
+					</div>
+					<div class="form-group">
+						<input placeholder="Username" class="form-control">
+					</div>
+					<div class="form-group">
+						<input placeholder="Email" class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" class="form-control">
+					</div>
+					<div class="signupbox">
+						<span>Already got account? <a id="login-btn" href="#">Sign
+								In.</a></span>
+					</div>
+					<div class="loginbox">
+						<label><input type="checkbox"><span>Remember
+								me</span><i class="fa"></i></label>
+						<button class="btn signin-btn" type="button">SIGN UP</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="adminListEdit">
+<!-- End login modal window -->
+<!-- Start blog news single -->
+<a href="#/adminpanel/{{ -1 }}" class="btn newPostBtn newPostHoverBtn">
+	New Post</a>
+<article class="blog-news-single animate-repeat"
+	ng-repeat="post in ctrl.posts">
+	<div class="blog-news-title">
+		<h2>
+			<a href="" ng-click="ctrl.onDetails(post.id)">{{ post.title }}</a>
+		</h2>	
+		<p>
+			By {{ post.author }} <span class="blog-date">| {{
+				post.createdAt | date:'MMM d yyyy' }} </span>
+		</p>
+
+		<a href="#/adminpanel/{{ post.id }}"
+			class="btn editBtn editHoverBtn"> Edit Post</a> <a
+			href="#/adminblogcomments/{{ post.id }}"
+			class="btn btn editBtn editHoverBtn"> Edit Comments</a>
+		<div class="blog-news-details">
+			<div ng-bind-html="post.contents | clipped"></div>
+			<a href="" ng-click="ctrl.onDetails(post.id)" class="blog-more-btn">
+			</a>
+		</div>
+		</div>
+</article>
+</div>

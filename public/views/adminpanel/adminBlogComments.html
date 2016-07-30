@@ -1,0 +1,71 @@
+<a href="#/adminbloglist" class="btn btn-md blogListBtn blogListBtn blogListHoverBtn" > Go To Blog List Page</a>
+{{ ctrl.comments }}
+{{ ctrl.isAuthenticated }}
+<div class="comment-list" ng-repeat="comment in ctrl.comments">
+xxx
+	<div class="row-xs-5">
+		<div class="panel noborder">
+			<div class="panel-heading">
+				<strong>{{ comment.user.username }}</strong> <span class="text-muted">wrote on
+					{{ comment.user.updatedAt | date:'short' }}</span>
+			</div>
+			<div class="buttonDiv">
+			<button type="button" class="btn image-edit-icon" data-toggle="modal"
+				data-target="#imgDialog"></button>
+			<button type="button" class="btn image-trash-icon"
+				data-toggle="modal" data-target="#imgDialog"></button>
+				</div>
+			<div class="panel-body">
+				<div class="comment-content">{{ comment.message }}</div>
+				<div>
+					<a class="reply-link" data-toggle="collapse"
+						data-target="#postReply">Write a reply</a>
+				</div>
+			</div>
+			<div class="panel-footer">
+					<i class="fa fa-long-arrow-down reply-link"></i>
+					<a class="reply-link" data-toggle="collapse"
+						data-target="#replyList">Replies</a>
+				<div id="replyList" class="collapse reply-list">
+					<ul>
+						<li>
+							<div class="row-xs-5">
+								<div class="panel noborder">
+									<div class="comment-poster">
+										<strong>userresponded</strong> <span class="text-muted">replied
+											1 days ago</span>
+									</div>
+									<div class="panel-body">
+										<div class="reply-content">#1 reply to comment 1</div>
+										<div>
+											<a class="reply-link" data-toggle="collapse"
+												data-target="#postReply">Reply</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row-xs-5">
+								<div class="panel noborder">
+									<div class="comment-poster">
+										<strong>userresponded</strong> <span class="text-muted">replied
+											1 days ago</span>
+									</div>
+									<div class="panel-body">
+										<div class="reply-content">#2 reply to comment 1</div>
+										<div>
+											<a class="reply-link" data-toggle="collapse"
+												data-target="#postReply">Reply</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /panel panel-default -->
+	</div>
+</div>

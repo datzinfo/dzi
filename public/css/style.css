@@ -1384,6 +1384,7 @@ img{
   float: left;
   padding: 20px 15px 15px;
   width: 100%;
+  margin-left: 20px;
 }
 
 .blog-news-title h2,
@@ -1536,7 +1537,7 @@ img{
 
 .footer-left p {
   color: #5c5c5c;
-  font-size: 14px;
+  font-size: 3px;
   margin: 0;
 }
 
@@ -2398,7 +2399,8 @@ img{
     right: -10px;
   }
   .blog-news-single {
-    margin-bottom: 30px;    
+    margin-bottom: 30px;   
+    border-bottom: 1px solid slategray !important; 
   }
   .title-area {
     padding: 0 100px;
@@ -2582,12 +2584,15 @@ img{
     margin-bottom: 10px;
   }
  .navbar-brand > img {
-  width: 90px;
-  height: auto;
-  }
-  #slider-text {
-  	font-size: large;
-  }
+    display: block;
+    width: 90px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.navbar-toggle {
+    margin-right: 40px;
 }
 
 
