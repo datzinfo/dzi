@@ -2584,12 +2584,15 @@ img{
     margin-bottom: 10px;
   }
  .navbar-brand > img {
-  width: 90px;
-  height: auto;
-  }
-  #slider-text {
-  	font-size: large;
-  }
+    display: block;
+    width: 90px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 40px;
+}
+
+.navbar-toggle {
+    margin-right: 40px;
 }
 
 
