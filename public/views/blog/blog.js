@@ -18,7 +18,6 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	util.getCategories(onPopulate, onError);	
 	// populate all posts by default
 	var onPostList = function(data) {
-//		console.log("Got-> " + JSON.stringify(data));
 		ctrl.posts = data;
 		if (ctrl.posts && ctrl.posts.length == 0) {
 			ctrl.noPost = "No post yet.";
@@ -26,7 +25,6 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	};
 	
 	var onPostDetails = function(data) {
-//		console.log("Got-> " + JSON.stringify(data));
 		ctrl.details = data;
 	};
 
@@ -37,47 +35,71 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	ctrl.templates =
 		    [ { name: 'blog-list', url: 'views/blog/blog-list.html'},
 		      { name: 'blog-details', url: 'views/blog/blog-details.html'} ];
-	ctrl.subview = ctrl.templates[0];	
+	
+	ctrl.switchView = function(idx) {
+		ctrl.subview = ctrl.templates[idx];
+	};
+
+	ctrl.switchView(0);	
 	
 	ctrl.onDetails = function(postId) {
 		util.getOnePost(postId, onPostDetails, onError);
-		ctrl.subview = ctrl.templates[1];
-	}	
+		ctrl.switchView(1);
+//		$location.hash('postDetails');
+//        $anchorScroll();
+	}
+	
 	ctrl.onList = function(categoryId) {
 		ctrl.categoryType = categoryId
 		util.getPosts(ctrl.categoryType, onPostList, onError);
-		ctrl.subview = ctrl.templates[0];
+		ctrl.switchView(0)
 	}
-
+  
 	var onPostComment = function(comment) {
-		ctrl.toggleAddComment();
+	    ctrl.replyShown = false;
 		ctrl.details.comments.unshift(comment);
+		ctrl.reply = {};
 	}
 	
-	ctrl.comment = {};
-	ctrl.addComment = function() {
-		ctrl.comment.postId = ctrl.details.id;
-		util.addComment(ctrl.comment, onPostComment, onError);
+	var onPostReply = function(reply) {
+	    ctrl.replyShown = false;
+		ctrl.reply.parent.replies.unshift(reply);
+		angular.element(ctrl.reply.parentId).addClass('in');
+		ctrl.reply = {};
 	}
-
-	ctrl.modalShown = false;
-	ctrl.toggleAddComment = function() {
-	    ctrl.modalShown = !ctrl.modalShown;
-		ctrl.comment = {};
+	
+	ctrl.reply = {};
+	ctrl.addReply = function() {
+		if (ctrl.reply.postId) {
+			util.addComment(ctrl.reply, onPostComment, onError);
+		}
+		else {
+			util.addReply(ctrl.reply, onPostReply, onError);
+		}
+	}
+	
+	ctrl.reply.parent = [];
+	ctrl.replyShown = false;
+	ctrl.openAddReply = function(event, origin, level1, level2) {
+		ctrl.replyShown = true;
+		angular.element('.ng-modal-dialog').attr('style', 'position:fixed; top:25%; right:30%;');
+		
+		ctrl.reply = {};
+		if (origin.commentId) {
+			ctrl.reply.commentId = origin.commentId;
+			ctrl.reply.parent = ctrl.details.comments[level1];
+			ctrl.reply.parentId = "#replyList_"+level1;
+		}
+		else if (origin.replyId) {
+			ctrl.reply.replyId = origin.replyId;
+			ctrl.reply.parent = ctrl.details.comments[level1].replies[level2];
+			ctrl.reply.parentId = "#replyList_"+level1+"_"+level2;
+		}
+		else if (origin.postId) {
+			ctrl.reply.postId = origin.postId;
+		}
 	};
-	  
-//	ctrl.data = {};
-//	ctrl.data.message = "Posting a comment";
-//	ctrl.data.email = "abc@xyz.com";
-//	ctrl.data.name = "I am ABC";
-//	ctrl.data.postId = '1';
-//	util.addComment(ctrl.data, onSuccess, onError);
-//	ctrl.categoryType = "Business Intelligence";
-//	ctrl.categoryType = "*";
-//	util.getOnePost('1', onSuccess, onError);
-//	util.getPosts(ctrl.categoryType, onSuccess, onError);
 }
-//
 
 angular.module('blog', ['ngRoute'])
 	.config(['$routeProvider', '$compileProvider', '$sceDelegateProvider', function($routeProvider, $compileProvider, $sceDelegateProvider) {

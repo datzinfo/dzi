@@ -752,41 +752,59 @@ Author URI : http://www.markups.io/
 .panel.noborder > .panel-footer {
     border: none;
     border-radius: 0;
+	border-bottom: 1px solid lightgray;
 }
 
-/////
-// dzi modal dialog
-/////
-.ng-modal-overlay {
-  /* A dark translucent div that covers the whole screen */
-  position:absolute;
-  z-index:9999;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:#000000;
-  opacity: 0.8;
+.panel-body {
+	padding: 2px 15px 15px;
 }
+
 .ng-modal-dialog {
-  z-index:10000;
-  position: absolute;
-  width: 50%;
-/*   top: 50%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-
+  z-index: 10000;
+/*   position: absolute; */
+/*  position: element(#replyLink_0_0); */
+/*   transform: translate(50%,-50%); */
+  position: fixed;
+  width: 40%;
+  top: 50%;
+  right: 50%;
+/*   left: 50%; */
+/*   transform: translate(50%, -118%); */
+/*   -webkit-transform: translate(-50%, -50%); */
+/*   -moz-transform: translate(-50%, -50%); */
   background-color: #fff;
   box-shadow: 2px 2px 10px gray;
   transition: transform 0.3s ease-out 0s;
+  font-size: small;
 }
+
+#writeReply input  {
+	font-size: small;
+	height: auto;
+}
+
+#writeReply textarea {
+	font-size: small;
+	height: auto;
+}
+
+.ng-modal-overlay {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: slategrey;
+  opacity: 0.8;
+}
+
 .ng-modal-dialog-content {
   padding:10px;
   text-align: left;
 }
 .ng-modal-close {
+  color: gray;
   position: absolute;
   top: 3px;
   right: 5px;
@@ -800,12 +818,11 @@ Author URI : http://www.markups.io/
 
 #leaveComment {
 	font-size: small;
-	margin-top: 50px;
+	margin-bottom: 50px;
 	color: gray;
 }
 
 .comment-list {
-	margin-top: 50px;
 	color: gray;
 	font-size: 12px;
 	width: 60%;
@@ -817,10 +834,13 @@ Author URI : http://www.markups.io/
 
 .reply-list {
 	margin-left: 12px;
+	margin-top: 7px;
 }
+
 .reply-link {
 	font-size: x-small;
 	color: #ff871c;
+	cursor: pointer;
 }
 
 .default-text {
@@ -834,4 +854,75 @@ Author URI : http://www.markups.io/
 textarea.form-control {
     height: auto;
     width: 100% !important;
+}
+
+.slide-animate {
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+.blog-include-container {
+  position: relative;
+}
+.blog-include-animation.ng-enter,
+.blog-include-animation.ng-leave {
+  -webkit-transition: 1.5s linear all;
+  -moz-transition: 1.5s linear all;
+  -o-transition: 1.5s linear all;
+  transition: 1.5s linear all;
+}
+.blog-include-animation.ng-enter {
+  z-index: 100;
+  opacity: 0;
+}
+.blog-include-animation.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.blog-include-animation.ng-leave {
+  z-index: 101;
+  opacity: 1;
+}
+.blog-include-animation.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.truncate {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.text-truncate {
+    cursor: pointer;
+    max-height: 6em;
+    overflow: hidden;
+    position: relative;
+}
+.text-truncate::after {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 90%);
+    background-size: 100% auto;
+    bottom: 0;
+    content: "";
+    height: 40px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 45px;
+    width: 100%;
+}
+.text-truncate-expand {
+    height: auto;
+    max-height: 1024px;
+}
+.text-truncate-expand::after {
+    background-image: none;
+}font-family: 'Open Sans ', sans-serif ;
+.divider {
+	height: 1px;
+	overflow: hidden;
+	background-color: #e0e0e0;
 }
