@@ -81,11 +81,11 @@ angular.module('dziws', [
             	.success(onSuccess).error(onError);
       	     },
       	     
-           	getOnePost: function(postId, onSuccess, onError) {
+           	getOnePost: function(params, onSuccess, onError) {
        	       $http({
        	    	   method  : 'GET',
        	    	   url     : '/getOnePost/',
-       	    	   params  : { 'id' : postId }
+       	    	   params  : params
        	    	  })
              	.success(onSuccess).error(onError);
        	     },

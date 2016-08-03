@@ -21,19 +21,27 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			findById : function(models, postId, onSuccess, onError) {
-				Post.find({
-					where : {
-						id : postId
-					},
-					include: [ 
-						{ model: models.comment, as: 'comments',
+			findById : function(models, postId, includeDeleted, onSuccess, onError) {
+				
+				var includeClause = [];
+				if (includeDeleted == 'true') {
+					includeClause = [{ model: models.comment, as: 'comments',
+							include: [{model: models.reply, as: 'replies', 
+								include: [{model: models.reply, as: 'replies'}]}]}];
+				}
+				else {
+					includeClause = [{ model: models.comment, as: 'comments',
 							where: { deleted: false }, required: false,
 							include: [{model: models.reply, as: 'replies',
 								where: { deleted: false }, required: false, 
 								include: [{model: models.reply, as: 'replies', 
-									where: { deleted: false }, required: false}]}]}
-					],
+									where: { deleted: false }, required: false}]}]}]
+				}
+				Post.find({
+					where : {
+						id : postId
+					},
+					include: includeClause,
 					order : '`comments.updatedAt` DESC, `comments.replies.updatedAt` DESC, `comments.replies.replies.updatedAt` DESC'
 				})
 				.then(function(post) {

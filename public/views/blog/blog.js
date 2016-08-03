@@ -40,7 +40,8 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	ctrl.switchView(0);	
 	
 	ctrl.onDetails = function(postId) {
-		util.getOnePost(postId, onPostDetails, onError);
+		var params = { 'id' : postId, 'includeDeleted' : false };
+		util.getOnePost(params, onPostDetails, onError);
 		ctrl.switchView(1);
 //		$location.hash('postDetails');
 //        $anchorScroll();
@@ -60,13 +61,22 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	
 	var onPostReply = function(reply) {
 	    ctrl.replyShown = false;
-		ctrl.reply.parent.replies.unshift(reply);
+	    if (ctrl.reply.parent.replies) {
+			ctrl.reply.parent.replies.unshift(reply);	    	
+	    }
+	    else {
+	    	ctrl.reply.parent.replies = [reply];
+	    }
 		angular.element(ctrl.reply.parentId).addClass('in');
 		ctrl.reply = {};
 	}
 	
 	ctrl.reply = {};
 	ctrl.addReply = function() {
+		if (ctrl.reply.email != undefined && ctrl.reply.email.length == 0) {
+			// db validation would fail with empty string
+			delete ctrl.reply['email'];
+		}
 		if (ctrl.reply.postId) {
 			util.addComment(ctrl.reply, onPostComment, onError);
 		}

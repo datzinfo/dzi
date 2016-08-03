@@ -62,14 +62,17 @@
 						<form action="" class="comments-form" ng-submit="ctrl.addReply()">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Your Name"
+									ng-trim="true"
 									ng-model="ctrl.reply.name">
 							</div>
 							<div class="form-group">
 								<input type="email" class="form-control" placeholder="Email"
+									ng-trim="true"
 									ng-model="ctrl.reply.email">
 							</div>
 							<div class="form-group">
 								<textarea placeholder="Comment" rows="3" cols="400"
+									ng-trim="true"
 									class="form-control" ng-model="ctrl.reply.message"></textarea>
 							</div>
 							<button type="submit" class="comment-btn">Submit Comment</button>

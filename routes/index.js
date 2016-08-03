@@ -134,7 +134,7 @@ module.exports.getOnePost = function(req, res) {
 		res.status(401).send("Post not found");   		
 	};
 
-	post.findById(models, req.query.id, onSuccess, onError);
+	post.findById(models, req.query.id, req.query.includeDeleted, onSuccess, onError);
 };
 
 module.exports.getPosts = function(req, res) {

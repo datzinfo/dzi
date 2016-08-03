@@ -61,7 +61,8 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
 			ctrl.category = findSelection(ctrl.categories, 'value', ctrl.data.categoryId);
 		};
 
-		util.getOnePost(postId, onPostDetails, onError);	
+		var params = { 'id' : postId, 'includeDeleted' : true };
+		util.getOnePost(params, onPostDetails, onError);	
 	}
 }
 
@@ -140,7 +141,8 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 		ctrl.comments = data.comments;
 	};
 
-	util.getOnePost(postId, onPostDetails, onError);
+	var params = { 'id' : postId, 'includeDeleted' : true };
+	util.getOnePost(params, onPostDetails, onError);
 	
 	var onError = function(error) {
 		ctrl.errorMsg = error;

@@ -110,15 +110,15 @@ module.exports = function(sequelize, DataTypes) {
 								reply.deleteReply(reply.id, isDelete, null, null);	
 							});
 							if (onSuccess) {
-								onSuccess(comment);
-//								Comment.findAll({
-//									include: [{model: models.reply, as: 'replies',
-//										include: [{model: models.reply, as: 'replies'}]}],
-//										order : '`createdAt` DESC, `replies.createdAt` DESC, `replies.replies.createdAt` DESC'
-//								})
-//								.then(function(comments) {
-//									onSuccess(comments);
-//								})
+//								onSuccess(comment);
+								Comment.findAll({
+									include: [{model: models.reply, as: 'replies',
+										include: [{model: models.reply, as: 'replies'}]}],
+										order : '`createdAt` DESC, `replies.createdAt` DESC, `replies.replies.createdAt` DESC'
+								})
+								.then(function(comments) {
+									onSuccess(comments);
+								})
 							}
 						}, 
 						function(error) {
