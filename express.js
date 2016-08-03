@@ -26,11 +26,16 @@ app.use('/', routes);
 app.post('/addPost', routes.addPost);
 app.get('/getPosts', routes.getPosts);
 app.get('/getOnePost', routes.getOnePost);
+app.post('/updatePost', routes.updatePost);
 app.post('/addComment', routes.addComment);
+app.post('/updateComment', routes.updateComment);
 app.get('/getAdminPanelData', routes.getAdminPanelData);
 app.post('/addEnquiry', routes.addEnquiry);
 app.get('/getCategories', routes.getCategories);
 app.post('/addReply', routes.addReply);
+app.post('/updateReply', routes.updateReply);
+app.post('/deleteReply', routes.deleteReply);
+app.post('/deleteComment', routes.deleteComment);
 
 // email
 app.post('/sendEmail', function(req, res){

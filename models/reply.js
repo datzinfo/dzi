@@ -9,9 +9,11 @@ module.exports = function(sequelize, DataTypes) {
 		classMethods : {
 			associate : function(models) {
 				Reply.belongsTo(models.comment);
-				Reply.belongsTo(models.reply);
-				Reply.hasMany(models.reply);
 				Reply.belongsTo(models.user);
+				Reply.belongsTo(models.reply);
+				Reply.hasMany(models.reply, {
+					as: 'replies'
+				});
 			}
 		},
 
@@ -56,6 +58,64 @@ module.exports = function(sequelize, DataTypes) {
 						onError("Unexpected error encountered identifying author: " + error);
 					}
 			  });
+			},
+			
+			update: function(replyId, onSuccess, onError) {
+				var writer = this.writer;
+				var message = this.message;
+				
+				Reply.find({ where: {id: replyId} })
+				.then(function(reply) {
+					if (reply) {
+						reply.updateAttributes({
+							writer : writer,
+							message: message
+						})
+						.then(
+							function(success) {
+								if (onSuccess) {
+									onSuccess("Reply successfully updated.");
+								}
+							}, 
+							function(error) {
+								if (onError) {
+									onError("Error updating a reply: " + error);
+								}
+							}
+						);
+					}
+					else {
+						onError("Error finding reply by id " + commentId);
+					}
+				})
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered identifying replyId: " + error);
+					}
+				});
+			},
+
+			deleteReply : function(replyId, isDelete, onSuccess, onError) {
+				
+				Reply.update(
+				    { deleted : isDelete },
+				    { where:  sequelize.or(
+							{id: replyId},
+							{replyId: replyId}
+						)
+				    })
+					.then(
+						function(replies) {
+							if (onSuccess) {
+								onSuccess("Reply successfully set to deleted: " + replies);
+							}
+						}, 
+						function(error) {
+							if (onError) {
+								onError("Error deleting a reply: " + error);
+							}
+						}
+					);					    
 			}
 		}
 	});

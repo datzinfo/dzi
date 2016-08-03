@@ -72,11 +72,11 @@ angular.module('dziws', [
            		.success(onSuccess).error(onError);
      	     },
      	     
-          	getPosts: function(categoryType, onSuccess, onError) {
+          	getPosts: function(params, onSuccess, onError) {
       	       $http({
       	    	   method  : 'GET',
       	    	   url     : '/getPosts/',
-      	    	   params  : { 'type' : categoryType }
+      	    	   params  : params
       	    	  })
             	.success(onSuccess).error(onError);
       	     },
@@ -90,6 +90,16 @@ angular.module('dziws', [
              	.success(onSuccess).error(onError);
        	     },
        	     
+          	updatePost: function(postData, onSuccess, onError) {
+      	       $http({
+      	    	   method  : 'POST',
+      	    	   url     : '/updatePost/',
+      	    	   data    : $.param(postData),  // pass in data as strings
+      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+      	    	  })
+      	    	  .success(onSuccess).error(onError);
+      	     },
+      	     
           	addComment: function(commentData, onSuccess, onError) {
       	       $http({
       	    	   method  : 'POST',
@@ -100,6 +110,16 @@ angular.module('dziws', [
             	.success(onSuccess).error(onError);
       	     },
             
+          	 updateComment: function(commentData, onSuccess, onError) {
+       	       $http({
+       	    	   method  : 'POST',
+       	    	   url     : '/updateComment/',
+       	    	   data    : $.param(commentData),  // pass in data as strings
+       	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+       	    	  })
+             	.success(onSuccess).error(onError);
+       	     },
+             
       	     getAdminPanelData: function(onSuccess, onError) {
             	$http({
         	    	   method  : 'GET',
@@ -126,5 +146,34 @@ angular.module('dziws', [
       	    	 .success(onSuccess).error(onError);
       	     },
             	     
+          	 updateReply: function(replyData, onSuccess, onError) {
+         	       $http({
+         	    	   method  : 'POST',
+         	    	   url     : '/updateReply/',
+         	    	   data    : $.param(replyData),  // pass in data as strings
+         	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+         	    	  })
+               	.success(onSuccess).error(onError);
+         	},
+               
+           	deleteReply: function(replyData, onSuccess, onError) {
+       	       $http({
+       	    	   method  : 'POST',
+       	    	   url     : '/deleteReply/',
+      	    	   data    : $.param(replyData),  // pass in data as strings
+       	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+       	    	  })
+       	    	 .success(onSuccess).error(onError);
+       	     },
+    	     
+        	deleteComment: function(commentData, onSuccess, onError) {
+    	       $http({
+    	    	   method  : 'POST',
+    	    	   url     : '/deleteComment/',
+   	    	   data    : $.param(commentData),  // pass in data as strings
+    	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
+    	    	  })
+    	    	 .success(onSuccess).error(onError);
+    	     },
 		};
 	}]);

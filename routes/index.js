@@ -81,6 +81,46 @@ module.exports.addComment = function(req, res) {
 	comment.add(models, req.body.name, req.body.email, req.body.postId, onSuccess, onError);
 };
 
+module.exports.updateComment = function(req, res) {
+	var comment = models.comment.build();
+	
+	comment.message = req.body.message;
+	comment.writer = req.body.writer;
+	
+	var onSuccess = function(success) {
+		console.log("++updateComment++: " + JSON.stringify(success));
+		res.sendStatus(200);
+	};
+	var onError = function(error) {
+		console.log("--updateComment--: " + error);
+		res.status(500).send(error);
+	};
+	
+	comment.update(req.body.id, onSuccess, onError);
+};
+
+module.exports.updatePost = function(req, res) {
+	var post = models.post.build();
+	
+	post.title = req.body.title;
+	post.author = req.body.author;
+	post.contents = req.body.contents;
+	post.imageurl = req.body.imageurl;
+	post.state = req.body.state;
+	post.categoryId = req.body.categoryId;
+	
+	var onSuccess = function(success) {
+		console.log("++updatePost++: " + success);
+		res.sendStatus(200);
+	};
+	var onError = function(error) {
+		console.log("--updatePost--: " + error);
+		res.status(500).send(error);
+	};
+	
+	post.update(req.body.id, onSuccess, onError);
+};
+
 module.exports.getOnePost = function(req, res) {
 	var post = models.post.build();
 
@@ -110,7 +150,7 @@ module.exports.getPosts = function(req, res) {
 		res.status(401).send("No posts not found");   		
 	};
 
-	post.findAllByCategory(models, req.query.type, onSuccess, onError);
+	post.findAllByCategory(models, req.query.categoryId, req.query.state, onSuccess, onError);
 };
 
 module.exports.addPost = function(req, res) {
@@ -131,12 +171,11 @@ module.exports.addPost = function(req, res) {
 		res.status(500).send(error);
 	};
 	
-	post.add(models, req.body.email, req.body.categoryType, onSuccess, onError);
+	post.add(models, req.body.email, req.body.categoryId, onSuccess, onError);
 };
 
 module.exports.addReply = function(req, res) {
 	var reply = models.reply.build();
-console.log("^^^" + JSON.stringify(req.body));
 	reply.message = req.body.message;
 	reply.commentId = req.body.commentId;
 	reply.replyId = req.body.replyId;
@@ -153,3 +192,52 @@ console.log("^^^" + JSON.stringify(req.body));
 	reply.add(models, req.body.name, req.body.email, onSuccess, onError);
 };
 
+module.exports.updateReply = function(req, res) {
+	var reply = models.reply.build();
+	
+	reply.message = req.body.message;
+	reply.writer = req.body.writer;
+	
+	var onSuccess = function(success) {
+		console.log("++updateComment++: " + JSON.stringify(success));
+		res.sendStatus(200);
+	};
+	var onError = function(error) {
+		console.log("--updateComment--: " + error);
+		res.status(500).send(error);
+	};
+	
+	reply.update(req.body.id, onSuccess, onError);
+};
+
+module.exports.deleteReply = function(req, res) {
+	var reply = models.reply.build();
+	var replyId = req.body.replyId;
+	
+	var onSuccess = function(success) {
+		console.log("++deleteReply++: " + success);
+		res.json({ 'replyId': replyId });
+	};
+	var onError = function(error) {
+		console.log("--deleteReply--: " + error);
+		res.status(500).send(error);
+	};
+	
+	reply.deleteReply(replyId, req.body.deleted, onSuccess, onError);
+};
+
+module.exports.deleteComment = function(req, res) {
+	var comment = models.comment.build();
+	var commentId = req.body.commentId;
+	
+	var onSuccess = function(comment) {
+		console.log("++deleteComment++: " + JSON.stringify(comment));
+		res.json(comment);
+	};
+	var onError = function(error) {
+		console.log("--deleteComment--: " + error);
+		res.status(500).send(error);
+	};
+	
+	comment.deleteComment(models, commentId, req.body.deleted, onSuccess, onError);
+};

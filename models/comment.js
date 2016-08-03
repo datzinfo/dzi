@@ -56,6 +56,83 @@ module.exports = function(sequelize, DataTypes) {
 						onError("Unexpected error encountered identifying author: " + error);
 					}
 			  });
+			},
+			
+			update: function(commentId, onSuccess, onError) {
+				var writer = this.writer;
+				var message = this.message;
+				
+				Comment.find({ where: {id: commentId} })
+				.then(function(comment) {
+					if (comment) {
+						comment.updateAttributes({
+							writer : writer,
+							message: message
+						})
+						.then(
+							function(success) {
+								if (onSuccess) {
+									onSuccess("Comment successfully updated.");
+								}
+							}, 
+							function(error) {
+								if (onError) {
+									onError("Error updating a comment: " + error);
+								}
+							}
+						);
+					}
+					else {
+						onError("Error finding comment by id " + commentId);
+					}
+				})
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered identifying commentId: " + error);
+					}
+				});
+			},
+
+			deleteComment : function(models, commentId, isDelete, onSuccess, onError) {
+				
+				Comment.find({ 
+					where: {id: commentId},
+					include: [{model: models.reply, as: 'replies'}]
+				})
+				.then(function(comment) {
+					console.log(">>comment: "+ JSON.stringify(comment));
+					comment.updateAttributes({
+						deleted : isDelete
+					})
+					.then(
+						function(success) {
+							comment.replies.forEach(function(reply) {
+								reply.deleteReply(reply.id, isDelete, null, null);	
+							});
+							if (onSuccess) {
+								onSuccess(comment);
+//								Comment.findAll({
+//									include: [{model: models.reply, as: 'replies',
+//										include: [{model: models.reply, as: 'replies'}]}],
+//										order : '`createdAt` DESC, `replies.createdAt` DESC, `replies.replies.createdAt` DESC'
+//								})
+//								.then(function(comments) {
+//									onSuccess(comments);
+//								})
+							}
+						}, 
+						function(error) {
+							if (onError) {
+								onError("Error deleting a comment: " + error);
+							}
+						}
+					);
+				})
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered finding the comment: " + error);
+					}
+				});
 			}
 		}
 	});

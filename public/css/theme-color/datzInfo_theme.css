@@ -184,6 +184,11 @@ Author URI : http://www.markups.io/
   margin-left: 20px;
 }
 
+.blog-comments-admin {
+  margin-left: 20px;
+  padding-top: 50px;
+}
+
 .blog-news-title p {
   color: #ff871c; 
 }
@@ -430,21 +435,17 @@ Author URI : http://www.markups.io/
 .image-edit-icon {
 	background: url(../../../../images/edit.ico) no-repeat;
 	margin-left: 7px;
-	margin-top: 5px;
 	height: 17px;
 	width: 17px;
 }
 
 .image-trash-icon {
 	background: url(../../../../images/trash.ico) no-repeat;
-	margin-left: 7px;
-	margin-top: 5px;
 	height: 17px;
 	width: 17px;
 }
 
 .buttonDiv {
-	vertical-align: middle;
 	align-items: center;
 }
 
@@ -967,10 +968,10 @@ textarea.form-control {
 }
 .blog-include-animation.ng-enter,
 .blog-include-animation.ng-leave {
-  -webkit-transition: 1.5s linear all;
-  -moz-transition: 1.5s linear all;
-  -o-transition: 1.5s linear all;
-  transition: 1.5s linear all;
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
 }
 .blog-include-animation.ng-enter {
   z-index: 100;

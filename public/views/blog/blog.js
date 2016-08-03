@@ -25,8 +25,8 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 		ctrl.details = data;
 	};
 
-	ctrl.categoryType = "*";
-	util.getPosts(ctrl.categoryType, onPostList, onError);
+	ctrl.filter = {'categoryId': '*', 'state': 'published'};
+	util.getPosts(ctrl.filter, onPostList, onError);
 	
 	// populate subviews
 	ctrl.templates =
@@ -47,8 +47,8 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	}
 	
 	ctrl.onList = function(categoryId) {
-		ctrl.categoryType = categoryId
-		util.getPosts(ctrl.categoryType, onPostList, onError);
+		ctrl.filter = {'categoryId': categoryId, 'state': 'published'};
+		util.getPosts(ctrl.filter, onPostList, onError);
 		ctrl.switchView(0)
 	}
   

@@ -1,71 +1,106 @@
-<a href="#/adminbloglist" class="btn btn-md blogListBtn blogListBtn blogListHoverBtn" > Go To Blog List Page</a>
-{{ ctrl.comments }}
-{{ ctrl.isAuthenticated }}
-<div class="comment-list" ng-repeat="comment in ctrl.comments">
-xxx
-	<div class="row-xs-5">
-		<div class="panel noborder">
-			<div class="panel-heading">
-				<strong>{{ comment.user.username }}</strong> <span class="text-muted">wrote on
-					{{ comment.user.updatedAt | date:'short' }}</span>
-			</div>
-			<div class="buttonDiv">
-			<button type="button" class="btn image-edit-icon" data-toggle="modal"
-				data-target="#imgDialog"></button>
-			<button type="button" class="btn image-trash-icon"
-				data-toggle="modal" data-target="#imgDialog"></button>
+<div class="blog-comments-admin">
+	<a href="#/adminbloglist"
+		class="btn btn-md blogListBtn blogListBtn blogListHoverBtn"> Go To
+		Blog List Page</a>
+		
+	<div ng-show="ctrl.comments.length == 0">No comments available for this post</div>
+	<div class="comment-list" ng-repeat="comment in ctrl.comments">
+		<div class="row-xs-5">
+			<div class="panel">
+				<div class="panel-heading">
+					<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote
+						on {{ comment.updatedAt | date:'short' }}</span> 
+						<span class="buttonDiv">
+							<button type="button" class="btn image-edit-icon"
+								ng-click="ctrl.editReply({'commentId': comment.id})"></button>
+							<button type="button" class="btn image-trash-icon"
+								ng-click="ctrl.deleteComment(comment.id, true)"></button>
+						</span>
 				</div>
-			<div class="panel-body">
-				<div class="comment-content">{{ comment.message }}</div>
-				<div>
-					<a class="reply-link" data-toggle="collapse"
-						data-target="#postReply">Write a reply</a>
+				<div class="panel-body">
+					<span ng-if="comment.deleted" style="color:red">*Deleted*</span>
+					<div class="comment-content">{{ comment.message }}</div>
 				</div>
-			</div>
-			<div class="panel-footer">
-					<i class="fa fa-long-arrow-down reply-link"></i>
-					<a class="reply-link" data-toggle="collapse"
-						data-target="#replyList">Replies</a>
-				<div id="replyList" class="collapse reply-list">
-					<ul>
-						<li>
-							<div class="row-xs-5">
-								<div class="panel noborder">
-									<div class="comment-poster">
-										<strong>userresponded</strong> <span class="text-muted">replied
-											1 days ago</span>
-									</div>
-									<div class="panel-body">
-										<div class="reply-content">#1 reply to comment 1</div>
-										<div>
-											<a class="reply-link" data-toggle="collapse"
-												data-target="#postReply">Reply</a>
+				<div class="panel-footer">
+					<i class="fa fa-long-arrow-down reply-link"></i> <a
+						class="reply-link" data-toggle="collapse"
+						data-target="#replyList_{{$index}}">Replies ({{
+						comment.replies? comment.replies.length : 0 }})</a>
+					<div id="replyList_{{$index}}"
+						class="collapse slide-animate reply-list">
+						<ul>
+							<li ng-repeat="reply in comment.replies">
+								<div class="row-xs-5">
+									<div class="panel">
+										<div class="comment-poster">
+											<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
+												{{ reply.updatedAt | date:'short' }}</span>
+											<span class="buttonDiv">
+												<button type="button" class="btn image-edit-icon"
+													ng-click="ctrl.editReply({'replyId': reply.id})"></button>
+												<button type="button" class="btn image-trash-icon"
+													ng-click="ctrl.deleteReply(reply.id, true)"></button>
+											</span>
+										</div>
+										<div class="panel-body">
+											<span ng-if="reply.deleted" style="color:red">*Deleted*</span>
+											<div class="reply-content">{{ reply.message }}</div>
+										</div>
+										<div class="panel-footer">
+											<i class="fa fa-long-arrow-down reply-link"></i> <a
+												class="reply-link" data-toggle="collapse"
+												data-target="#replyList_{{$parent.$index}}_{{$index}}">Replies
+												({{ reply.replies ? reply.replies.length : 0 }})</a>
+											<div id="replyList_{{$parent.$index}}_{{$index}}"
+												class="collapse slide-animate reply-list">
+												<ul>
+													<li ng-repeat="reply in reply.replies">
+														<div class="row-xs-5">
+															<div class="panel noborder">
+																<div class="comment-poster">
+																	<strong>{{ reply.writer }}</strong> <span
+																		class="text-muted">replied {{ reply.updatedAt |
+																		date:'short' }}</span>
+																	<span class="buttonDiv">
+																		<button type="button" class="btn image-edit-icon"
+																			ng-click="ctrl.dditReply({'replyId': reply.id})"></button>
+																		<button type="button" class="btn image-trash-icon"
+																			ng-click="ctrl.deleteReply(reply.id, true)"></button>
+																	</span>
+																</div>
+																<div class="panel-body">
+																	<span ng-if="reply.deleted" style="color:red">*Deleted*</span>
+																	<div class="reply-content">{{ reply.message }}</div>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						<li>
-							<div class="row-xs-5">
-								<div class="panel noborder">
-									<div class="comment-poster">
-										<strong>userresponded</strong> <span class="text-muted">replied
-											1 days ago</span>
-									</div>
-									<div class="panel-body">
-										<div class="reply-content">#2 reply to comment 1</div>
-										<div>
-											<a class="reply-link" data-toggle="collapse"
-												data-target="#postReply">Reply</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
+			<!-- /panel panel-default -->
 		</div>
-		<!-- /panel panel-default -->
 	</div>
+	<dzi-dialog id="writeReply" show='ctrl.replyShown' width=inherit
+		height='auto'>
+		<p style="margin:25px"></p>
+		<form action="" class="comments-form" ng-submit="ctrl.updateReply()">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Your Name"
+					ng-model="ctrl.reply.writer">
+			</div>
+			<div class="form-group">
+				<textarea placeholder="Comment" rows="3" cols="400"
+					class="form-control" ng-model="ctrl.reply.message"></textarea>
+			</div>
+			<button type="submit" class="comment-btn">Submit Comment</button>
+		</form>
+	</dzi-dialog>
 </div>
