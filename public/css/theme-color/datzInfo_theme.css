@@ -493,40 +493,37 @@ Author URI : http://www.markups.io/
 /* .enter { animation: slideInUp 0.5s both ease-in; z-index: 9999; } */
 
 .blogListBtn {
-    background-color: #ff871c;
-    border: none;
+	background-color: #ff871c;
+    border: medium none;
+    border-radius: 10px;
     color: white;
-    padding: 8px 2px;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 2px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
-    font-size: 12px;
-    margin: 2px 2px;
-    webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
-    cursor: pointer;
-    width: 10%;
-    border-radius: 10px;
 }
+
 .blogListHoverBtn:hover {
 	background-color: white;
     color: #ff871c;
     border: 2px solid #ff871c;
-    }
+}
     
 .newPostBtn {
 	background-color: #ff871c;
     border: none;
     color: white;
-    padding: 0.5px 32px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin: 4px 2px;
+	margin: 4px 2px 4px 30px;
+    padding: 0.5px 32px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 10%;
-    margin-left: 30px;
     border-radius: 10px;
 }
 
@@ -539,15 +536,14 @@ Author URI : http://www.markups.io/
     background-color: #ff871c;
     border: none;
     color: white;
-    padding: 2px 2px;
     text-align: center;
     text-decoration: none;
     font-size: 12px;
-    margin: 2px 2px;
+    margin: 2px;
+    padding: 4px 10px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 7%;
     border-radius: 10px;
 }
 
@@ -557,8 +553,9 @@ Author URI : http://www.markups.io/
     border: 2px solid #ff871c;
 }
 
- .blog-news-single {   
+ .blog-news-single {
   	border-bottom: 1px solid slategray !important; 
+  	width: 80% !important;
   }
 
 .enter {

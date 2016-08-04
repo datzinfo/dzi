@@ -40,7 +40,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	ctrl.switchView(0);	
 	
 	ctrl.onDetails = function(postId) {
-		var params = { 'id' : postId, 'includeDeleted' : false };
+		var params = { 'id' : postId, 'deleted' : false };
 		util.getOnePost(params, onPostDetails, onError);
 		ctrl.switchView(1);
 //		$location.hash('postDetails');

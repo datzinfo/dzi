@@ -17,6 +17,26 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
+			findById : function(models, commentId, onSuccess, onError) {
+				
+				Comment.find({
+					where : {
+						id : commentId,
+					},
+					include: [{model: models.reply, as: 'replies', 
+						include: [{model: models.reply, as: 'replies'}]}],
+					order : '`createdAt` DESC, `replies.createdAt` DESC, `replies.replies.createdAt` DESC'
+				})
+				.then(function(comment) {
+					onSuccess(comment);
+				})				
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered finding comment: " + error);
+					}
+				});
+			},
+			
 			add : function(models, name, email, postId, onSuccess, onError) {
 				var message = this.message;
 				var deleted = this.deleted;
@@ -100,26 +120,27 @@ module.exports = function(sequelize, DataTypes) {
 					include: [{model: models.reply, as: 'replies'}]
 				})
 				.then(function(comment) {
-					console.log(">>comment: "+ JSON.stringify(comment));
 					comment.updateAttributes({
 						deleted : isDelete
 					})
 					.then(
 						function(success) {
+							var replyIds = [];
 							comment.replies.forEach(function(reply) {
-								reply.deleteReply(reply.id, isDelete, null, null);	
+								replyIds.push(reply.id);
 							});
-							if (onSuccess) {
-//								onSuccess(comment);
-								Comment.findAll({
-									include: [{model: models.reply, as: 'replies',
-										include: [{model: models.reply, as: 'replies'}]}],
-										order : '`createdAt` DESC, `replies.createdAt` DESC, `replies.replies.createdAt` DESC'
-								})
-								.then(function(comments) {
-									onSuccess(comments);
-								})
-							}
+							
+							models.reply.update(
+								    { deleted : isDelete },
+								    { where:  sequelize.or(
+								    		{'id': {$in: replyIds}},
+								    		{'replyId': {$in: replyIds}}
+								    			)})
+							.then(function() {
+								if (onSuccess) {
+									comment.findById(models, comment.id, onSuccess, onError);
+								}
+							})
 						}, 
 						function(error) {
 							if (onError) {

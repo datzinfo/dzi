@@ -18,6 +18,26 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
+			findById : function(replyId, onSuccess, onError) {
+				
+				Reply.find({
+					where : {
+						id : replyId,
+					},
+					include: [{model: Reply, as: 'replies'}],
+					order : '`createdAt` DESC, `replies.createdAt` DESC'
+				})
+				.then(function(reply) {
+					console.log(">>reply: " + JSON.stringify(reply));
+					onSuccess(reply);
+				})				
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered finding reply: " + error);
+					}
+				});
+			},
+
 			add : function(models, name, email, onSuccess, onError) {
 				var message = this.message;
 				var commentId = this.commentId;
@@ -107,7 +127,7 @@ module.exports = function(sequelize, DataTypes) {
 					.then(
 						function(replies) {
 							if (onSuccess) {
-								onSuccess("Reply successfully set to deleted: " + replies);
+								Reply.build().findById(replyId, onSuccess, onError);
 							}
 						}, 
 						function(error) {

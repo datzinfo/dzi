@@ -21,10 +21,10 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			findById : function(models, postId, includeDeleted, onSuccess, onError) {
+			findById : function(models, postId, showDeleted, onSuccess, onError) {
 				
 				var includeClause = [];
-				if (includeDeleted == 'true') {
+				if (showDeleted == 'true') {
 					includeClause = [{ model: models.comment, as: 'comments',
 							include: [{model: models.reply, as: 'replies', 
 								include: [{model: models.reply, as: 'replies'}]}]}];
@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 							include: [{model: models.reply, as: 'replies',
 								where: { deleted: false }, required: false, 
 								include: [{model: models.reply, as: 'replies', 
-									where: { deleted: false }, required: false}]}]}]
+									where: { deleted: false }, required: false}]}]}];
 				}
 				Post.find({
 					where : {

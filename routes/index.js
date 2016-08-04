@@ -134,7 +134,7 @@ module.exports.getOnePost = function(req, res) {
 		res.status(401).send("Post not found");   		
 	};
 
-	post.findById(models, req.query.id, req.query.includeDeleted, onSuccess, onError);
+	post.findById(models, req.query.id, req.query.deleted, onSuccess, onError);
 };
 
 module.exports.getPosts = function(req, res) {
@@ -214,9 +214,9 @@ module.exports.deleteReply = function(req, res) {
 	var reply = models.reply.build();
 	var replyId = req.body.replyId;
 	
-	var onSuccess = function(success) {
-		console.log("++deleteReply++: " + success);
-		res.json({ 'replyId': replyId });
+	var onSuccess = function(reply) {
+		console.log("++deleteReply++: " + reply);
+		res.json(reply);
 	};
 	var onError = function(error) {
 		console.log("--deleteReply--: " + error);

@@ -76,31 +76,32 @@
 		</div>
 	</div>
 </div>
-<div class="adminListEdit">
 <!-- End login modal window -->
-<!-- Start blog news single -->
-<a href="#/adminpanel/%2D1" class="btn newPostBtn newPostHoverBtn">
-	New Post</a>
-<article class="blog-news-single animate-repeat"
-	ng-repeat="post in ctrl.posts">
-	<div class="blog-news-title blog-list-admin">
-		<h2>
-			<a href="" ng-click="ctrl.onDetails(post.id)">{{ post.title }}</a>
-		</h2>	
-		<p>
-			By {{ post.author }} <span class="blog-date">| {{
-				post.createdAt | date:'MMM d yyyy' }} </span>
-		</p>
-
-		<a href="#/adminpanel/{{ post.id }}"
-			class="btn editBtn editHoverBtn"> Edit Post</a> <a
-			href="#/adminblogcomments/{{ post.id }}"
-			class="btn btn editBtn editHoverBtn"> Edit Comments</a>
-		<div class="blog-news-details">
-			<div ng-bind-html="post.contents | clipped"></div>
-			<a href="" ng-click="ctrl.onDetails(post.id)" class="blog-more-btn">
-			</a>
-		</div>
-		</div>
-</article>
+<div class="blog-comments-admin">
+	<!-- Start blog news single -->
+	<div>
+		<a href="#/adminpanel/%2D1" class="btn newPostBtn newPostHoverBtn">New Post</a>
+	</div>
+	<article class="blog-news-single animate-repeat"
+		ng-repeat="post in ctrl.posts">
+		<div class="blog-news-title blog-list-admin">
+			<h2>
+				<a href="" ng-click="ctrl.onDetails(post.id)">{{ post.title }}</a>
+			</h2>	
+			<p>
+				By {{ post.author }} <span class="blog-date">| {{
+					post.createdAt | date:'MMM d yyyy' }} </span>
+			</p>
+	
+			<a href="#/adminpanel/{{ post.id }}"
+				class="btn editBtn editHoverBtn"> Edit Post</a> <a
+				href="#/adminblogcomments/{{ post.id }}"
+				class="btn btn editBtn editHoverBtn"> Edit Comments</a>
+			<div class="blog-news-details">
+				<div ng-bind-html="post.contents | clipped"></div>
+				<a href="" ng-click="ctrl.onDetails(post.id)" class="blog-more-btn">
+				</a>
+			</div>
+			</div>
+	</article>
 </div>

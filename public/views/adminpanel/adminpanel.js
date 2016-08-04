@@ -61,7 +61,7 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
 			ctrl.category = findSelection(ctrl.categories, 'value', ctrl.data.categoryId);
 		};
 
-		var params = { 'id' : postId, 'includeDeleted' : true };
+		var params = { 'id' : postId, 'deleted' : true };
 		util.getOnePost(params, onPostDetails, onError);	
 	}
 }
@@ -127,8 +127,6 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	ctrl.messages = messages;
 	ctrl.util = util;
 	
-	ctrl.data = {};
-	
 	var postId = $routeParams.postId;
 	
 	//
@@ -138,10 +136,11 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	
 	ctrl.comments = {};
 	var onPostDetails = function(data) {
+		ctrl.title = data.title;
 		ctrl.comments = data.comments;
 	};
 
-	var params = { 'id' : postId, 'includeDeleted' : true };
+	var params = { 'id' : postId, 'deleted' : true };
 	util.getOnePost(params, onPostDetails, onError);
 	
 	var onError = function(error) {
@@ -149,13 +148,11 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	};
 	
 	var onDeleteComment = function(data) {
-		console.log(">>>"+JSON.stringify(data));
 		for (var i=0; i < ctrl.comments.length; i++) {
 			if (ctrl.comments[i]['id'] == data.id) {
 				ctrl.comments[i] = data;
 			}
 		}
-//		ctrl.comments = data;
 	};
 
 	var commentData = {};
@@ -166,7 +163,22 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	}
 
 	var onDeleteReply = function(data) {
-		console.log("Got-> " + JSON.stringify(data));
+		var updateReply = function(arr, replyId) {
+			if (arr) {
+				for (var i=0; i < arr.length; i++) {
+					if (arr[i]['id'] === replyId) {
+						arr[i] = data;
+						return;
+					}
+					
+					if (arr[i]['replies']) {
+						updateReply(arr[i]['replies'], replyId);
+					}
+				}
+			}
+		};
+		
+		updateReply(ctrl.comments, data.id);
 	};
 
 	var replyData = {};
