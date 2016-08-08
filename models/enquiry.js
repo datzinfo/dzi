@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			add : function(models) {
+			add : function(models, onSuccess, onError) {
 				var username = this.username;
 				var email = this.email;
 				var subject = this.subject;
@@ -27,24 +27,39 @@ module.exports = function(sequelize, DataTypes) {
 					email : this.email,
 				});
 
-				usr.findOrCreateByEmail(this.email).then(
-						function(user, created) {
-							if (user[0]) {
-								Enquiry.build({
-									username : username,
-									email : email,
-									subject : subject,
-									message : message,
-									userId : user[0].id
-								}).save().then(function(enquiry) {
-									// TODO
-									// }).catch(function(error) {
-									// // error-handling
-								});
-							} else {
-								// handle error
+				usr.findOrCreateByEmail(this.email)
+				.then(function(user) {
+					if (user) {
+						Enquiry.build({
+							username : username,
+							email : email,
+							subject : subject,
+							message : message,
+							userId : user.id
+						}).save().then(
+							function(enquiry) {
+								if (onSuccess) {
+									onSuccess(enquiry);
+								}
+							}, 
+							function(error) {
+								if (onError) {
+									onError("Error adding an enquiry: " + error);
+								}
 							}
-						});
+						);
+				    }
+				    else {
+						if (onError) {
+							onError("An unexpected error has occurred.");
+						}
+				    }
+				  })
+			  .catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered identifying sender: " + error);
+					}
+			  });
 			}
 		}
 	});

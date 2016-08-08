@@ -1,23 +1,29 @@
 'use strict';
 
-var AdminBlogListCtl = function($scope, $window, messages, util) {
+var AdminBlogListCtl = function($scope, $window, $location, messages, util, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
 	
 	ctrl.data = {};
 	
-	
-	ctrl.isAuthenticated = false;
-	ctrl.onSignIn = function() {
-		ctrl.isAuthenticated = true;
+	ctrl.onError = function(error) {
+		if (error && (error.status == 401 || error === "Unauthorized")) {
+			AuthService.logout();
+			ctrl.errorMsg = "Action failed because our login has expired or you are not authorized to perform the action.";
+		}
+		else {
+			ctrl.errorMsg = error;
+		}
+	}
+
+	ctrl.logout = function() {
+		AuthService.logout().then(function(success) {
+//			$location.path("/");
+			$location.path("/login");
+		});
 	};
 	
-	//
-	var onError = function(error) {
-		ctrl.errorMsg = error;
-	};	
-
 	// populate all posts by default
 	var onPostList = function(data) {
 		ctrl.posts = data;
@@ -27,10 +33,10 @@ var AdminBlogListCtl = function($scope, $window, messages, util) {
 	};
 	
 	ctrl.categoryId = {'categoryId': '*', 'state': '*'};
-	util.getPosts(ctrl.categoryId, onPostList, onError);
+	Api.getPosts(ctrl.categoryId, onPostList, ctrl.onError);
 }
 
-var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
+var AdminpanelCtl = function($scope, $window, $routeParams, messages, util, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
@@ -38,21 +44,30 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
 	ctrl.data = {};
 	var postId = $routeParams.postId;
 	
-	populate(ctrl, util);
-	save(ctrl, util);
+	ctrl.onError = function(error) {
+		ctrl.successMsg = '';
+		if (error && (error.status == 401 || error === "Unauthorized")) {
+			AuthService.logout();
+			ctrl.errorMsg = "Action failed because our login has expired or you are not authorized to perform the action.";
+		}
+		else {
+			ctrl.errorMsg = error;
+		}
+	}
+
+	populate(ctrl, Admin);
+	save(ctrl, Admin);
 
 	if (postId != -1) {
 		var findSelection = function(arr, propName, propValue) {
-			for (var i=0; i < arr.length; i++) {
-				if (arr[i][propName] == propValue) {
-					return arr[i];
+			if (arr) {
+				for (var i=0; i < arr.length; i++) {
+					if (arr[i][propName] == propValue) {
+						return arr[i];
+					}
 				}
 			}
 		}
-		
-		var onError = function(error) {
-			ctrl.errorMsg = error;
-		};
 		
 		ctrl.data = {};
 		var onPostDetails = function(data) {
@@ -62,11 +77,11 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages, util) {
 		};
 
 		var params = { 'id' : postId, 'deleted' : true };
-		util.getOnePost(params, onPostDetails, onError);	
+		Api.getOnePost(params, onPostDetails, ctrl.onError);	
 	}
 }
 
-var populate = function(ctrl, util) {
+var populate = function(ctrl, Admin) {
 	var onPopulate = function(data) {
 	    ctrl.states = [];
 		for (var i in data.states) {
@@ -81,27 +96,19 @@ var populate = function(ctrl, util) {
 		ctrl.category = ctrl.categories[0];
 	};
 	
-	var onError = function(error) {
-		ctrl.errorMsg = error;
-	};
-	
-	util.getAdminPanelData(onPopulate, onError);
+	Admin.getAdminPanelData(onPopulate, ctrl.onError);
 }
 
-var save = function(ctrl, util) {
+var save = function(ctrl, Admin) {
 	var onSuccess = function() {
 		ctrl.errorMsg = '';
 		if (ctrl.data.id) {
 			ctrl.successMsg = "Your post has been updated.";
 		}
 		else {
-			ctrl.successMsg = "Your post has been saved.";
+			ctrl.saved = true;
+			ctrl.successMsg = "Your post has been saved. To edit this post, go to blog list.";
 		}
-	};
-	
-	var onError = function(error) {
-		ctrl.successMsg = '';
-		ctrl.errorMsg = error;
 	};
 	
 	ctrl.save = function(data) {
@@ -109,30 +116,36 @@ var save = function(ctrl, util) {
 		ctrl.data.categoryId = ctrl.category.value;
 		if (ctrl.data.id) {
 			// update post
-			util.updatePost(ctrl.data, onSuccess, onError);
+			Admin.updatePost(ctrl.data, onSuccess, ctrl.onError);
 		}
 		else {
 			// new post
 			// FIXME
 			ctrl.data.email = "michaelfung@datzinfo.com";
-			util.addPost(ctrl.data, onSuccess, onError);
+			Admin.addPost(ctrl.data, onSuccess, ctrl.onError);
 		}
 	};	
 }
 
 
 
-var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, util) {
+var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, util, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
 	
 	var postId = $routeParams.postId;
 	
-	//
-	var onError = function(error) {
-		ctrl.errorMsg = error;
-	};	
+	ctrl.onError = function(error) {
+		ctrl.successMsg = '';
+		if (error && (error.status == 401 || error === "Unauthorized")) {
+			AuthService.logout();
+			ctrl.errorMsg = "Action failed because our login has expired or you are not authorized to perform the action.";
+		}
+		else {
+			ctrl.errorMsg = error;
+		}
+	}
 	
 	ctrl.comments = {};
 	var onPostDetails = function(data) {
@@ -141,11 +154,7 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	};
 
 	var params = { 'id' : postId, 'deleted' : true };
-	util.getOnePost(params, onPostDetails, onError);
-	
-	var onError = function(error) {
-		ctrl.errorMsg = error;
-	};
+	Api.getOnePost(params, onPostDetails, ctrl.onError);
 	
 	var onDeleteComment = function(data) {
 		for (var i=0; i < ctrl.comments.length; i++) {
@@ -159,7 +168,7 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	ctrl.deleteComment = function(commentId, isDelete) {
 		commentData.commentId = commentId;
 		commentData.deleted = isDelete;
-		util.deleteComment(commentData, onDeleteComment, onError);
+		Admin.deleteComment(commentData, onDeleteComment, ctrl.onError);
 	}
 
 	var onDeleteReply = function(data) {
@@ -185,7 +194,7 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	ctrl.deleteReply = function(replyId, isDelete) {
 		replyData.replyId = replyId;
 		replyData.deleted = isDelete;
-		util.deleteReply(replyData, onDeleteReply, onError);
+		Admin.deleteReply(replyData, onDeleteReply, ctrl.onError);
 	}
 
 	var onUpdated = function() {
@@ -198,10 +207,10 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 	ctrl.reply = {};
 	ctrl.updateReply = function() {
 		if (ctrl.reply.postId) {
-			util.updateComment(ctrl.reply, onUpdated, onError);
+			Admin.updateComment(ctrl.reply, onUpdated, ctrl.onError);
 		}
 		else {
-			util.updateReply(ctrl.reply, onUpdated, onError);
+			Admin.updateReply(ctrl.reply, onUpdated, ctrl.onError);
 		}
 	}
 	
@@ -253,18 +262,35 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 angular.module('adminpanel', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/adminpanel/:postId', {
+		    access: {
+		    	loginRequired: true
+		    },
 			templateUrl: 'views/adminpanel/adminpanel.html',
 			controller:  AdminpanelCtl,
 			controllerAs: 'ctrl'
 		})
 		.when('/adminbloglist', {
+		    access: {
+		    	loginRequired: true
+		    },
 			templateUrl: 'views/adminpanel/adminBlogList.html',
 			controller:  AdminBlogListCtl,
 			controllerAs: 'ctrl'
 		})
 		.when('/adminblogcomments/:postId', {
+		    access: {
+		    	loginRequired: true
+		    },
 			templateUrl: 'views/adminpanel/adminBlogComments.html',
 			controller:  AdminBlogCommentsCtl,
 			controllerAs: 'ctrl'
 		});
-	}]);
+	}])
+   .run(function($rootScope, $location, AuthService) {
+	  $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+		if ((nextRoute.access && nextRoute.access.loginRequired) && !AuthService.isAuthenticated()) {
+	        event.preventDefault();
+			$location.url("/login");
+		}
+	  })
+   });

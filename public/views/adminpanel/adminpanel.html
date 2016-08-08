@@ -4,26 +4,26 @@
 	<form id="admin" class="adminpanel">
 		<div class="form-group form-top">
 			<label for="title">Title:</label>
-			<input type="text" class="form-control" id="title" ng-model="ctrl.data.title">
+			<input type="text" class="form-control" id="title" ng-model="ctrl.data.title" ng-disabled="ctrl.saved">
 			<label for="author">Author:</label>
-			<input type="text" class="form-control" id="author"ng-model="ctrl.data.author">
+			<input type="text" class="form-control" id="author"ng-model="ctrl.data.author" ng-disabled="ctrl.saved">
 			<label for="state">State:</label> 
-			<select class="form-control text-capitalize" ng-options="state.name for state in ctrl.states" ng-model="ctrl.state"></select>
+			<select class="form-control text-capitalize" ng-options="state.name for state in ctrl.states" ng-model="ctrl.state" ng-disabled="ctrl.saved"></select>
 			<label for="category">Category:</label> 
-			<select class="form-control" ng-options="category.name for category in ctrl.categories" ng-model="ctrl.category"></select>
+			<select class="form-control" ng-options="category.name for category in ctrl.categories" ng-model="ctrl.category" ng-disabled="ctrl.saved"></select>
 			<label for="image">Image:</label>
-			<input type="text" class="form-control" id="image" ng-model="ctrl.data.imageurl">
+			<input type="text" class="form-control" id="image" ng-model="ctrl.data.imageurl" ng-disabled="ctrl.saved">
 			<label for="content">Content:</label>
-			<ng-wig id="content" ng-model="ctrl.data.contents" source-mode-allowed></ng-wig>
+			<ng-wig id="content" ng-model="ctrl.data.contents" source-mode-allowed ng-disabled="ctrl.saved"></ng-wig>
 		</div>
 		<div class="form-group form-button">
-			<div class="text-warning">
+			<div ng-if="ctrl.errorMsg" class="text-warning">
 				{{ ctrl.errorMsg }}
 			</div>
 			<div class=".text-success">
 				{{ ctrl.successMsg }}
 			</div>
-			<button type="button" ng-click="ctrl.save()" class="btn btn-warning">Save</button>
+			<button type="button" ng-click="ctrl.save()" class="btn btn-warning" ng-disabled="ctrl.saved">Save</button>
 		</div>
 	
 	

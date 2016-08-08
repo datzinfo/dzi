@@ -8,6 +8,30 @@ Author URI : http://www.markups.io/
   background-color: #ff871c; 
 }
 
+.div-login {
+	margin-top: 20px;
+}
+
+.logo-login {
+	height: auto;
+	width: 150px;	
+}
+
+.div-center {
+   	padding: 17px 25px 25px;
+	border: 3px solid gray;
+    border-radius: 5px;
+    bottom: 0;
+    height: 300px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    min-width: 250px;
+}
+
 .navbar-brand {
   color: #ff871c !important; 
   margin-top: 0 !important;
@@ -187,6 +211,7 @@ Author URI : http://www.markups.io/
 .blog-comments-admin {
   margin-left: 20px;
   padding-top: 50px;
+  min-height: 89vh;
 }
 
 .blog-news-title p {
@@ -443,6 +468,14 @@ Author URI : http://www.markups.io/
 	background: url(../../../../images/trash.ico) no-repeat;
 	height: 17px;
 	width: 17px;
+}
+
+.image-edit-icon.disabled, .image-edit-icon[disabled] {
+   opacity: 0.3 !important;
+}
+
+.image-trash-icon.disabled, .image-trash-icon[disabled] {
+   opacity: 0.3 !important;
 }
 
 .buttonDiv {
@@ -965,10 +998,10 @@ textarea.form-control {
 }
 .blog-include-animation.ng-enter,
 .blog-include-animation.ng-leave {
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  transition: 0.5s linear all;
+  -webkit-transition: 1s linear all;
+  -moz-transition: 1s linear all;
+  -o-transition: 1s linear all;
+  transition: 1s linear all;
 }
 .blog-include-animation.ng-enter {
   z-index: 100;
@@ -989,4 +1022,11 @@ textarea.form-control {
 	height: 1px;
 	overflow: hidden;
 	background-color: #e0e0e0;
+}
+
+.text-warning {
+	color: white;
+	background-color: red;
+	padding: 5px;
+	width: 80%;
 }

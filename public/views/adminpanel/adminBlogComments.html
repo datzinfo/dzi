@@ -3,12 +3,17 @@
 	<a href="#/adminbloglist"
 		class="btn btn-md blogListBtn blogListBtn blogListHoverBtn"> Go To
 		Blog List Page</a>
-		<div class="blog-news-title">
-			<h2>
-				{{ ctrl.title }}
-			</h2>	
-		</div>
-	<div ng-show="ctrl.comments.length == 0">No comments available for this post</div>
+	<div>
+		<h2>
+			{{ ctrl.title }}
+		</h2>	
+	</div>
+	<div ng-if="ctrl.errorMsg" class="text-warning">
+		{{ ctrl.errorMsg }}
+	</div>
+	<div ng-show="ctrl.comments.length == 0" class="default-text">
+		No comments available for this post
+	</div>
 	<div class="comment-list" ng-repeat="comment in ctrl.comments">
 		<div class="row-xs-5">
 			<div class="panel">
@@ -16,9 +21,9 @@
 					<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote
 						on {{ comment.updatedAt | date:'short' }}</span> 
 						<span class="buttonDiv">
-							<button type="button" class="btn image-edit-icon"
+							<button type="button" class="btn image-edit-icon" ng-disabled="comment.deleted"
 								ng-click="ctrl.editReply({'commentId': comment.id})"></button>
-							<button type="button" class="btn image-trash-icon"
+							<button type="button" class="btn image-trash-icon" ng-disabled="comment.deleted"
 								ng-click="ctrl.deleteComment(comment.id, true)"></button>
 						</span>
 				</div>
@@ -41,9 +46,9 @@
 											<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
 												{{ reply.updatedAt | date:'short' }}</span>
 											<span class="buttonDiv">
-												<button type="button" class="btn image-edit-icon"
+												<button type="button" class="btn image-edit-icon" ng-disabled="comment.deleted"
 													ng-click="ctrl.editReply({'replyId': reply.id})"></button>
-												<button type="button" class="btn image-trash-icon"
+												<button type="button" class="btn image-trash-icon" ng-disabled="comment.deleted"
 													ng-click="ctrl.deleteReply(reply.id, true)"></button>
 											</span>
 										</div>

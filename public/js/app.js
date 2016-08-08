@@ -15,20 +15,21 @@ angular.module('dziws', [
         'support',
         'blog',
         'contact',
+        'login',
         'adminpanel',
         'ngWig'
         ])
 	.config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider, $stateProvider) {
-		$urlRouterProvider.otherwise('/');
+		  $urlRouterProvider.otherwise('/');
 	}])
-	.run(function($rootScope, $location, $anchorScroll, $routeParams) {
+   .run(function($rootScope, $location, $anchorScroll, $routeParams) {
 	  //when the route is changed scroll to the proper element.
 	  $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
 	    $location.hash($routeParams.scrollTo);
 	    $anchorScroll();  
 	  });
 	})
-	.service('util', ['$http', function($http) {
+	.service('util', [function() {
 
 		var menuItems = ['Home', 'About Us', 'Services', 'Blog','Contact'];
 		var activeMenu = menuItems[0];
@@ -40,140 +41,6 @@ angular.module('dziws', [
 			
 			getActive: function() {
 				return activeMenu;
-			},
-        	
-        	sendEmail: function(emailData, callback) {
-    	       $http({
-    	    	   method  : 'POST',
-    	    	   url     : '/sendEmail/',
-    	    	   data    : $.param(emailData),  // pass in data as strings
-    	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-    	    	  })
-          		.success(callback);
-    	     },
-    	     
-          	addEnquiry: function(enquiryData, onSuccess, onError) {
-      	       $http({
-      	    	   method  : 'POST',
-      	    	   url     : '/addEnquiry/',
-      	    	   data    : $.param(enquiryData),  // pass in data as strings
-      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-      	    	  })
-            		.success(onSuccess).error(onError);
-      	     },
-      	         	     
-         	addPost: function(postData, onSuccess, onError) {
-     	       $http({
-     	    	   method  : 'POST',
-     	    	   url     : '/addPost/',
-     	    	   data    : $.param(postData),  // pass in data as strings
-     	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-     	    	  })
-           		.success(onSuccess).error(onError);
-     	     },
-     	     
-          	getPosts: function(params, onSuccess, onError) {
-      	       $http({
-      	    	   method  : 'GET',
-      	    	   url     : '/getPosts/',
-      	    	   params  : params
-      	    	  })
-            	.success(onSuccess).error(onError);
-      	     },
-      	     
-           	getOnePost: function(params, onSuccess, onError) {
-       	       $http({
-       	    	   method  : 'GET',
-       	    	   url     : '/getOnePost/',
-       	    	   params  : params
-       	    	  })
-             	.success(onSuccess).error(onError);
-       	     },
-       	     
-          	updatePost: function(postData, onSuccess, onError) {
-      	       $http({
-      	    	   method  : 'POST',
-      	    	   url     : '/updatePost/',
-      	    	   data    : $.param(postData),  // pass in data as strings
-      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-      	    	  })
-      	    	  .success(onSuccess).error(onError);
-      	     },
-      	     
-          	addComment: function(commentData, onSuccess, onError) {
-      	       $http({
-      	    	   method  : 'POST',
-      	    	   url     : '/addComment/',
-      	    	   data    : $.param(commentData),  // pass in data as strings
-      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-      	    	  })
-            	.success(onSuccess).error(onError);
-      	     },
-            
-          	 updateComment: function(commentData, onSuccess, onError) {
-       	       $http({
-       	    	   method  : 'POST',
-       	    	   url     : '/updateComment/',
-       	    	   data    : $.param(commentData),  // pass in data as strings
-       	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-       	    	  })
-             	.success(onSuccess).error(onError);
-       	     },
-             
-      	     getAdminPanelData: function(onSuccess, onError) {
-            	$http({
-        	    	   method  : 'GET',
-        	    	   url     : '/getAdminPanelData/',
-         	    	  })
-              	.success(onSuccess).error(onError);
-      	     },
-      	     
-      	     getCategories: function(onSuccess, onError) {
-            	$http({
-        	    	   method  : 'GET',
-        	    	   url     : '/getCategories/',
-         	    	  })
-              	.success(onSuccess).error(onError);
-      	     },
-      	     
-          	addReply: function(replyData, onSuccess, onError) {
-      	       $http({
-      	    	   method  : 'POST',
-      	    	   url     : '/addReply/',
-      	    	   data    : $.param(replyData),  // pass in data as strings
-      	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-      	    	  })
-      	    	 .success(onSuccess).error(onError);
-      	     },
-            	     
-          	 updateReply: function(replyData, onSuccess, onError) {
-         	       $http({
-         	    	   method  : 'POST',
-         	    	   url     : '/updateReply/',
-         	    	   data    : $.param(replyData),  // pass in data as strings
-         	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-         	    	  })
-               	.success(onSuccess).error(onError);
-         	},
-               
-           	deleteReply: function(replyData, onSuccess, onError) {
-       	       $http({
-       	    	   method  : 'POST',
-       	    	   url     : '/deleteReply/',
-      	    	   data    : $.param(replyData),  // pass in data as strings
-       	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-       	    	  })
-       	    	 .success(onSuccess).error(onError);
-       	     },
-    	     
-        	deleteComment: function(commentData, onSuccess, onError) {
-    	       $http({
-    	    	   method  : 'POST',
-    	    	   url     : '/deleteComment/',
-   	    	   data    : $.param(commentData),  // pass in data as strings
-    	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' } 
-    	    	  })
-    	    	 .success(onSuccess).error(onError);
-    	     },
+			}        	
 		};
 	}]);

@@ -1,6 +1,6 @@
 'use strict';
 
-var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
+var BlogCtl = function($scope, $location, $anchorScroll, messages, util, Api) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	ctrl.util = util;
@@ -15,7 +15,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 		ctrl.errorMsg = error;
 	};	
 
-	util.getCategories(onPopulate, onError);	
+	Api.getCategories(onPopulate, onError);	
 	// populate all posts by default
 	var onPostList = function(data) {
 		ctrl.posts = data;
@@ -26,7 +26,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	};
 
 	ctrl.filter = {'categoryId': '*', 'state': 'published'};
-	util.getPosts(ctrl.filter, onPostList, onError);
+	Api.getPosts(ctrl.filter, onPostList, onError);
 	
 	// populate subviews
 	ctrl.templates =
@@ -41,7 +41,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	
 	ctrl.onDetails = function(postId) {
 		var params = { 'id' : postId, 'deleted' : false };
-		util.getOnePost(params, onPostDetails, onError);
+		Api.getOnePost(params, onPostDetails, onError);
 		ctrl.switchView(1);
 //		$location.hash('postDetails');
 //        $anchorScroll();
@@ -49,7 +49,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 	
 	ctrl.onList = function(categoryId) {
 		ctrl.filter = {'categoryId': categoryId, 'state': 'published'};
-		util.getPosts(ctrl.filter, onPostList, onError);
+		Api.getPosts(ctrl.filter, onPostList, onError);
 		ctrl.switchView(0)
 	}
   
@@ -78,10 +78,10 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util) {
 			delete ctrl.reply['email'];
 		}
 		if (ctrl.reply.postId) {
-			util.addComment(ctrl.reply, onPostComment, onError);
+			Api.addComment(ctrl.reply, onPostComment, onError);
 		}
 		else {
-			util.addReply(ctrl.reply, onPostReply, onError);
+			Api.addReply(ctrl.reply, onPostReply, onError);
 		}
 	}
 	
