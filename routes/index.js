@@ -10,7 +10,8 @@ module.exports = router;
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	var messages = req.app.get('messages');
-	res.render('index', { messages });
+//	res.render('index', { messages });
+	res.sendFile( 'index.html');
 });
 
 router.post('/auth', function(req, res) {

@@ -28,7 +28,6 @@ module.exports = function(sequelize, DataTypes) {
 					order : '`createdAt` DESC, `replies.createdAt` DESC'
 				})
 				.then(function(reply) {
-					console.log(">>reply: " + JSON.stringify(reply));
 					onSuccess(reply);
 				})				
 				.catch(function(error) {

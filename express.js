@@ -15,8 +15,30 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+//app.set('view engine', 'html');
+app.use(express.static(path.join(__dirname, 'public/app')));
 
+function userIsAllowed(referer, callback) {
+	callback(referer && referer.indexOf(config.hostname) != -1);
+};
+
+var protectPath = function(regex) {
+	return function(req, res, next) {
+		if (!regex.test(req.url)) {
+			return next();
+		}
+		userIsAllowed(req.headers['referer'], function(allowed) {
+			if (allowed) {
+				next();
+			} else {
+				// send to home page
+				 res.redirect('/');
+			}
+		});
+	};
+};
+	
+app.use(protectPath(/^\/js|css|app\/.*$/));
 app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -26,7 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.all('/*', function(req, res, next) {
+//app.all('*', function(req, res, next) {
+//	console.log("*all* " + JSON.stringify(next));
 //	// CORS headers
 //	res.header("Access-Control-Allow-Origin", "*"); // restrict it to the
 //													// required domain
@@ -44,6 +67,8 @@ app.use(passport.session());
 app.use('/', routes);
 app.use('/api', apiRoutes);
 app.use('/admin', adminRoutes);
+
+app.disable('x-powered-by');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

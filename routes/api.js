@@ -2,27 +2,21 @@ var express = require('express');
 var apiRoutes = express.Router();
 var models = require("../models");
 var nodemailer = require('nodemailer');
+var config0 = require('../config/dzi');
+var config = config0[config0.env];
 
 module.exports = apiRoutes;
 
 apiRoutes.post('/sendEmail', function(req, res) {
 	var mailOptions={
-	        from : "kkkkk97855@yahoo.com",
-	        to : "kkkkk97855@yahoo.com",
+	        from : config.emailFrom,
+	        to : config.emailFrom,
 	        subject : req.body['subject'],
 	        text : "Msg from: " + req.body['name'] + "<" + req.body['email'] + "> " + req.body['msg'],
 	        html : "&#128538; Msg from " + req.body['name'] + "<" + req.body['email'] + ">: " + req.body['msg']
 	     }
 
-	var transporter = nodemailer.createTransport({
-	    host : "smtp.mail.yahoo.com",
-	    secureConnection : true,
-	    port: 465,
-	    auth : {
-	        user : "kkkkk97855@yahoo.com",
-	        pass : "buyNbuy88"
-	    }
-	});
+	var transporter = nodemailer.createTransport(config.mailer);
 
 	transporter.sendMail(mailOptions, function(error, response){
 	    if (error) {

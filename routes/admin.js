@@ -13,11 +13,7 @@ var opts = {
 	secretOrKey: config.secret
 }
 passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-	console.log(">>"+ JSON.stringify(jwt_payload));
-	
-//    if (jwt_payload.exp <= Date.now()) {
-//    	return done(null, false, "Login has expired");
-//    }
+
 	models.user.build()
 	.findAdminByEmail(jwt_payload.id)
 	.then(
@@ -84,12 +80,6 @@ adminRoutes.post('/updatePost', passport.authenticate('jwt', ppOpts), function(r
 
 adminRoutes.get('/getAdminPanelData', function(req, res, next) {
 	
-	passport.authenticate('jwt', function(err, user, info) {
-		console.log("pp err: " + JSON.stringify(err));
-		console.log("pp user: " + JSON.stringify(user));
-		console.log("pp info: " + JSON.stringify(info));
-	});
-	
 	var post = models.post.build();
 	var states = post.getStateEnum();
 	
@@ -120,7 +110,6 @@ adminRoutes.post('/updateComment', passport.authenticate('jwt', ppOpts), functio
 	comment.writer = req.body.writer;
 	
 	var onSuccess = function(success) {
-		console.log("++updateComment++: " + JSON.stringify(success));
 		res.sendStatus(200);
 	};
 	var onError = function(error) {
@@ -136,7 +125,6 @@ adminRoutes.post('/deleteComment', passport.authenticate('jwt', ppOpts), functio
 	var commentId = req.body.commentId;
 	
 	var onSuccess = function(comment) {
-		console.log("++deleteComment++: " + JSON.stringify(comment));
 		res.json(comment);
 	};
 	var onError = function(error) {
@@ -154,7 +142,6 @@ adminRoutes.post('/updateReply', passport.authenticate('jwt', ppOpts), function(
 	reply.writer = req.body.writer;
 	
 	var onSuccess = function(success) {
-		console.log("++updateComment++: " + JSON.stringify(success));
 		res.sendStatus(200);
 	};
 	var onError = function(error) {
