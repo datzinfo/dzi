@@ -1,6 +1,7 @@
 "use strict";
 
 var crypto = require('crypto');
+var secure = require('../config/secure');
 
 module.exports = function(models) {
 	models.blog
@@ -47,11 +48,9 @@ module.exports = function(models) {
 		  }
 	  });
 
-	var shasum = crypto.createHash('sha1');
-	shasum.update('admin');
-	var pw = shasum.digest('hex');
+	var pw = secure.hash('dziadmin');
 	models.user
-	  .findOrCreate({where: {username: 'admin'}, defaults: {password: pw, email: "michaelfung@datzinfo.com", isAdmin: true, active: true}})
+	  .findOrCreate({where: {username: 'dziadmin'}, defaults: {password: pw, email: "michaelfung@datzinfo.com", isAdmin: true, active: true}})
 	  .spread(function(user, created) {
 		  if (created) {
 		    console.log(user.get({

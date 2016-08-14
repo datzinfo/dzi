@@ -4,10 +4,10 @@ var fs        = require("fs");
 var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
-var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+var config    = require(path.join(__dirname, '..', 'config', 'dzi.js'))[env];
 
-config.host = process.env.OPENSHIFT_MYSQL_DB_HOST || '192.168.1.11';
-config.port = process.env.OPENSHIFT_MYSQL_DB_PORT || '';
+//config.host = process.env.OPENSHIFT_MYSQL_DB_HOST || '192.168.1.11';
+//config.port = process.env.OPENSHIFT_MYSQL_DB_PORT || '';
 
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db        = {};
@@ -15,7 +15,7 @@ var db        = {};
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
-    return (file.indexOf(".") !== 0) && (file !== "index.js" && file !== 'seed.js');
+	return (file.indexOf(".") !== 0) && (file !== "index.js" && file !== 'seed.js');
   })
   .forEach(function(file) {
     var model = sequelize.import(path.join(__dirname, file));

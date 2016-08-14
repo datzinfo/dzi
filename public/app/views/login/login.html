@@ -1,0 +1,24 @@
+<!-- LOGO -->  
+<div class="blog-comments-admin">            
+	<!-- Start login section -->
+	<div class="div-center">
+		<a class="logo-login" href="#/"><img src="images/datzinfo_logo.png" alt="DataInfo" ></a>
+		<div class="div-login">
+			<form>
+				<div class="form-group">
+					<input type="text" placeholder="User name" class="form-control" ng-model="ctrl.username">
+				</div>
+				<div class="form-group">
+					<input type="password" placeholder="Password" class="form-control" ng-model="ctrl.password">
+				</div>
+				<div ng-if="ctrl.errorMsg" class="text-warning">
+					{{ ctrl.errorMsg }}
+				</div>
+				<div class="loginbox">
+					<button class="btn signin-btn" ng-click="ctrl.onSignIn()"
+						type="button">SIGN IN</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

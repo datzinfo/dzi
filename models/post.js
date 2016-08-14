@@ -21,17 +21,27 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			findById : function(models, postId, onSuccess, onError) {
+			findById : function(models, postId, showDeleted, onSuccess, onError) {
+				
+				var includeClause = [];
+				if (showDeleted == 'true') {
+					includeClause = [{ model: models.comment, as: 'comments',
+							include: [{model: models.reply, as: 'replies', 
+								include: [{model: models.reply, as: 'replies'}]}]}];
+				}
+				else {
+					includeClause = [{ model: models.comment, as: 'comments',
+							where: { deleted: false }, required: false,
+							include: [{model: models.reply, as: 'replies',
+								where: { deleted: false }, required: false, 
+								include: [{model: models.reply, as: 'replies', 
+									where: { deleted: false }, required: false}]}]}];
+				}
 				Post.find({
 					where : {
-						id : postId,
-						state : 'published'
+						id : postId
 					},
-					include: [ 
-						{ model: models.comment, as: 'comments', 
-							include: [{model: models.reply, as: 'replies',
-								include: [{model: models.reply, as: 'replies'}]}]}
-					],
+					include: includeClause,
 					order : '`comments.updatedAt` DESC, `comments.replies.updatedAt` DESC, `comments.replies.replies.updatedAt` DESC'
 				})
 				.then(function(post) {
@@ -44,52 +54,33 @@ module.exports = function(sequelize, DataTypes) {
 				});
 			},
 			
-			findAllByCategory : function(models, categoryType, onSuccess, onError) {
+			findAllByCategory : function(models, categoryId, state, onSuccess, onError) {
 
 				var cat = models.category.build();
 				
-				if (categoryType && categoryType != "*") {
-					cat.findIdByType(categoryType)
-					.then (function(category) {
-						Post.findAll({
-							order : '`updatedAt` DESC',
-							where : {
-								categoryId : category.id,
-								state : 'published'
-							}
-						})
-						.then(function(posts) {
-							onSuccess(posts);
-						});
-					})
-					.catch(function(error) {
-						if (onError) {
-							onError("Unexpected error encountered identifying category: " + error);
-						}
-					});
+				var whereClause = {};
+				if (categoryId && categoryId != "*") {
+					whereClause.categoryId = categoryId;
 				}
-				else {
-					Post.findAll({
-						order : '`updatedAt` DESC',
-						where : {
-							state : 'published'
-						},
-						include: [ 
-							{ model: models.comment, as: 'comments' }
-						]
-					})
-					.then(function(posts) {
-						onSuccess(posts);
-					})				
-					.catch(function(error) {
-						if (onError) {
-							onError("Unexpected error encountered identifying category: " + error);
-						}
-					});
+				if (state && state != "*") {
+					whereClause.state = state;
 				}
+
+				Post.findAll({
+					order : '`updatedAt` DESC',
+					where : whereClause
+				})
+				.then(function(posts) {
+					onSuccess(posts);
+				})
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered getting all posts by id: " + error);
+					}
+				});
 			},
 			
-			add : function(models, email, categoryType, onSuccess, onError) {
+			add : function(models, email, categoryId, onSuccess, onError) {
 				var title = this.title;
 				var contents = this.contents;
 				var state = this.state;
@@ -101,7 +92,7 @@ module.exports = function(sequelize, DataTypes) {
 				var usr = models.user.build();
 				var cat = models.category.build();
 
-				Promise.all([usr.findAdminIdByEmail(email), cat.findIdByType(categoryType)])
+				Promise.all([usr.findAdminIdByEmail(email), cat.findIdById(categoryId)])
 				.then(function(results) {
 				    if (results[0] && results[1]) {
 				    	userId = results[0].id;
@@ -129,7 +120,12 @@ module.exports = function(sequelize, DataTypes) {
 				    }
 				    else {
 						if (onError) {
-							onError("You are not authorized to write a post when signed in as " + email);
+							if (!results[0]) {
+								onError("You are not authorized to write a post when signed in as " + email);
+							}
+							else if (!results[1]) {
+								onError("Error finding category for new post");
+							}
 						}
 				    }
 				  })
@@ -142,6 +138,49 @@ module.exports = function(sequelize, DataTypes) {
 			
 			getStateEnum : function() {
 				return Post.rawAttributes.state.values;
+			},
+						
+			update: function(postId, onSuccess, onError) {
+				var title = this.title;
+				var author = this.author;
+				var contents = this.contents;
+				var imageurl = this.imageurl;
+				var state = this.state;
+				var categoryId = this.categoryId;
+				
+				Post.find({ where: {id: postId} })
+				.then(function(post) {
+					if (post) {
+						post.updateAttributes({
+							title : title,
+							author: author,
+							contents : contents,
+							imageurl : imageurl,
+							state : state,
+							categoryId : categoryId
+						})
+						.then(
+							function(success) {
+								if (onSuccess) {
+									onSuccess("Post successfully updated.");
+								}
+							}, 
+							function(error) {
+								if (onError) {
+									onError("Error updating a post: " + error);
+								}
+							}
+						);
+					}
+					else {
+						onError("Error finding post by id " + postId);
+					}
+				})
+				.catch(function(error) {
+					if (onError) {
+						onError("Unexpected error encountered identifying postId: " + error);
+					}
+				});
 			}
 		}
 	});

@@ -15,10 +15,10 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			findIdByType : function(type) {
+			findIdById : function(id) {
 				return Category.find({
 					where : {
-						type : type
+						id : id
 					},
 					attributes : [ 'id' ]
 				});

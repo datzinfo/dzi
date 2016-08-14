@@ -1,6 +1,7 @@
 "use strict";
 
 var crypto = require('crypto');
+var secure = require('../config/secure');
 
 module.exports = function(sequelize, DataTypes) {
 	var User = sequelize.define('user', {
@@ -32,10 +33,11 @@ module.exports = function(sequelize, DataTypes) {
 		},
 
 		instanceMethods : {
-			findByEmail : function(email) {
+			findAdminByEmail : function(email, onSuccess, onError) {
 				return User.find({
 					where : {
-						email : email
+						email : email,
+						isAdmin : true
 					}
 				});
 			},
@@ -53,9 +55,7 @@ module.exports = function(sequelize, DataTypes) {
 			findOrCreateByEmail : function(email) {
 				var pw = '';
 				if (this.password) {
-					var shasum = crypto.createHash('sha1');
-					shasum.update(this.password);
-					pw = shasum.digest('hex');
+					pw = secure.hash(this.password);
 				}
 
 				return User.findOrCreate({
@@ -74,9 +74,7 @@ module.exports = function(sequelize, DataTypes) {
 			findOrCreateByNameEmail : function(name, email) {
 				var pw = '';
 				if (this.password) {
-					var shasum = crypto.createHash('sha1');
-					shasum.update(this.password);
-					pw = shasum.digest('hex');
+					pw = secure.hash(this.password);
 				}
 
 				return User.findOrCreate({

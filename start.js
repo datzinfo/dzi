@@ -37,7 +37,4 @@ if (cluster.isMaster) {
   }
 } else {
   var server = require('./server.js');
-//  console.log("^^^^^^^^^^^^^^^^^" + server.isMaster);
-
-//  server.isMaster = cluster.isMaster;
 }

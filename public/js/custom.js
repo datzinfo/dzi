@@ -220,7 +220,7 @@ jQuery(function($){
         offset:       100,
         live:         true,
         callback:     function(box) {
-          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+//          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
         }
       }
     );
