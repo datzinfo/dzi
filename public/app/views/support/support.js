@@ -1,9 +1,10 @@
 'use strict';
 
-var SupportCtl = function($scope, messages, util) {
+var SupportCtl = function($scope, messages, $rootScope) {	
+	$rootScope.activeView = 'service';
+
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 }
 
 

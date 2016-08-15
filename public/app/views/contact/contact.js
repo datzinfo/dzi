@@ -1,9 +1,9 @@
 'use strict';
 
-var ContactCtl = function($scope, messages, util, Api) {
+var ContactCtl = function($scope, messages, Api, $rootScope) {	
+	$rootScope.activeView = 'contact';
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.data = {};
 	

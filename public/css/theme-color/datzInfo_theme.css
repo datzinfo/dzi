@@ -22,7 +22,7 @@ Author URI : http://www.markups.io/
 	border: 3px solid gray;
     border-radius: 5px;
     bottom: 0;
-    height: 300px;
+    height: 335px;
     left: 0;
     margin: auto;
     position: absolute;
@@ -913,7 +913,7 @@ Author URI : http://www.markups.io/
 }
 
 .ng-modal-overlay {
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;

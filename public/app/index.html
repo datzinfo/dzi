@@ -7,30 +7,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
 		
-		<title>{{ messages.meta_title }}</title>
-		<meta name="description" content="{{ messages.meta_desc }}">
+		<title ng-bind="messages.meta_title"></title>
+		<meta name="description" content="" ng-attr-content="{{ messages.meta_desc }}">
 		
 		<!-- Open Graph data-->
-		<meta property="og:title" content="{{ messages.social_title }}">
-		<meta property="og:type" content="{{ messages.social_type }}">
-		<meta property="og:url" content="{{ messages.social_url }}">
-		<meta property="og:image" content="{{ messages.social_image }}">
-		<meta property="og:description" content="{{ messages.social_description }}">
-		<meta property="og:site_name" content="{{ messages.social_site_name }}">
-		<meta property="og:price:amount" content="">
-		<meta property="og:price:currency" content="USD">
+		<meta property="og:title" content="" ng-attr-content="{{ messages.social_title }}">
+		<meta property="og:type" content="" ng-attr-content="{{ messages.social_type }}">
+		<meta property="og:url" content="" ng-attr-content="{{ messages.social_url }}">
+		<meta property="og:image" content="" ng-attr-content="{{ messages.social_image }}">
+		<meta property="og:description" content="" ng-attr-content="{{ messages.social_description }}">
+		<meta property="og:site_name" content="" ng-attr-content="{{ messages.social_site_name }}">
 
 		<!-- Schema.org markup for Google+ -->
-		<meta itemprop="name" content="{{ messages.social_title }}">
-		<meta itemprop="description" content="{{ messages.social_description }}">
-		<meta itemprop="image" content="{{ messages.social_image }}">
+		<meta itemprop="name" content="" ng-attr-content="{{ messages.social_title }}">
+		<meta itemprop="description" content="" ng-attr-content="{{ messages.social_description }}">
+		<meta itemprop="image" content="" ng-attr-content="{{ messages.social_image }}">
 		
 		<!-- Twitter Card data -->
 		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:site" content="@flickr" />
-		<meta name="twitter:title" content="{{ messages.social_title }}" />
-		<meta name="twitter:description" content="{{ messages.social_description }}" />
-		<meta name="twitter:image" content="{{ messages.social_image }}" />
+		<meta name="twitter:site" content="" />
+		<meta name="twitter:title" content="" ng-attr-content="{{ messages.social_title }}" />
+		<meta name="twitter:description" content="" ng-attr-content="{{ messages.social_description }}" />
+		<meta name="twitter:image" content="" ng-attr-content="{{ messages.social_image }}" />
 
 		<!-- Favicon-->
 		<link rel="shortcut icon" type="image/icon" href="images/favicon.ico">
@@ -63,7 +61,7 @@
 	<body>
 		<header ng-if="!hideNav" ng-include="'app/navigator.html'"></header>
 		<div ng-view style="min-height: 90vh"></div>
-		<footer id="footer" ng-include="'app/footer.html'"></footer>
+		<div id="footer" ng-include="'app/footer.html'"></div>
 	</body>
 	
 	<!-- jQuery library-->
@@ -105,11 +103,12 @@
 	<script type="text/javascript" src="views/about/about.js"></script>
 	<script type="text/javascript" src="views/services/services.js"></script>
 	<script type="text/javascript" src="views/blog/blog.js"></script>
-	<script type="text/javascript" src="views/contact/contact.js"></script>
+	<script type="text/javascript" src="app/views/contact/contact.js"></script>
 	<script type="text/javascript" src="views/consulting/consulting.js"></script>
 	<script type="text/javascript" src="views/support/support.js"></script>
 	<script type="text/javascript" src="views/products/products.js"></script>
 	<script type="text/javascript" src="views/login/login.js"></script>
+	<script type="text/javascript" src="app/views/error/error.js"></script>
 	<script type="text/javascript" src="views/adminpanel/adminpanel.js"></script>
 	<script type="text/javascript" src="common/ngwig/custom.js"></script>
 	<script type="text/javascript" src="common/dziDialog.js"></script>

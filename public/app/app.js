@@ -16,12 +16,13 @@ angular.module('dziws', [
         'blog',
         'contact',
         'login',
+        'error',
         'adminpanel',
         'ngWig'
         ])
-	.config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider, $stateProvider) {
+   .config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider, $stateProvider) {
 		  $urlRouterProvider.otherwise('/');
-	}])
+   }])
    .run(function($rootScope, $location, $anchorScroll, $routeParams, messages) {
 		$rootScope.messages = messages;
 
@@ -31,18 +32,16 @@ angular.module('dziws', [
 			$anchorScroll();  
 		});
 	})
-	.service('util', [function() {
-
-		var menuItems = ['Home', 'About Us', 'Services', 'Blog','Contact'];
-		var activeMenu = menuItems[0];
-	
+	.directive('focus', function($timeout) {
 		return {
-			setActive: function(menuItem) {
-				activeMenu = menuItem;
-			},
-			
-			getActive: function() {
-				return activeMenu;
-			}        	
-		};
-	}]);
+	        restrict : 'A',
+	        link : function($scope,$element,$attr) {
+	            $scope.$watch($attr.focus,function(_focusVal) {
+	                $timeout(function() {
+	                    _focusVal ? $element.focus() :
+	                        $element.blur();
+	                });
+	            });
+	        }
+	    };
+	});
