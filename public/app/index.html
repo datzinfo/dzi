@@ -90,10 +90,24 @@
 	<script type="text/javascript" src="lib/angular-css/angular-css.min.js"></script>
 	<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
 	
-	<!-- Third parties-->
+	<!-- Third parties -->
 	<script type="text/javascript" src="lib/ng-wig/ng-wig.min.js"></script>
 	<link href="lib/ng-wig/css/ng-wig.css" rel="stylesheet">
 	
+	<!-- social -->
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<!-- dziws-->
 	<script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="services/admin-service.js"></script>
