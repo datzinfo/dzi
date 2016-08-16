@@ -1,6 +1,6 @@
 module.exports = {
 	'hostname': process.env.OPENSHIFT_APP_DNS || 'localhost',
-	'secret': 'dzithriveswhencustomersarehappy',
+	'secret': '#thrivesonhappycustomers@datzinfo',
 	'durationInMinutes': 60,
 	'env': process.env.NODE_ENV || 'development',
 
