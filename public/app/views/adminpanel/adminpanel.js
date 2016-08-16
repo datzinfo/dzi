@@ -1,9 +1,8 @@
 'use strict';
 
-var AdminBlogListCtl = function($scope, $window, $location, messages, util, Admin, Api, AuthService) {
+var AdminBlogListCtl = function($scope, $window, $location, messages, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.data = {};
 	
@@ -36,10 +35,9 @@ var AdminBlogListCtl = function($scope, $window, $location, messages, util, Admi
 	Api.getPosts(ctrl.categoryId, onPostList, ctrl.onError);
 }
 
-var AdminpanelCtl = function($scope, $window, $routeParams, messages, util, Admin, Api, AuthService) {
+var AdminpanelCtl = function($scope, $window, $routeParams, messages,  Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.data = {};
 	var postId = $routeParams.postId;
@@ -129,10 +127,9 @@ var save = function(ctrl, Admin) {
 
 
 
-var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, util, Admin, Api, AuthService) {
+var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	var postId = $routeParams.postId;
 	
@@ -257,6 +254,17 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, uti
 		}
 	};
 
+	ctrl.expand = function(arrowId) {
+		var elem = angular.element(arrowId);
+		if (elem.hasClass('fa-arrow-down')) {
+			elem.addClass('fa-arrow-up');
+			elem.removeClass('fa-arrow-down');
+		}
+		else {
+			elem.addClass('fa-arrow-down');
+			elem.removeClass('fa-arrow-up');
+		}
+	}
 }
 
 angular.module('adminpanel', ['ngRoute'])

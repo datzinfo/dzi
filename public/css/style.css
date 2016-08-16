@@ -2503,7 +2503,7 @@ img{
   }
 }
 
-@media(max-width:480px ){
+@media(max-width:480px ) {
 	#search input {  
     width: 85%;
   }
@@ -2537,7 +2537,7 @@ img{
   .title-area {
     padding: 0;
   }
-  .title-area p {    
+  .title-area p {
     line-height: 23px;   
     font-size: 15px;
   }
@@ -2588,10 +2588,13 @@ img{
     height: auto;
     margin-left: 20px;
     margin-right: 40px;
-}
-
-.navbar-toggle {
+  }
+  .navbar-toggle {
     margin-right: 40px;
+  }
+  #slider-text {
+  	font-size: medium;
+  }
 }
 
 
@@ -2695,7 +2698,7 @@ img{
   	height: auto;
   }
   #slider-text {
-  	font-size: large;
+  	font-size: medium;
   }
 } 
 
@@ -2730,7 +2733,7 @@ img{
   	height: auto;
   }
   #slider-text {
-  	font-size: large;
+  	font-size: medium;
   }
 }
 

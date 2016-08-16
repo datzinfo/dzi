@@ -6,16 +6,18 @@
 		<div class="div-login">
 			<form>
 				<div class="form-group">
-					<input type="text" placeholder="User name" class="form-control" ng-model="ctrl.username">
+					<input type="text" placeholder="User name" class="form-control" ng-model="ctrl.username" focus="true"
+						ng-focus="ctrl.errorMsg=''">
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="Password" class="form-control" ng-model="ctrl.password">
+					<input type="password" placeholder="Password" class="form-control" ng-model="ctrl.password"
+						ng-focus="ctrl.errorMsg=''" ng-keyup="$event.keyCode == 13 && ctrl.onSignIn()">
 				</div>
 				<div ng-if="ctrl.errorMsg" class="text-warning">
 					{{ ctrl.errorMsg }}
 				</div>
 				<div class="loginbox">
-					<button class="btn signin-btn" ng-click="ctrl.onSignIn()"
+					<button class="btn signin-btn" ng-click="ctrl.onSignIn()""
 						type="button">SIGN IN</button>
 				</div>
 			</form>

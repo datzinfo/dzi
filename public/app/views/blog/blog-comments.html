@@ -15,8 +15,8 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-					<i class="fa fa-long-arrow-down reply-link"></i>
-					<a class="reply-link" data-toggle="collapse"
+					<i id="arrow_{{$index}}" class="fa fa-arrow-down reply-link"></i>
+					<a class="reply-link" data-toggle="collapse" ng-click="ctrl.expand('#arrow_'+$index)"
 						data-target="#replyList_{{$index}}">Replies ({{ comment.replies? comment.replies.length : 0 }})</a>
 				<div id="replyList_{{$index}}" class="collapse slide-animate reply-list">
 					<ul>
@@ -38,8 +38,8 @@
 										</div>
 									</div>
 			<div class="panel-footer">
-					<i class="fa fa-long-arrow-down reply-link"></i>
-					<a class="reply-link" data-toggle="collapse"
+					<i id="arrow_{{$parent.$index}}_{{$index}}" class="fa fa-arrow-down reply-link"></i>
+					<a class="reply-link" data-toggle="collapse" ng-click="ctrl.expand('#arrow_'+$parent.$index+'_'+$index)"
 						data-target="#replyList_{{$parent.$index}}_{{$index}}">Replies ({{ reply.replies ? reply.replies.length : 0 }})</a>
 				<div id="replyList_{{$parent.$index}}_{{$index}}" class="collapse slide-animate reply-list">
 					<ul>

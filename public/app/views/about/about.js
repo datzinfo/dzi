@@ -1,10 +1,10 @@
 'use strict';
 
-var AboutCtl = function($scope, messages, util) {
+var AboutCtl = function($scope, messages, $rootScope) {	
+	$rootScope.activeView = 'about';
+
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
-
 }
 
 

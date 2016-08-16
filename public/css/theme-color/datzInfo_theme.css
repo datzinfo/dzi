@@ -22,7 +22,7 @@ Author URI : http://www.markups.io/
 	border: 3px solid gray;
     border-radius: 5px;
     bottom: 0;
-    height: 300px;
+    height: 335px;
     left: 0;
     margin: auto;
     position: absolute;
@@ -523,7 +523,6 @@ Author URI : http://www.markups.io/
 #imgDialog input {
     width: 400px;
 }
-/* .enter { animation: slideInUp 0.5s both ease-in; z-index: 9999; } */
 
 .blogListBtn {
 	background-color: #ff871c;
@@ -593,258 +592,53 @@ Author URI : http://www.markups.io/
 
 .enter {
    animation: 
-      squareCounterClockwise 1s both ease-in; z-index: 9999, 
+      upThenRight 1s both ease-in; z-index: 9999, 
 }
 
-
-/* ANIMATIONS
-============================================================================= */
-
-/* leaving animations ----------------------------------------- */
-
-
-/* Rotating Square clockwise */
-/* Rotating Square counterclockwise */
-@-webkit-keyframes squareCounterClockwise {
-    
-    0%   {left:60px; top:20px;}
-    25%  {left:60px; top:400px;}
-    50%  {left:400px; top:400px;}
-    75%  {left:400px; top:20px;}
-    100% {left:60px; top:20px;}
-   
-}
-
-/* Standard syntax */
-@keyframes squareCounterClockwise {
+@-webkit-keyframes upThenRight {   
     0%  {left:150px; top:400px;}
    	50%   {left:150px; top:120px;}
-    100%  {left:800px; top:120px;}    
+    100%  {left:60%; top:120px;}    
 }
 
-/* Rotating Square counterclockwise */
-@-webkit-keyframes squareClockwise {
-    
-    0%   {left:60px; top:20px;}
-    25%  {left:400px; top:20px;}
-    50%  {left:400px; top:400px;}
-    75%  {left:60px; top:400px;}
-    100% {left:60px; top:20px;}
-   
+@keyframes upThenRight {
+    0%  {left:150px; top:400px;}
+   	50%   {left:150px; top:120px;}
+    100%  {left:60%; top:120px;}    
 }
-
-/* Standard syntax */
-@keyframes squareClockwise {
-    0%   {left:60px; top:20px;}
-    25%  {left:400px; top:20px;}
-    50%  {left:400px; top:400px;}
-    75%  {left:60px; top:400px;}
-    100% {left:60px; top:20px;}
-}
-
-/* rotate and fall */
-@keyframes rotateFall {
-    0%      { transform: rotateZ(0deg); }
-    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
-    40%     { transform: rotateZ(17deg); }
-    60%     { transform: rotateZ(16deg); }
-    100%    { transform: translateY(100%) rotateZ(17deg); }
-}
-
-/* slide in from the bottom */
-@keyframes slideOutLeft {
-    to      { transform: translateX(-100%); }
-}
-
-/* rotate out newspaper */
-@keyframes rotateOutNewspaper {
-    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
-}
-
-/* entering animations --------------------------------------- */
-/* scale up */
-@keyframes scaleUp {
-    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
-}
-
-/* slide in from the right */
-@keyframes slideInRight {
-    from    { transform:translateX(100%); }
-    to      { transform: translateX(0); }
-}
-
-@keyframes slideInLeft {
-    from    { transform:translateX(0); }
-    to      { transform: translateX(100%); }
-}
-
-/* slide in from the bottom */
-@keyframes slideInUp {
-    from    { transform:translateY(100%); }
-    to      { transform: translateY(0); }
-}
-
-/* slide in from the bottom */
-@keyframes slideInUpToRight {
-    from    { transform:translateY(100%); }
-    to      { transform: translateY(0); }
-    from    { transform:translateX(80%); }
-    to      { transform: translateX(0); }
-}
-
-/*
- * Shake animation
-*/
-@-webkit-keyframes shake {
-    0%, 100% {-webkit-transform: translateX(0);}
-    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
-    20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
-}
-@keyframes shake {
-    0%, 100% {transform: translateX(0);}
-    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-    20%, 40%, 60%, 80% {transform: translateX(10px);}
-}
-/*
- * FadeIn animation
-*/
-@-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-.fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-}
-/*
- * FadeOut animation
-*/
-@-webkit-keyframes fadeOut {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
-}
-@keyframes fadeOut{
-    0% {opacity: 1;}
-    100% {opacity: 0;}
-}
-/* .ng-enter { animation: slideInRight 0.5s both ease-in; z-index: 8888; } */
-/* .ng-leave { animation: slideInLeft 0.5s both ease-in; z-index: 9999; } */
-
-.login {
-	display:inline !important;
-}
-
-/* //Submit button */
-/* @import "compass/css3"; */
-
-/* $seafoam : rgb(30,205,151); */
-/* $white : white; */
-/* $gray : rgb(200,200,200); */
-
-/* body { */
-/*   text-align:center; */
-/* } */
-
-/* .center-component { */
-/*   position:absolute; */
-/*   top:50%; */
-/*   left:50%; */
-/*   transform:translate(-50%, -50%); */
-/* } */
-
-/* button.colins-submit { */
-/*   background:transparent; */
-/*   border:none; */
-/*   &.is-active { */
-/*     cursor:default; */
-/*   } */
-/*   &:focus { */
-/*     outline: none;  */
-/*   } */
-/*   &::-moz-focus-inner { */
-/*     border: 0; */
-/*   } */
-  
-/*   //RESTING STATE */
-/*   svg { */
-/*     text { */
-/*       font-family: 'Montserrat', sans-serif; */
-/*       &.textNode { */
-/*         fill:$seafoam; */
-/*       } */
-/*       &.checkNode { */
-/*         fill-opacity:0; */
-/*       } */
-/*     } */
-/*     rect { */
-/*       &.btn-shape { */
-/*         &.btn-bg { */
-/*           stroke:$gray; */
-/*           fill:$white; */
-/*         } */
-/*         &.btn-color { */
-/*           stroke:$seafoam; */
-/*           fill:$white; */
-/*           stroke-dasharray:453;//Magic number :/ */
-/*           stroke-dashoffset:0; */
-/*         } */
-/*       } */
-/*     } */
-/*   } */
-/* } */
-
-/* p { */
-/*   font-family: Montserrat, sans-serif; */
-/*   color: #575757; */
-/*   font-size: 1rem; */
-/*   max-width:330px; */
-/*   a { */
-/*     color:$seafoam; */
-/*     &:hover, &:active{ */
-/*       color:saturate($seafoam, 20%);       */
-/*     } */
-/*     &:visited { */
-/*       color:desaturate($seafoam, 20%);    */
-/*     } */
-/*   } */
-/* } */
 
 .carousel-control.left, .carousel-control.right {
     background: none !important;
     color: white;
 }
 
-       #carousel-custom {
-            margin: 20px auto;
-            width: 400px;
-        }
-        #carousel-custom .carousel-indicators {
-            margin: 10px 0 0;
-            overflow: auto;
-            position: static;
-            text-align: left;
-            white-space: nowrap;
-            width: 100%;
-        }
-        #carousel-custom .carousel-indicators li {
-            background-color: transparent;
-            -webkit-border-radius: 0;
-            border-radius: 0;
-            display: inline-block;
-            height: auto;
-            margin: 0 !important;
-            width: auto;
-        }
-        #carousel-custom .carousel-indicators li img {
-            display: block;
-        }
-        #carousel-custom .carousel-outer {
-            position: relative;
-        }
+#carousel-custom {
+     margin: 20px auto;
+     width: 400px;
+ }
+ #carousel-custom .carousel-indicators {
+     margin: 10px 0 0;
+     overflow: auto;
+     position: static;
+     text-align: left;
+     white-space: nowrap;
+     width: 100%;
+ }
+ #carousel-custom .carousel-indicators li {
+     background-color: transparent;
+     -webkit-border-radius: 0;
+     border-radius: 0;
+     display: inline-block;
+     height: auto;
+     margin: 0 !important;
+     width: auto;
+ }
+ #carousel-custom .carousel-indicators li img {
+     display: block;
+ }
+ #carousel-custom .carousel-outer {
+     position: relative;
+ }
         
 .submitBox{
 	border: none !important;
@@ -913,7 +707,7 @@ Author URI : http://www.markups.io/
 }
 
 .ng-modal-overlay {
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;

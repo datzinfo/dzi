@@ -1,9 +1,10 @@
 'use strict';
 
-var BlogCtl = function($scope, $location, $anchorScroll, messages, util, Api) {
+var BlogCtl = function($scope, $location, $anchorScroll, messages, Api, $rootScope) {	
+	$rootScope.activeView = 'blog';
+
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.isCollapsed = false;
 	
@@ -106,6 +107,18 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, util, Api) {
 			ctrl.reply.postId = origin.postId;
 		}
 	};
+	
+	ctrl.expand = function(arrowId) {
+		var elem = angular.element(arrowId);
+		if (elem.hasClass('fa-arrow-down')) {
+			elem.addClass('fa-arrow-up');
+			elem.removeClass('fa-arrow-down');
+		}
+		else {
+			elem.addClass('fa-arrow-down');
+			elem.removeClass('fa-arrow-up');
+		}
+	}
 }
 
 angular.module('blog', ['ngRoute'])

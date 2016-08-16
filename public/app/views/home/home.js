@@ -1,9 +1,10 @@
 'use strict';
 
-var HomeCtl = function($scope, $interval, messages, util) {
+var HomeCtl = function($scope, $interval, messages, $rootScope) {	
+	$rootScope.activeView = 'home';
+
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.slides = [
 	                {image: 'images/slider-1.jpg', description: messages.index_slider1_title1},
