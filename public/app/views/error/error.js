@@ -3,7 +3,6 @@
 var ErrorCtl = function($scope, $routeParams, messages, Api) {
 	var ctrl = this;
 	ctrl.messages = messages;
-	ctrl.util = util;
 	
 	ctrl.status =  $routeParams.code;
 	ctrl.errMsg =  $routeParams.msg;
