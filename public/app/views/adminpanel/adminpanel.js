@@ -100,11 +100,11 @@ var populate = function(ctrl, Admin) {
 var save = function(ctrl, Admin) {
 	var onSuccess = function() {
 		ctrl.errorMsg = '';
+		ctrl.saved = true;
 		if (ctrl.data.id) {
 			ctrl.successMsg = "Your post has been updated.";
 		}
 		else {
-			ctrl.saved = true;
 			ctrl.successMsg = "Your post has been saved. To edit this post, go to blog list.";
 		}
 	};

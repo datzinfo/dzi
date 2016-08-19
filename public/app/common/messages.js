@@ -163,7 +163,8 @@ angular.module('dziws').constant('messages', {
 	blog_banner_desc: 'desc',
 	
 	//Blog--Categories Text//
-	blog_categories_title: 'Catagories',
+	blog_categories_title: 'Categories',
+	blog_categories_showall: 'Show all',
 	blog_categories_category1: 'Multimedia',
 	blog_categories_category2: 'Business Intelligence',
 	blog_categories_category3: 'Application Development',
