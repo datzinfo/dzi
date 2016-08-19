@@ -208,5 +208,8 @@ angular.module('dziws').constant('messages', {
 	//Contact--Title Text
 	contact_main_questions_title: 'Have any questions?',
 	contact_main_questions_desc: 'desc',
-	contact_info_title: 'Contact Info'
+	contact_info_title: 'Contact Info',
+	
+	contact_got_msg: 'We got your message!',
+	contact_oops_msg: 'Oops, there was a problem sending your message.  Please give us a call.'
 });

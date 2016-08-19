@@ -645,13 +645,41 @@ Author URI : http://www.markups.io/
 	background: none !important;
 }
 
+.buttonGlow {
+  padding: 10px 15px;
+  outline: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #222;
+  text-transform: uppercase;
+  font-size: 15px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transform: all 0.5s;
+  transform: all 0.5s;
+  transition: all 0.1s;
+  border-radius: 20px;
+}
 
-.buttonGlow:hover {background-color: #3e8e41}
+.buttonAnimate {
+	background-color: #ff871c !important;
+}
 
-.buttonGlow:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.center-component {
+	height: 20px;	
+}
+
+.buttonGlow:focus,
+.buttonGlow:hover {
+	background-color: #ff871c;
+}
+
+.buttonGlow:disabled {
+	background-color: #fff;
+}
+
+.errorText {
+	color: #ff871c;
 }
 
 .panel {

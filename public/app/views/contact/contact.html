@@ -61,29 +61,8 @@
 											ng-model="ctrl.data.msg"></textarea>
 									</div>
 									<!-- Start of submit button -->
-									<div class="center-component">
-										<button ng-click="ctrl.displayMessage()" class="submitBox buttonGlow:hover buttonGlow:active">
-											<svg width="196" height="70" viewPort="0 0 196 70"
-												version="1.1" xmlns="http://www.w3.org/2000/svg">
-      
-      <rect class="btn-shape btn-bg" x="3" y="3" width="190" height="64"
-													rx="32" ry="32" fill="#ffffff" fill-opacity="1"
-													stroke="#ccc" stroke-width="4" />  
-      <rect class="btn-shape btn-color" x="3" y="3" width="190"
-													height="64" rx="32" ry="32" fill="#ffffff" fill-opacity="0"
-													stroke="#ff871c" stroke-width="4" />
-      <text class="checkNode" x="96" y="40" font-family="Montserrat"
-													font-size="22" fill-opacity="1" text-anchor="middle"
-													fill="rgb(255,255,255)">
-        ✔
-      </text>
-      <text class="textNode" x="96" y="40" transform="scale(1)"
-													font-family="Montserrat" font-size="16" fill-opacity="1"
-													text-anchor="middle" fill="#ff871c">
-		{{ ctrl.submitText }}
-      </text>
-    </svg>
-										</button>
+									<div class="center-component default-text">
+										<flip-btn before-text="Submit" after-text="{{ ctrl.messages.contact_got_msg }}" error-text="{{ ctrl.error }}"></flip-btn>
 									</div>
 									<!-- End of submit button -->
 								</form>
