@@ -972,7 +972,7 @@ img{
 }
 
 .service-title{
-	color: #222;
+	color: #777;
 	font-size: 20px;
 	font-weight: 300;
 	text-transform: uppercase;
@@ -2739,4 +2739,8 @@ img{
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+.lowercase {
+	text-transform: none; !important;
 }

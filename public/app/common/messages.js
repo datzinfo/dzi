@@ -16,23 +16,22 @@ angular.module('dziws').constant('messages', {
 	menu_service4: 'service4',
 	
 	//Index--Slider Text//
-	index_slider1_title1: 'Your Business Is Unique.  Knowing Your Business Is The Key To Success',
-	index_slider1_title2: 'Turn your data into valuable business insight, because your business decisions often means more than just profit and loss.',
+	index_slider1_title1: 'Your Business Is Unique.  Knowing Your Business Is The Key To Success.',
+	index_slider1_title2: "Never Over Look the Value Of Your Business Data, Turn It Into Information You Can Use.",
 	index_slider2_title1: "In Today's Fast Moving World, Communication is a 24/7 Activity",
-	index_slider2_title2: 'We empower your business to use the most effective media to reach your audience inside and outside of your company.',
 	
 	//Index--Feature Text//
 	index_feature_title: 'What is DatzInfo all about?',
 	index_feature_description: 'We do not try to be all things to all businesses.  We focus on delivering the best solutions in the area of Business Intelligence and Web Application.  We differentiate ourselves with other consulting firms by focusing on understanding business, your business, and applying the right technology to fit your business needs.',
 	
 	//Index--Box Text//
-	index_box1_title: 'index_box1_title',
+	index_box1_title: 'Business Intelligence',
 	index_box1_desc: 'desc',
-	index_box2_title: 'Responsive Layouts',
+	index_box2_title: 'Our Products',
 	index_box2_desc: 'desc',
-	index_box3_title: 'Great Features',
+	index_box3_title: 'Our Customers & Alliances',
 	index_box3_desc: 'desc',
-	index_box4_title: 'Multiple Options',
+	index_box4_title: 'Case Studies',
 	index_box4_desc: 'desc',
 	index_box5_title: 'Quality Code',
 	index_box5_desc: 'desc',
@@ -97,45 +96,31 @@ angular.module('dziws').constant('messages', {
 	consulting_banner_desc: 'desc',
 	
 	//Consulting--Title Text//
-	consulting_main_title: 'Our Services',
-	consulting_main_desc: 'desc',
+	consulting_banner_title1: 'Business Intelligence',
+	consulting_banner_desc: "'Every battle is won or lost before it's ever fought'  -Sun Tzu (c. 512 BC)",
+	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be insurmountable to determine the eventual outcome.",
 	
 	//Consulting--Box Text//
-	consulting_box1_title: 'title',
-	consulting_box1_desc: 'desc',
-	consulting_box2_title: 'title',
-	consulting_box2_desc: 'desc',
-	consulting_box3_title: 'title',
-	consulting_box3_desc: 'desc',
-	consulting_box4_title: 'title',
-	consulting_box4_desc: 'desc',
-	consulting_box5_title: 'title',
-	consulting_box5_desc: 'desc',
-	consulting_box6_title: 'title',
-	consulting_box6_desc: 'desc',
+	consulting_box1_title: 'Empowerment Discovery Process',
+	consulting_box1_desc: 'Analyze and redesign of workflows within and across enterprises to make the analytical results available to corporate decision makers and operation workers.',
+	consulting_box2_title: 'Data Consolidation Modeling',
+	consulting_box2_desc: 'Develop central repositories of integrated data from one or more disparate sources and model the repositories for efficient data retrieval.',
+	consulting_box3_title: 'Information Visualization',
+	consulting_box3_desc: 'Empower decision makers to better interpret their data by providing information in the form of visual context representations such as patterns, trends, correlations, graphs, animation, etc.',
 	
 	//Products--Banner Text//
 	products_banner_title: 'Products',
-	products_banner_desc: 'desc',
 	
 	//Products--Title Text//
-	products_main_title: 'Our Services',
-	products_main_desc: 'desc',
+	products_banner_title1: 'Servers/Clients',
+	products_banner_desc: 'Although our solutions are not restricted to these products, we inspire to develop advanced solutions to cater for auto generated data consolidation framework and advanced visualization graphics.',
 	
 	//Products--Box Text//
-	products_box1_title: 'title',
-	products_box1_desc: 'desc',
-	products_box2_title: 'title',
-	products_box2_desc: 'desc',
-	products_box3_title: 'title',
-	products_box3_desc: 'desc',
-	products_box4_title: 'title',
-	products_box4_desc: 'desc',
-	products_box5_title: 'title',
-	products_box5_desc: 'desc',
-	products_box6_title: 'title',
-	products_box6_desc: 'desc',
-	
+	products_box1_title: 'BIML Snap',
+	products_box1_desc: 'The process of extracting data from your enterprise applications to the data repository would normally require hundreds of programs. Although the effort to create these programs is not trivial, any version changes to the source system would further complicate the entire process.   BIML Snap essentially decreases the costs involved in the development of integration packages and its maintenance by using script templates.',
+	products_box2_title: 'D3-Data Driven Document',
+	products_box2_desc: 'A JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.',
+
 	//Support--Banner Text//
 	support_banner_title: 'Support',
 	support_banner_desc: 'desc',

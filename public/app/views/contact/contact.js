@@ -13,8 +13,10 @@ var ContactCtl = function($scope, messages, Api, $rootScope) {
 	var onSuccess = function(success) {
 	};
 	ctrl.submit = function(data) {
-		Api.sendEmail(ctrl.data, onSuccess, onError);
-		Api.addEnquiry(ctrl.data, onSuccess, onError);
+		if (ctrl.data.name != null && ctrl.data.email != null && ctrl.data.msg != null){
+			Api.sendEmail(ctrl.data, onSuccess, onError);
+			Api.addEnquiry(ctrl.data, onSuccess, onError);
+		}
 	};	
 }
 
