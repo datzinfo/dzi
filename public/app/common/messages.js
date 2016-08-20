@@ -26,13 +26,13 @@ angular.module('dziws').constant('messages', {
 	
 	//Index--Box Text//
 	index_box1_title: 'Business Intelligence',
-	index_box1_desc: 'desc',
+	index_box1_desc: 'Our consultants have years of experience in data warehousing and report development. Whether your business intelligence initiative is a new implementation or an existing application enhancement, our service professionals will work with you from inception, development to on going support.',
 	index_box2_title: 'Our Products',
-	index_box2_desc: 'desc',
+	index_box2_desc: 'We are leveraging on two technologies that enhance the development of data warehousing and creation of quick and customizable visualization of your business data.',
 	index_box3_title: 'Our Customers & Alliances',
-	index_box3_desc: 'desc',
+	index_box3_desc: 'Check out what our customers have to say about DatzInfo and our business alliances.',
 	index_box4_title: 'Case Studies',
-	index_box4_desc: 'desc',
+	index_box4_desc: 'Check out our blog section for case studies on how various industries have benefitted from our business intelligence solutions.',
 	index_box5_title: 'Quality Code',
 	index_box5_desc: 'desc',
 	index_box6_title: 'Awesome Support',
@@ -40,30 +40,28 @@ angular.module('dziws').constant('messages', {
 	
 	//About Us--Banner Text//
 	aboutus_banner_title: 'About us',
-	aboutus_banner_desc: 'desc',
 	
 	//About Us--Title Text//
-	aboutus_main_title: 'Who we are',
+	aboutus_main_title: 'Our Team',
 	aboutus_main_desc: 'desc',
 	aboutus_skills_title: 'Our Skills',
 	about_skills_desc: 'desc',
 	
 	//About Us--Skill Text//
 	//Add note about percentage, to update skill level//
-	aboutus_skill1: 'skill 1',
-	aboutus_skill2: 'skill 2',
-	aboutus_skill3: 'skill 3',
-	aboutus_skill4: 'skill 4',
-	aboutus_skill5: 'skill 5',
-	aboutus_skill6: 'skill 6',
+	aboutus_skill1: 'SQL Server',
+	aboutus_skill2: 'SSIS',
+	aboutus_skill3: 'SSAS',
+	aboutus_skill4: 'SSRS',
+	aboutus_skill5: 'BIML',
+	aboutus_skill6: 'JavaScript',
 	
 	
 	//About Us--Why Choose Us? Text//
-	aboutus_why_title: 'Why Choose Us?',
-	aboutus_why_reason1_header: 'Header',
-	aboutus_why_reason1_desc: 'Desc',
-	aboutus_why_reason2_header: 'Header',
-	aboutus_why_reason2_desc: 'Desc',
+	aboutus_why_reason1_header: 'Michael Fung',
+	aboutus_why_reason1_desc: 'Director/Mentor',
+	aboutus_why_reason2_header: 'Kaitlin Fung',
+	aboutus_why_reason2_desc: 'Developer',
 	aboutus_why_reason3_header: 'Header',
 	aboutus_why_reason3_desc: 'Desc',
 	
