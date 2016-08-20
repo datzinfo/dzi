@@ -6,27 +6,16 @@ var ContactCtl = function($scope, messages, Api, $rootScope) {
 	ctrl.messages = messages;
 	
 	ctrl.data = {};
-	
+
 	var onError = function(error) {
-		console.log(error);
+		ctrl.error = ctrl.messages.contact_got_msg;
 	};
 	var onSuccess = function(success) {
-		console.log(success);
-	};
-
-	var submitCb = function() {
-		console.log('MSG SENT');
 	};
 	ctrl.submit = function(data) {
-		Api.sendEmail(ctrl.data, submitCb);
+		Api.sendEmail(ctrl.data, onSuccess, onError);
 		Api.addEnquiry(ctrl.data, onSuccess, onError);
-	};
-	
-	ctrl.submitText = "Submit";
-
-	ctrl.displayMessage = function() {
-		 ctrl.submitText = "Message sent";
-	}
+	};	
 }
 
 

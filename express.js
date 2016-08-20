@@ -15,7 +15,6 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public/app')));
 
 function userIsAllowed(referer, callback) {
 	callback(referer && referer.indexOf(config.hostname) != -1);

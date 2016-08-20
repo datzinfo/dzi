@@ -4,14 +4,14 @@ angular.module('dziws')
 
 	return {
 
-		sendEmail: function(emailData, callback) {
+		sendEmail: function(emailData, onSuccess, onError) {
 	       $http({
 	    	   method  : 'POST',
 	    	   url     : '/api/sendEmail/',
 	    	   data    : $.param(emailData),  // pass in data as strings
 	    	   headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
 	       })
-	       .success(callback);
+	       .success(onSuccess).error(onError);
 		},
 	     
       	addEnquiry: function(enquiryData, onSuccess, onError) {

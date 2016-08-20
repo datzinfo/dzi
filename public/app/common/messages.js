@@ -163,7 +163,8 @@ angular.module('dziws').constant('messages', {
 	blog_banner_desc: 'desc',
 	
 	//Blog--Categories Text//
-	blog_categories_title: 'Catagories',
+	blog_categories_title: 'Categories',
+	blog_categories_showall: 'Show all',
 	blog_categories_category1: 'Multimedia',
 	blog_categories_category2: 'Business Intelligence',
 	blog_categories_category3: 'Application Development',
@@ -208,5 +209,8 @@ angular.module('dziws').constant('messages', {
 	//Contact--Title Text
 	contact_main_questions_title: 'Have any questions?',
 	contact_main_questions_desc: 'desc',
-	contact_info_title: 'Contact Info'
+	contact_info_title: 'Contact Info',
+	
+	contact_got_msg: 'We got your message!',
+	contact_oops_msg: 'Oops, there was a problem sending your message.  Please give us a call.'
 });

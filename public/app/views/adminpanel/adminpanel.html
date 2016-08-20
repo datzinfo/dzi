@@ -16,13 +16,7 @@
 			<ng-wig id="content" ng-model="ctrl.data.contents" source-mode-allowed ng-disabled="ctrl.saved"></ng-wig>
 		</div>
 		<div class="form-group form-button">
-			<div ng-if="ctrl.errorMsg" class="text-warning">
-				{{ ctrl.errorMsg }}
-			</div>
-			<div class=".text-success">
-				{{ ctrl.successMsg }}
-			</div>
-			<button type="button" ng-click="ctrl.save()" class="btn btn-warning" ng-disabled="ctrl.saved">Save</button>
+			<rotate-btn before-text="Submit" click-func="ctrl.save()" after-text="{{ ctrl.successMsg }}" error-text="{{ ctrl.errorMsg }}"></flip-btn>
 		</div>
 	
 	
