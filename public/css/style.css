@@ -700,8 +700,9 @@ img{
 }
 
 .single-feature p {
-  color: #555;
-  font-size: 15px;
+  color: gray;
+  font-size: 14px;
+  line-height: 25px;
 }
 
 /*--------------------*/

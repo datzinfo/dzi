@@ -798,6 +798,10 @@ Author URI : http://www.markups.io/
 	color: gray;
 }
 
+.italic-text {
+	font-style: italic;
+}
+
 .blog-news-details > div {
 	font-size: small;
 }
