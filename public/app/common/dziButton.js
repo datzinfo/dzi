@@ -1,5 +1,5 @@
 angular.module('dziws')
-.directive("rotateBtn", function($timeout, messages) {
+.directive("rotateBtn", ['$timeout', 'messages', function($timeout, messages) {
 	
 	var animate = function(scope, element) {
 		var finishedMsg = scope.afterText;
@@ -45,8 +45,8 @@ angular.module('dziws')
 			});
 		}
 	};
-})
-.directive("flipBtn", function($timeout, messages) {
+}])
+.directive("flipBtn", ['$timeout', 'messages', function($timeout, messages) {
 	
 	var animate = function(scope, element) {
 		scope.$apply(function() {
@@ -104,8 +104,8 @@ angular.module('dziws')
 			});
 		}
 	};
-})
-.directive("fadeBtn", function($timeout, messages) {
+}])
+.directive("fadeBtn", ['$timeout', 'messages', function($timeout, messages) {
 	
 	var animate = function(scope, element) {
 		scope.$apply(function() {
@@ -156,4 +156,4 @@ angular.module('dziws')
 			});
 		}
 	};
-});
+}]);

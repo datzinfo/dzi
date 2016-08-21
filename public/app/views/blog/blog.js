@@ -1,6 +1,7 @@
 'use strict';
 
-var BlogCtl = function($scope, $location, $anchorScroll, messages, Api, $rootScope) {	
+var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$rootScope',
+               function($scope, $location, $anchorScroll, messages, Api, $rootScope) {	
 	$rootScope.activeView = 'blog';
 
 	var ctrl = this;
@@ -119,7 +120,7 @@ var BlogCtl = function($scope, $location, $anchorScroll, messages, Api, $rootSco
 			elem.removeClass('fa-arrow-up');
 		}
 	}
-}
+}]
 
 angular.module('blog', ['ngRoute'])
 	.config(['$routeProvider', '$compileProvider', '$sceDelegateProvider', function($routeProvider, $compileProvider, $sceDelegateProvider) {

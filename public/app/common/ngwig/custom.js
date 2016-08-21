@@ -1,4 +1,4 @@
-var VideoCtl = function($scope, $window) {
+var VideoCtl = ['$scope', '$window', function($scope, $window) {
 	var ctrl = this;
 	ctrl.videoUrl = '';	
 	
@@ -19,9 +19,9 @@ var VideoCtl = function($scope, $window) {
     
     }
  
-};
+}];
 
-var ImgCtl = function($scope, $window) {
+var ImgCtl = ['$scope', '$window', function($scope, $window) {
 	var ctrl2 = this;
 	ctrl2.imgUrl = '';	
 	
@@ -40,7 +40,7 @@ var ImgCtl = function($scope, $window) {
     
     }
  
-};
+}];
 
 angular.module('ngWig').config(['ngWigToolbarProvider', function(ngWigToolbarProvider) {
     ngWigToolbarProvider.addCustomButton('videoButton', 'video-button');

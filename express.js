@@ -35,14 +35,19 @@ var protectPath = function(regex) {
 		});
 	};
 };
-	
+
+var publicDir = 'public';
+if (app.get('env') === 'development') {
+//	publicDir = 'public-src';
+}
+
 app.use(protectPath(/^\/js|css|app\/.*$/));
-app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, publicDir+'/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(config.secret));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, publicDir)));
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -1,11 +1,11 @@
 'use strict';
 
-var SupportCtl = function($scope, messages, $rootScope) {	
+var SupportCtl = ['$scope', 'messages', '$rootScope', function($scope, messages, $rootScope) {	
 	$rootScope.activeView = 'service';
 
 	var ctrl = this;
 	ctrl.messages = messages;
-}
+}]
 
 
 angular.module('support', ['ngRoute'])

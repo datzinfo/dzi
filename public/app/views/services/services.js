@@ -1,11 +1,11 @@
 'use strict';
 
-var ServicesCtl = function($scope, messages, $rootScope) {	
+var ServicesCtl = ['$scope', 'messages', '$rootScope', function($scope, messages, $rootScope) {	
 	$rootScope.activeView = 'service';
 
 	var ctrl = this;
 	ctrl.messages = messages;
-}
+}]
 
 
 angular.module('service', ['ngRoute']) 

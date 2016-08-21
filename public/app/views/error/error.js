@@ -1,13 +1,13 @@
 'use strict';
 
-var ErrorCtl = function($scope, $routeParams, messages, Api) {
+var ErrorCtl = ['$scope', '$routeParams', 'messages', 'Api', function($scope, $routeParams, messages, Api) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	
 	ctrl.status =  $routeParams.code;
 	ctrl.errMsg =  $routeParams.msg;
 	ctrl.errStack = $routeParams.err;
-}
+}]
 
 
 angular.module('error', ['ngRoute'])

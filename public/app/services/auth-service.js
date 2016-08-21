@@ -4,7 +4,7 @@ angular.module('dziws')
 	notAuthenticated : 'auth-not-authenticated'
 })
 
-.service('AuthService', function($q, $http) {
+.service('AuthService', ['$q', '$http', function($q, $http) {
 	var LOCAL_TOKEN_KEY = 'secret';
 	var isAuthenticated = false;
 	var authToken;
@@ -66,9 +66,9 @@ angular.module('dziws')
 			return isAuthenticated;
 		}
 	};
-})
+}])
 
-.factory('AuthInterceptor', function($rootScope, $q, AUTH_EVENTS) {
+.factory('AuthInterceptor', ['$rootScope', '$q', 'AUTH_EVENTS', function($rootScope, $q, AUTH_EVENTS) {
 	return {
 		responseError : function(response) {
 			$rootScope.$broadcast({
@@ -77,8 +77,8 @@ angular.module('dziws')
 			return $q.reject(response);
 		}
 	};
-})
+}])
 
-.config(function($httpProvider) {
+.config(['$httpProvider', function($httpProvider) {
 	$httpProvider.interceptors.push('AuthInterceptor');
-});
+}]);

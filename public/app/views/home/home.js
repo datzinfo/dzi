@@ -1,15 +1,15 @@
 'use strict';
 
-var HomeCtl = function($scope, $interval, messages, $rootScope) {	
+var HomeCtl = ['$scope', '$interval', 'messages', '$rootScope', function($scope, $interval, messages, $rootScope) {	
 	$rootScope.activeView = 'home';
 
 	var ctrl = this;
 	ctrl.messages = messages;
 	
 	ctrl.slides = [
-	                {image: 'images/slider-1.jpg', description: messages.index_slider1_title1},
-	                {image: 'images/slider-2.jpg', description: messages.index_slider1_title2},
-	                {image: 'images/slider-3.jpg', description: messages.index_slider2_title1}
+	                {image: './images/slider-1.jpg', description: messages.index_slider1_title1},
+	                {image: './images/slider-2.jpg', description: messages.index_slider1_title2},
+	                {image: './images/slider-3.jpg', description: messages.index_slider2_title1}
 	            ];
 	
 	ctrl.currentIndex = 0;
@@ -35,7 +35,7 @@ var HomeCtl = function($scope, $interval, messages, $rootScope) {
     		ctrl.currentIndex = index;
     	}
     } 
-}
+}]
 
 angular.module('home', ['ngRoute', 'ngAnimate'])
 	.config(['$routeProvider', function($routeProvider) {

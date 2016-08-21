@@ -1,6 +1,7 @@
 'use strict';
 
-var AdminBlogListCtl = function($scope, $window, $location, messages, Admin, Api, AuthService) {
+var AdminBlogListCtl = ['$scope', '$window', '$location', 'messages', 'Admin', 'Api', 'AuthService',
+                        function($scope, $window, $location, messages, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	
@@ -33,9 +34,10 @@ var AdminBlogListCtl = function($scope, $window, $location, messages, Admin, Api
 	
 	ctrl.categoryId = {'categoryId': '*', 'state': '*'};
 	Api.getPosts(ctrl.categoryId, onPostList, ctrl.onError);
-}
+}]
 
-var AdminpanelCtl = function($scope, $window, $routeParams, messages,  Admin, Api, AuthService) {
+var AdminpanelCtl = ['$scope', '$window', '$routeParams', 'messages', 'Admin', 'Api', 'AuthService', 'adminUtil',
+                     function($scope, $window, $routeParams, messages, Admin, Api, AuthService, adminUtil) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	
@@ -53,8 +55,8 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages,  Admin, Ap
 		}
 	}
 
-	populate(ctrl, Admin);
-	save(ctrl, Admin);
+	adminUtil.populate(ctrl, Admin);
+	adminUtil.save(ctrl, Admin);
 
 	if (postId != -1) {
 		var findSelection = function(arr, propName, propValue) {
@@ -77,57 +79,10 @@ var AdminpanelCtl = function($scope, $window, $routeParams, messages,  Admin, Ap
 		var params = { 'id' : postId, 'deleted' : true };
 		Api.getOnePost(params, onPostDetails, ctrl.onError);	
 	}
-}
+}]
 
-var populate = function(ctrl, Admin) {
-	var onPopulate = function(data) {
-	    ctrl.states = [];
-		for (var i in data.states) {
-			ctrl.states.push({ name: data.states[i], value: data.states[i]});
-		}
-		ctrl.state = ctrl.states[0]; // draft
-		
-		ctrl.categories = [];
-		for (var i in data.categories) {
-			ctrl.categories.push({ name: data.categories[i].type, value: data.categories[i].id});
-		}
-		ctrl.category = ctrl.categories[0];
-	};
-	
-	Admin.getAdminPanelData(onPopulate, ctrl.onError);
-}
-
-var save = function(ctrl, Admin) {
-	var onSuccess = function() {
-		ctrl.errorMsg = '';
-		ctrl.saved = true;
-		if (ctrl.data.id) {
-			ctrl.successMsg = "Your post has been updated.";
-		}
-		else {
-			ctrl.successMsg = "Your post has been saved. To edit this post, go to blog list.";
-		}
-	};
-	
-	ctrl.save = function(data) {
-		ctrl.data.state = ctrl.state.value;
-		ctrl.data.categoryId = ctrl.category.value;
-		if (ctrl.data.id) {
-			// update post
-			Admin.updatePost(ctrl.data, onSuccess, ctrl.onError);
-		}
-		else {
-			// new post
-			// FIXME
-			ctrl.data.email = "michaelfung@datzinfo.com";
-			Admin.addPost(ctrl.data, onSuccess, ctrl.onError);
-		}
-	};	
-}
-
-
-
-var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, Admin, Api, AuthService) {
+var AdminBlogCommentsCtl = ['$scope', '$window', '$routeParams', 'messages', 'Admin', 'Api', 'AuthService',
+                            function($scope, $window, $routeParams, messages, Admin, Api, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	
@@ -265,7 +220,7 @@ var AdminBlogCommentsCtl = function($scope, $window, $routeParams, messages, Adm
 			elem.removeClass('fa-arrow-up');
 		}
 	}
-}
+}]
 
 angular.module('adminpanel', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
@@ -294,11 +249,60 @@ angular.module('adminpanel', ['ngRoute'])
 			controllerAs: 'ctrl'
 		});
 	}])
-   .run(function($rootScope, $location, AuthService) {
+   .run(['$rootScope', '$location', 'AuthService', function($rootScope, $location, AuthService) {
 	  $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
 		if ((nextRoute.access && nextRoute.access.loginRequired) && !AuthService.isAuthenticated()) {
 	        event.preventDefault();
 			$location.url("/login");
 		}
 	  })
-   });
+   }])
+   .service('adminUtil', [function() {
+	  return {
+		  populate: function(ctrl, Admin) {
+				var onPopulate = function(data) {
+				    ctrl.states = [];
+					for (var i in data.states) {
+						ctrl.states.push({ name: data.states[i], value: data.states[i]});
+					}
+					ctrl.state = ctrl.states[0]; // draft
+					
+					ctrl.categories = [];
+					for (var i in data.categories) {
+						ctrl.categories.push({ name: data.categories[i].type, value: data.categories[i].id});
+					}
+					ctrl.category = ctrl.categories[0];
+				};
+				
+				Admin.getAdminPanelData(onPopulate, ctrl.onError);
+			},
+
+			save: function(ctrl, Admin) {
+				var onSuccess = function() {
+					ctrl.errorMsg = '';
+					ctrl.saved = true;
+					if (ctrl.data.id) {
+						ctrl.successMsg = "Your post has been updated.";
+					}
+					else {
+						ctrl.successMsg = "Your post has been saved. To edit this post, go to blog list.";
+					}
+				};
+				
+				ctrl.save = function(data) {
+					ctrl.data.state = ctrl.state.value;
+					ctrl.data.categoryId = ctrl.category.value;
+					if (ctrl.data.id) {
+						// update post
+						Admin.updatePost(ctrl.data, onSuccess, ctrl.onError);
+					}
+					else {
+						// new post
+						// FIXME
+						ctrl.data.email = "michaelfung@datzinfo.com";
+						Admin.addPost(ctrl.data, onSuccess, ctrl.onError);
+					}
+				};	
+			}
+	  	};
+   }]);

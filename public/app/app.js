@@ -20,10 +20,10 @@ angular.module('dziws', [
         'adminpanel',
         'ngWig'
         ])
-   .config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider, $stateProvider) {
+   .config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider) {
 		  $urlRouterProvider.otherwise('/');
    }])
-   .run(function($rootScope, $location, $anchorScroll, $routeParams, messages) {
+   .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', 'messages', function($rootScope, $location, $anchorScroll, $routeParams, messages) {
 		$rootScope.messages = messages;
 
 		//when the route is changed scroll to the proper element.
@@ -31,8 +31,8 @@ angular.module('dziws', [
 			$location.hash($routeParams.scrollTo);
 			$anchorScroll();  
 		});
-	})
-	.directive('focus', function($timeout) {
+	}])
+	.directive('focus', ['$timeout', function($timeout) {
 		return {
 	        restrict : 'A',
 	        link : function($scope,$element,$attr) {
@@ -44,4 +44,4 @@ angular.module('dziws', [
 	            });
 	        }
 	    };
-	});
+	}]);

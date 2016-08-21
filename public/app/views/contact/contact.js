@@ -1,6 +1,6 @@
 'use strict';
 
-var ContactCtl = function($scope, messages, Api, $rootScope) {	
+var ContactCtl = ['$scope', 'messages', 'Api', '$rootScope', function($scope, messages, Api, $rootScope) {	
 	$rootScope.activeView = 'contact';
 	var ctrl = this;
 	ctrl.messages = messages;
@@ -18,7 +18,7 @@ var ContactCtl = function($scope, messages, Api, $rootScope) {
 			Api.addEnquiry(ctrl.data, onSuccess, onError);
 		}
 	};	
-}
+}]
 
 
 angular.module('contact', ['ngRoute'])

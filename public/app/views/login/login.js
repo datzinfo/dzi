@@ -1,6 +1,7 @@
 'use strict';
 
-var LoginCtl = function($rootScope, $scope, $interval, $location, messages, AuthService) {
+var LoginCtl = ['$rootScope', '$scope', '$interval', '$location', 'messages', 'AuthService',
+                function($rootScope, $scope, $interval, $location, messages, AuthService) {
 	var ctrl = this;
 	ctrl.messages = messages;
 	$rootScope.hideNav = true;
@@ -25,7 +26,7 @@ var LoginCtl = function($rootScope, $scope, $interval, $location, messages, Auth
 		AuthService.login(loginData, onSuccess, onError);
 	};
 	
-}
+}]
 
 angular.module('login', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
