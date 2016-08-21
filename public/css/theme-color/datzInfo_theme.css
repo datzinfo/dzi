@@ -407,6 +407,10 @@ Author URI : http://www.markups.io/
   border: 2px solid #ff871c;  
 }
 
+.error-border {
+  border-color: #ff871c;
+}
+
 .error-content span {
   color: #ff871c; 
 }
@@ -795,7 +799,7 @@ Author URI : http://www.markups.io/
 }
 
 .default-text {
-	color: gray;
+	color: #7f7f7f;
 }
 
 .italic-text {

@@ -21,10 +21,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="title-area">
-					<h2 class="title">{{
-						ctrl.messages.contact_main_questions_title }}</h2>
+					<h2 class="title" ng-bind="ctrl.messages.contact_main_questions_title"></h2>
 					<span class="line"></span>
-					<p>{{ ctrl.messages.contact_main_questions_desc }}</p>
+					<p ng-bind="ctrl.messages.contact_main_questions_desc"></p>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -42,15 +41,19 @@
 						</div>
 						<div class="col-md-8">
 							<div class="contact-area-right">
-								<form ng-submit="ctrl.submit()"
+								<form
 									class="comments-form contact-form">
 									<div class="form-group">
 										<input type="text" class="form-control"
-											placeholder="Your Name" ng-model="ctrl.data.name">
+											placeholder="Your Name" ng-model="ctrl.data.name"
+											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.name }"
+											required focus>
 									</div>
 									<div class="form-group">
 										<input type="email" class="form-control" placeholder="Email"
-											ng-model="ctrl.data.email">
+											ng-model="ctrl.data.email"
+											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.email }"
+											required>
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Subject"
@@ -58,11 +61,13 @@
 									</div>
 									<div class="form-group">
 										<textarea placeholder="Comment" rows="3" class="form-control"
-											ng-model="ctrl.data.msg"></textarea>
+											ng-model="ctrl.data.msg"
+											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.msg }"
+											required></textarea>
 									</div>
 									<!-- Start of submit button -->
 									<div class="center-component default-text">
-										<flip-btn before-text="Submit" after-text="{{ ctrl.messages.contact_got_msg }}" error-text="{{ ctrl.error }}"></flip-btn>
+										<flip-btn click-func="ctrl.submit()" before-text="Submit" after-text="{{ ctrl.messages.contact_got_msg }}" error-text="{{ ctrl.error }}"></flip-btn>
 									</div>
 									<!-- End of submit button -->
 								</form>

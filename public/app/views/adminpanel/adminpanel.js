@@ -302,6 +302,7 @@ angular.module('adminpanel', ['ngRoute'])
 						ctrl.data.email = "michaelfung@datzinfo.com";
 						Admin.addPost(ctrl.data, onSuccess, ctrl.onError);
 					}
+					return true;
 				};	
 			}
 	  	};

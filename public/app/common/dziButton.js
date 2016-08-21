@@ -35,9 +35,11 @@ angular.module('dziws')
 			element.on('click', function() {
 				if (scope.clickFunc) {
 					var p = scope.clickFunc();
-					$timeout(function () {
-						animate(scope, element);
-					}, 1000);
+					if (p) {
+						$timeout(function () {
+							animate(scope, element);
+						}, 1000);
+					}
 				}
 				else {
 					animate(scope, element);
@@ -94,9 +96,11 @@ angular.module('dziws')
 			element.on('click', function() {
 				if (scope.clickFunc) {
 					var p = scope.clickFunc();
-					$timeout(function () {
-						animate(scope, element);
-					}, 1000);
+					if (p) {
+						$timeout(function () {
+							animate(scope, element);
+						}, 1000);
+					}
 				}
 				else {
 					animate(scope, element);
@@ -146,9 +150,11 @@ angular.module('dziws')
 			element.on('click', function() {
 				if (scope.clickFunc) {
 					var p = scope.clickFunc();
-					$timeout(function () {
-						animate(scope, element);
-					}, 1000);
+					if (p) {
+						$timeout(function () {
+							animate(scope, element);
+						}, 1000);
+					}
 				}
 				else {
 					animate(scope, element);
