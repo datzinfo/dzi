@@ -79,12 +79,17 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$root
 			// db validation would fail with empty string
 			delete ctrl.reply['email'];
 		}
-		if (ctrl.reply.postId) {
-			Api.addComment(ctrl.reply, onPostComment, onError);
+		ctrl.isError = !ctrl.reply.name || !ctrl.reply.message;
+		if (!ctrl.isError){
+			if (ctrl.reply.postId) {
+				Api.addComment(ctrl.reply, onPostComment, onError);
+			}
+			else {
+				Api.addReply(ctrl.reply, onPostReply, onError);
+			}
+			ctrl.isError = false;
 		}
-		else {
-			Api.addReply(ctrl.reply, onPostReply, onError);
-		}
+			
 	}
 	
 	ctrl.reply.parent = [];

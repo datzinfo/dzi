@@ -8,11 +8,11 @@ module.exports = {
 		////////
 		// db
 		////////
-		'username': 'root',
-		'password': 'admin',
-		'database': 'dziws_dev',
-		'host': '127.0.0.1',
-		'dialect': 'mysql',
+		"username": "kf",
+	    "password": "fung",
+	    "database": "dziws_dev",
+	    "host": "192.168.1.11",
+	    "dialect": "mysql",			
 			
 		////////
 		// social
