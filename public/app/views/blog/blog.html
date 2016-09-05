@@ -68,6 +68,8 @@
 								<input type="text" class="form-control" placeholder="Your Name"
 									ng-trim="true"
 									ng-model="ctrl.reply.name"
+									ng-class="{ 'error-border' : ctrl.isError && !ctrl.reply.name }"
+									required 
 									focus="ctrl.replyShown">
 							</div>
 							<div class="form-group">
@@ -78,7 +80,10 @@
 							<div class="form-group">
 								<textarea placeholder="Comment" rows="3" cols="400"
 									ng-trim="true"
-									class="form-control" ng-model="ctrl.reply.message"></textarea>
+									class="form-control" ng-model="ctrl.reply.message"
+									ng-class="{ 'error-border' : ctrl.isError && !ctrl.reply.message }"
+									required
+									></textarea>
 							</div>
 							<button type="submit" class="comment-btn">Submit Comment</button>
 						</form>
