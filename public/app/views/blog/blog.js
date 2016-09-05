@@ -1,7 +1,7 @@
 'use strict';
 
-var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$rootScope',
-               function($scope, $location, $anchorScroll, messages, Api, $rootScope) {	
+var BlogCtl = ['$scope', '$location', '$anchorScroll', '$routeParams', 'messages', 'Api', '$rootScope',
+               function($scope, $location, $anchorScroll, $routeParams, messages, Api, $rootScope) {	
 	$rootScope.activeView = 'blog';
 
 	var ctrl = this;
@@ -9,6 +9,8 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$root
 	
 	ctrl.isCollapsed = false;
 	
+	var postId = $routeParams.postId;
+
 	// populate page
 	var onPopulate = function(data) {
 		ctrl.categories = data;
@@ -39,8 +41,6 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$root
 		ctrl.subview = ctrl.templates[idx];
 	};
 
-	ctrl.switchView(0);	
-	
 	ctrl.onDetails = function(postId) {
 		var params = { 'id' : postId, 'deleted' : false };
 		Api.getOnePost(params, onPostDetails, onError);
@@ -50,11 +50,21 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$root
 	}
 	
 	ctrl.onList = function(categoryId) {
+		if (postId) {
+			$location.path('/blog');
+		}
 		ctrl.filter = {'categoryId': categoryId, 'state': 'published'};
 		Api.getPosts(ctrl.filter, onPostList, onError);
 		ctrl.switchView(0)
 	}
   
+	if (postId) {
+		ctrl.onDetails(postId);
+	}
+	else {
+		ctrl.switchView(0);	
+	}
+	
 	var onPostComment = function(comment) {
 	    ctrl.replyShown = false;
 		ctrl.details.comments.unshift(comment);
@@ -125,6 +135,11 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', 'messages', 'Api', '$root
 angular.module('blog', ['ngRoute'])
 	.config(['$routeProvider', '$compileProvider', '$sceDelegateProvider', function($routeProvider, $compileProvider, $sceDelegateProvider) {
 		$routeProvider.when('/blog', {
+			templateUrl: 'app/views/blog/blog.html',
+			controller:  BlogCtl,
+			controllerAs: 'ctrl'
+		});
+		$routeProvider.when('/blog/:postId', {
 			templateUrl: 'app/views/blog/blog.html',
 			controller:  BlogCtl,
 			controllerAs: 'ctrl'

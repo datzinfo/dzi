@@ -25,11 +25,13 @@
 		
 		<!-- Twitter Card data -->
 		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:site" content="" />
-		<meta name="twitter:title" content="" ng-attr-content="DatzInfo Inc" />
+		<meta name="twitter:site" content="@datzinfo" />
+		<meta name="twitter:title" content="DatzInfo Inc" />
 		<meta name="twitter:description" content="Knowing Your Business Is The Key To Success." />
 		<meta name="twitter:image" content="http://dziws-dzisandbox.rhcloud.com/images/datzinfo_logo.png" />
 
+		<meta name="pinterest-rich-pin" content="false" />
+		
 		<!-- Favicon-->
 		<link rel="shortcut icon" type="image/icon" href="images/favicon.ico">
 		<!-- Font Awesome-->
@@ -63,7 +65,6 @@
 		<div ng-view style="min-height: 90vh"></div>
 		<div id="footer" ng-include="'app/footer.html'"></div>
 	</body>
-	
 	<!-- jQuery library-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Bootstrap-->
@@ -89,6 +90,8 @@
 	<script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
 	<script type="text/javascript" src="lib/angular-css/angular-css.min.js"></script>
 	<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
+	<script type="text/javascript" src="lib/moment/moment.min.js"></script>
+	<script type="text/javascript" src="lib/angular-moment/angular-moment.min.js"></script>
 	
 	<!-- Third parties -->
 	<script type="text/javascript" src="lib/ng-wig/ng-wig.min.js"></script>
@@ -98,6 +101,10 @@
 	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 	<!-- dziws-->
+	<!-- build:js app.min.js -->
+	<!-- inject:js -->
+	<!-- endinject -->
+	<!-- endbuild -->
 	<script type="text/javascript" src="app/app.js"></script>
 	<script type="text/javascript" src="app/services/admin-service.js"></script>
 	<script type="text/javascript" src="app/services/api-service.js"></script>
@@ -117,5 +124,6 @@
 	<script type="text/javascript" src="app/common/dziDialog.js"></script>
 	<script type="text/javascript" src="app/common/dziButton.js"></script>
 	<script type="text/javascript" src="app/common/messages.js"></script>
+	
 
 </html>

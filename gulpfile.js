@@ -9,6 +9,7 @@
   var gulp = require('gulp');
   var $ = require('gulp-load-plugins')();
   var del = require('del');
+  var lazypipe = require('lazypipe');
   var runSequence = require('run-sequence');
 //  var browserSync = require('browser-sync').create();
   var appDir = 'public';
@@ -50,6 +51,24 @@
   });
 
   //gulp.task('html', [ 'bower', 'js:compile', 'ng:templatecache'], function () {
+  gulp.task('index', [ 'bower', 'js:compile' ], function () {
+    var sources = gulp.src([appDir + '/**/*.*', '!' + appDir + '/images/**/*.*', '!' + appDir + '/fonts/**/*.*', '!' + appDir + '/lib/**/*.*', '!' + appDir + '/node_modules/**/*.*'], 
+                            {read: false});
+
+    return gulp.src(appDir + '/**/*.html')
+      .pipe($.if('index.html', $.inject(sources, {relative: true})))
+      .pipe($.useref({searchPath: distDir},
+            lazypipe().pipe($.sourcemaps.init, {loadMaps:true}))) // after useref built files are now in the stream
+      .pipe($.if('*.html', $.if(isProduction, $.minifyHtml({ 'empty': true, 'quotes': true }))))
+//      .pipe($.if('**/dependency.min.js', $.if(isProduction, $.uglify())))
+      .pipe($.if('**/app.min.js', $.if(isProduction, $.uglify())))
+      .pipe($.if('*.css', $.if(isProduction, $.minifyCss())))
+      .pipe($.sourcemaps.write('./maps'))
+      .pipe(gulp.dest(distDir))
+      .pipe($.size({ 'title': 'html' }));
+  });
+
+  //gulp.task('html', [ 'bower', 'js:compile', 'ng:templatecache'], function () {
   gulp.task('html', [], function () {
     return gulp.src([appDir + '/**/*.*', '!' + appDir + '/images/**/*.*', '!' + appDir + '/fonts/**/*.*', '!' + appDir + '/lib/**/*.*', '!' + appDir + '/node_modules/**/*.*'])
       .pipe($.if('*.js', $.if(isProduction, $.uglify())))
@@ -66,6 +85,6 @@
   });
   
   gulp.task('dist', [], function (cb) {
-	    runSequence('clean', [ 'html', 'bower:copy-lib', 'bower:copy-images', 'bower:copy-fonts' ], cb);
+	    runSequence('clean', [ 'index', 'bower:copy-lib', 'bower:copy-images', 'bower:copy-fonts' ], cb);
   });
 }());

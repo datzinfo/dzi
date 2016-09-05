@@ -17,8 +17,8 @@
 		<div class="row-xs-5">
 			<div class="panel">
 				<div class="panel-heading">
-					<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote
-						on {{ comment.updatedAt | date:'short' }}</span> 
+					<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote</span>
+						<span am-time-ago="comment.updatedAt"></span>
 						<span class="buttonDiv">
 							<button type="button" class="btn image-edit-icon" ng-disabled="comment.deleted"
 								ng-click="ctrl.editReply({'commentId': comment.id})"></button>
@@ -42,8 +42,8 @@
 								<div class="row-xs-5">
 									<div class="panel">
 										<div class="comment-poster">
-											<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
-												{{ reply.updatedAt | date:'short' }}</span>
+											<strong>{{ reply.writer }}</strong> <span class="text-muted">replied</span>
+												<span am-time-ago="reply.updatedAt"></span>
 											<span class="buttonDiv">
 												<button type="button" class="btn image-edit-icon" ng-disabled="comment.deleted"
 													ng-click="ctrl.editReply({'replyId': reply.id})"></button>
@@ -68,8 +68,8 @@
 															<div class="panel noborder">
 																<div class="comment-poster">
 																	<strong>{{ reply.writer }}</strong> <span
-																		class="text-muted">replied {{ reply.updatedAt |
-																		date:'short' }}</span>
+																		class="text-muted">replied </span>
+																		<span am-time-ago="reply.updatedAt"></span>
 																	<span class="buttonDiv">
 																		<button type="button" class="btn image-edit-icon"
 																			ng-click="ctrl.dditReply({'replyId': reply.id})"></button>

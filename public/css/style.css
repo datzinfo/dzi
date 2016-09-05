@@ -643,10 +643,9 @@ img{
 }
 
 .title-area .title {	
-	font-size: 35px;
+	font-size: 55px;
 	font-weight: 700;
 	line-height: 35px;
-	text-transform: uppercase;
 }
 
 .title-area .line {
@@ -1415,7 +1414,10 @@ img{
   text-transform: uppercase;
 }
 
-.blog-news-title .blog-date{}
+.blog-date{
+  text-transform: none;
+  font-size: 0.875em;
+}
 .blog-news-details{
   color: #838282;
   display: inline;
@@ -1571,6 +1573,65 @@ img{
 /* PORTFOLIO PAGE */
 /*--------------------*/
 
+#aboutus-page-header{
+    background-color: transparent;
+    background-image: url("../images/aboutus.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+#blog-page-header{
+    background-color: transparent;
+    background-image: url("../images/blog.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+#product1-page-header{
+    background-color: transparent;
+    background-image: url("../images/product1.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+#product2-page-header{
+    background-color: transparent;
+    background-image: url("../images/product2.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+#contact-page-header{
+    background-color: transparent;
+    background-image: url("../images/contactus.jpg");
+    background-repeat: repeat;
+    background-size: cover;
+    color: #ffffff;
+    display: inline;
+    float: left;
+    height: auto;
+    width: 100%;
+}
 
 #single-page-header{
   background-attachment: fixed !important;
@@ -1583,19 +1644,8 @@ img{
   width: 100%;
 }
 
-#contact-header{
-  background-attachment: fixed !important;
-  background-image: url("../images/ContactUs.jpg");
-  background-repeat: repeat;
-  background-size: cover;
-  color: #ffffff;
-  display: inline;
-  float: left;    
-  width: 100%;
-}
-
 .overlay{
-  background-color: rgba(0,0,0,0.5); 
+  background-color: transparent; 
   padding: 90px 0;
   float: left;
   width: 100%;

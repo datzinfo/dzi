@@ -1,12 +1,11 @@
 <!-- Start single page header -->
-<section id="contact-header">
+<section id="contact-page-header">
 	<div class="overlay">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="single-page-header-left">
 						<h2>{{ ctrl.messages.contact_banner_title }}</h2>
-						<p>{{ ctrl.messages.contact_banner_desc }}</p>
 					</div>
 				</div>
 			</div>
@@ -23,7 +22,6 @@
 				<div class="title-area">
 					<h2 class="title" ng-bind="ctrl.messages.contact_main_questions_title"></h2>
 					<span class="line"></span>
-					<p ng-bind="ctrl.messages.contact_main_questions_desc"></p>
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -60,7 +58,7 @@
 											ng-model="ctrl.data.subject">
 									</div>
 									<div class="form-group">
-										<textarea placeholder="Comment" rows="3" class="form-control"
+										<textarea placeholder="Message" rows="3" class="form-control"
 											ng-model="ctrl.data.msg"
 											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.msg }"
 											required></textarea>

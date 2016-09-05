@@ -7,6 +7,7 @@ var isMobile = function() {
 angular.module('dziws', [
         'ngRoute',
         'ngAnimate',
+        'angularMoment',
         'home',
         'about',
         'service',

@@ -1,12 +1,11 @@
 <!-- Start single page header -->
-<section id="single-page-header">
+<section id="blog-page-header">
 	<div class="overlay">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<div class="single-page-header-left">
 						<h2>{{ ctrl.messages.blog_banner_title }}</h2>
-						<p>{{ ctrl.messages.blog_banner_desc }}</p>
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12"></div>
@@ -21,6 +20,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<div class="col-md-12">
+					<div class="title-area">
+						<h2 class="title" ng-bind="ctrl.messages.blog_title"></h2>
+						<span class="line"></span>
+					</div>
+				</div>
 				<div class="blog-archive-area">
 					<div class="row">
 						<div class="col-md-4 hidden-sm hidden-xs">

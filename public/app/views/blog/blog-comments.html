@@ -2,8 +2,8 @@
 	<div class="row-xs-5">
 		<div class="panel ">
 			<div class="panel-heading">
-				<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote on
-					{{ comment.updatedAt | date:'short' }}</span>
+				<strong>{{ comment.writer }}</strong> <span class="text-muted">wrote on</span>
+					<span am-time-ago="comment.updatedAt"></span>
 			</div>
 			<div class="panel-body">
 				<div class="comment-content">{{ comment.message }}</div>
@@ -24,8 +24,8 @@
 							<div class="row-xs-5">
 								<div class="panel">
 									<div class="comment-poster">
-										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
-											{{ reply.updatedAt | date:'short' }}</span>
+										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied</span>
+										<span am-time-ago="reply.updatedAt"></span>
 									</div>
 									<div class="panel-body">
 										<div class="reply-content">{{ reply.message }}</div>
@@ -47,8 +47,8 @@
 							<div class="row-xs-5">
 								<div class="panel noborder">
 									<div class="comment-poster">
-										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied
-											{{ reply.updatedAt | date:'short' }}</span>
+										<strong>{{ reply.writer }}</strong> <span class="text-muted">replied</span>
+											<span am-time-ago="reply.updatedAt"></span>
 									</div>
 									<div class="panel-body">
 										<div class="reply-content">{{ reply.message }}</div>

@@ -96,7 +96,7 @@ angular.module('dziws').constant('messages', {
 	//Consulting--Title Text//
 	consulting_banner_title1: 'Business Intelligence',
 	consulting_banner_desc: "'Every battle is won or lost before it's ever fought' - Sun Tzu (512 B.C.)",
-	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be insurmountable to determine the eventual outcome.",
+	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be preeminent to determine the eventual outcome.",
 	
 	//Consulting--Box Text//
 	consulting_box1_title: 'Empowerment Discovery Process',
@@ -117,7 +117,7 @@ angular.module('dziws').constant('messages', {
 	products_box1_title: 'BIML Snap',
 	products_box1_desc: 'The process of extracting data from your enterprise applications to the data repository would normally require hundreds of programs. Although the effort to create these programs is not trivial, any version changes to the source system would further complicate the entire process.   BIML Snap essentially decreases the costs involved in the development of integration packages and its maintenance by using script templates.',
 	products_box2_title: 'D3-Data Driven Document',
-	products_box2_desc: 'A JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG, and CSS. D3â€™s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.',
+	products_box2_desc: 'A JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG, and CSS.  D3 emphasizes on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.',
 
 	//Support--Banner Text//
 	support_banner_title: 'Support',
@@ -142,8 +142,9 @@ angular.module('dziws').constant('messages', {
 	support_box6_desc: 'desc',
 	
 	//Blog--Banner Text//
-	blog_banner_title: 'title',
-	blog_banner_desc: 'desc',
+	blog_banner_title: 'Blog',
+	
+	blog_title: 'Sharing our experiences',
 	
 	//Blog--Categories Text//
 	blog_categories_title: 'Categories',

@@ -1,17 +1,14 @@
 <!-- Start blog news single -->
 <article class="blog-news-single animate-repeat" ng-repeat="post in ctrl.posts">
-<!-- 	<div class="blog-news-img"> -->
-<!-- 		<a href="blog-single-with-right-sidebar.html"><img -->
-<!-- 			src="images/blog-img-1.jpg" alt="image"></a> -->
-<!-- 	</div> -->
 	<div class="blog-news-title">
 		<h2>
 			<a href="" ng-click="ctrl.onDetails(post.id)">{{ post.title }}</a>
 		</h2>
 		<p>
 			By {{ post.author }}
-			<span
-				class="blog-date">| {{ post.createdAt | date:'MMM d yyyy' }}
+<!-- 			<span am-time-ago="post.createdAt" class="blog-date" data-toggle="tooltip" title="{{ post.createdAt | date:'medium' }}"></span> -->
+			<span class="blog-date" title="{{ post.createdAt | date:'medium' }}">
+				- {{ post.createdAt | amCalendar:referenceTime:formats }}
 			</span>
 		</p>
 	</div>
