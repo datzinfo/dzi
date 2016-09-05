@@ -100,15 +100,15 @@ module.exports = {
 		////////
 		// email
 		////////
-		'emailFrom': 'enquiry@datzinfo.com',
+		'emailFrom': 'datz2info@gmail.com',
 		'mailer': {
-			    host : 'smtp.mail.yahoo.com',
-			    secureConnection : false,
+			    host : 'smtp.gmail.com',
+			    secureConnection : true,
 			    port: 465,
 			    auth : {
-			        user : 'kkkkk97855@yahoo.com',
-			        pass : 'buyNbuy88'
+			        user : 'datz2info@gmail.com',
+			        pass : 'd@+$!nfo'
 			    }
-			  }
+			 }
 	}
 };

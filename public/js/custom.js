@@ -30,10 +30,10 @@ jQuery(function($){
 	/*  1. SEARCH BOX SLIDE
 	/* ----------------------------------------------------------- */ 
 
-	$('#search-icon').click(function(e){
-		e.preventDefault();
-     	$('.header-top').slideToggle(500);     
-  	});
+//	$('#search-icon').click(function(e){
+//		e.preventDefault();
+//     	$('.header-top').slideToggle(500);     
+//  	});
 	
 			
 	/* ----------------------------------------------------------- */
@@ -41,40 +41,40 @@ jQuery(function($){
 	/* ----------------------------------------------------------- */ 
 	
 	// for hover dropdown menu
-  	$('ul.nav li.dropdown').hover(function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
-    }, function() {
-      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
-    });
+//  	$('ul.nav li.dropdown').hover(function() {
+//      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
+//    }, function() {
+//      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
+//    });
 
   	/* ----------------------------------------------------------- */
 	/*  3. BOOTSTRAP ACCORDION
 	/* ----------------------------------------------------------- */ 
 	
-	$('#accordion .panel-collapse').on('shown.bs.collapse', function () {
-	$(this).prev().find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
-	});
-	
-	//The reverse of the above on hidden event:
-	
-	$('#accordion .panel-collapse').on('hidden.bs.collapse', function () {
-	$(this).prev().find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
-	});	
+//	$('#accordion .panel-collapse').on('shown.bs.collapse', function () {
+//	$(this).prev().find(".fa").removeClass("fa-plus-square").addClass("fa-minus-square");
+//	});
+//	
+//	//The reverse of the above on hidden event:
+//	
+//	$('#accordion .panel-collapse').on('hidden.bs.collapse', function () {
+//	$(this).prev().find(".fa").removeClass("fa-minus-square").addClass("fa-plus-square");
+//	});	
 
 	/* ----------------------------------------------------------- */
 	/*  4. SKILL PROGRESS BAR
 	/* ----------------------------------------------------------- */ 
 
-	$('.progress .progress-bar').progressbar({
-		display_text: 'center', percent_format: function(p) {return p + ' %';}});
+//	$('.progress .progress-bar').progressbar({
+//		display_text: 'center', percent_format: function(p) {return p + ' %';}});
 
 	/* ----------------------------------------------------------- */
 	/*  5. MIXIT SLIDER
 	/* ----------------------------------------------------------- */  	
 
-	jQuery(function(){
-	    $('#mixit-container').mixItUp();
-	});
+//	jQuery(function(){
+//	    $('#mixit-container').mixItUp();
+//	});
 		
 	/* ----------------------------------------------------------- */
 	/*  6. FANCYBOX 
@@ -88,53 +88,53 @@ jQuery(function($){
 	/*  7. MAIN SLIDER (SLICK SLIDER)
 	/* ----------------------------------------------------------- */
 
-	jQuery('.main-slider').slick({
-		dots: true,
-		infinite: true,
-		speed: 500,
-		autoplay: true,
-		accessibility: false,
-		fade: true,
-		cssEase: 'linear'
-	});
+//	jQuery('.main-slider').slick({
+//		dots: true,
+//		infinite: true,
+//		speed: 500,
+//		autoplay: true,
+//		accessibility: false,
+//		fade: true,
+//		cssEase: 'linear'
+//	});
 
 	/* ----------------------------------------------------------- */
 	/*  8. LOGIN MODAL WINDOW
 	/* ----------------------------------------------------------- */
 
-	$("#signup-btn").on('click', function(e){
-		$('#signup-content').show();
-		$('#login-content').hide();
-		e.preventDefault();		
-	});
-
-	$("#login-btn").on('click', function(e){
-		$('#login-content').show();
-		$('#signup-content').hide();
-		e.preventDefault();
-				
-	});
+//	$("#signup-btn").on('click', function(e){
+//		$('#signup-content').show();
+//		$('#login-content').hide();
+//		e.preventDefault();		
+//	});
+//
+//	$("#login-btn").on('click', function(e){
+//		$('#login-content').show();
+//		$('#signup-content').hide();
+//		e.preventDefault();
+//				
+//	});
 
 	/* ----------------------------------------------------------- */
 	/*  9. COUNTER
 	/* ----------------------------------------------------------- */ 
 
-	  jQuery('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
+//	  jQuery('.counter').counterUp({
+//            delay: 10,
+//            time: 1000
+//        });
 
 	/* ----------------------------------------------------------- */
 	/*  10. TESTIMONIAL SLIDER (SLICK SLIDER)
 	/* ----------------------------------------------------------- */   
 
-	jQuery('.testimonial-slider').slick({
-		dots: true,
-		infinite: true,
-		speed: 500,
-		autoplay: true,		
-		cssEase: 'linear'
-	});
+//	jQuery('.testimonial-slider').slick({
+//		dots: true,
+//		infinite: true,
+//		speed: 500,
+//		autoplay: true,		
+//		cssEase: 'linear'
+//	});
 
 
 	/* ----------------------------------------------------------- */

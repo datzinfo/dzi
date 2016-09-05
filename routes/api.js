@@ -9,11 +9,11 @@ module.exports = apiRoutes;
 
 apiRoutes.post('/sendEmail', function(req, res) {
 	var mailOptions={
-	        from : config.emailFrom,
+	        from : '"DatzInfo Enquiry" <enquiry@datzinfo.com>',
 	        to : config.emailFrom,
 	        subject : req.body['subject'],
-	        text : "Msg from: " + req.body['name'] + "<" + req.body['email'] + "> " + req.body['msg'],
-	        html : "&#128538; Msg from " + req.body['name'] + "<" + req.body['email'] + ">: " + req.body['msg']
+	        text : "Msg from: " + req.body['name'] + " <" + req.body['email'] + "> " + req.body['msg'],
+	        html : "&#128538; Msg from " + req.body['name'] + " &lt;" + req.body['email'] + "&gt;: " + req.body['msg']
 	     }
 
 	var transporter = nodemailer.createTransport(config.mailer);
