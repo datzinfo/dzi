@@ -9,6 +9,22 @@
 			By {{ ctrl.details.author }} <span class="blog-date">| {{
 				ctrl.details.updatedAt | date:'MMM d yyyy' }}</span>
 		</p>
+		<span class="social-share">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com%2F%23%2Fblog%2F{{ ctrl.postId }}&amp;src=sdkpreparse" target="_blank">
+				<i class="fa fa-facebook"></i>
+			</a>
+			<a href="https://twitter.com/intent/tweet?text=Tweet%20on%20what&#39;s%20new%20in%20business%20intelligence.&tw_p=tweetbutton&url=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com%2F%23%2Fblog%2F{{ ctrl.postId }}" class="fa fa-twitter" data-show-count="false">
+			</a>
+			<a href="https://plusone.google.com/_/+1/confirm?hl=en&url=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com%2F%23%2Fblog%2F{{ ctrl.postId }}" target="_blank">
+				<i class="fa fa-google-plus"></i>
+			</a>						
+			<a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com%2F%23%2Fblog%2F{{ ctrl.postId }}&title={{ ctrl.details.title }}&source=DatzInfo%20Inc" target="_blank">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com%2F%23%2Fblog%2F{{ ctrl.postId }}&media=http%3A%2F%2Fdziws-dzisandbox.rhcloud.com/images/datzinfo_logo.png&description=Knowing%20your%20business%20is%20the%20key%20to%20success" class="pin-it-button" count-layout="horizontal" target="_blank">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</span>		
 	</div>
 	<div class="blog-news-details blog-single-details">
 		<div ng-bind-html="ctrl.details.contents | trusted"></div>

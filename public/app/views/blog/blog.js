@@ -42,6 +42,7 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', '$routeParams', 'messages
 	};
 
 	ctrl.onDetails = function(postId) {
+		ctrl.postId = postId;
 		var params = { 'id' : postId, 'deleted' : false };
 		Api.getOnePost(params, onPostDetails, onError);
 		ctrl.switchView(1);

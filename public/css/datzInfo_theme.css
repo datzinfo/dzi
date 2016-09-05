@@ -860,3 +860,7 @@ textarea.form-control {
 	padding: 5px;
 	width: 80%;
 }
+
+.social-share .fa {
+	color: #000
+}
