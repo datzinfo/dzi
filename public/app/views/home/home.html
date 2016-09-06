@@ -6,7 +6,7 @@
 			<div id="slider-img">
 				<img ng-repeat="slide in ctrl.slides"
 					ng-hide="!ctrl.isCurrentSlideIndex($index)"
-					class="img-responsive slider-image" ng-src="{{slide.image}}" />
+					class="img-responsive slider-image" ng-src="{{slide.image}}"></img>
 			</div>
 			<div id="slider-text" ng-repeat="slide in ctrl.slides"
 				ng-hide="!ctrl.isCurrentSlideIndex($index)"
@@ -34,7 +34,7 @@
 		<ol id="dot" class="carousel-indicators" >
 			<li ng-repeat="slide in ctrl.slides"
 				ng-click="ctrl.gotoSlide($index)"
-				href="" data-target="" ng-class="{ 'active': ctrl.currentIndex==$index }"/>
+				href="" data-target="" ng-class="{ 'active': ctrl.currentIndex==$index }"></li>
 		</ol>
 
 	</div>
