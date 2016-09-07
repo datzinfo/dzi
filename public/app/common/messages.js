@@ -57,16 +57,33 @@ angular.module('dziws').constant('messages', {
 	aboutus_skill3: 'SSAS',
 	aboutus_skill4: 'SSRS',
 	aboutus_skill5: 'BIML',
-	aboutus_skill6: 'JavaScript',
+	aboutus_skill6: 'HTML 5',
+	aboutus_skill7: 'JavaScript',
+	aboutus_skill8: 'Powershell', 
+	aboutus_skill9: 'Python',
+	aboutus_skill10: 'Java',
+	aboutus_skill11: 'XML',
+	aboutus_skill12: 'CSS',
+	aboutus_skill13: 'C#',
+	aboutus_skill14: 'Visual Studios 2015',
+	aboutus_skill15: 'Eclipse',
+	aboutus_skill16: 'Sharepoint',
+	aboutus_skill17: 'MicroStrategy',
+	aboutus_skill18: 'Oracle',
+	aboutus_skill19: 'Blender',
 	
 	
 	//About Us--Why Choose Us? Text//
 	aboutus_why_reason1_header: 'Michael Fung',
-	aboutus_why_reason1_desc: 'Director/Mentor',
-	aboutus_why_reason2_header: 'Kaitlin Fung',
-	aboutus_why_reason2_desc: 'Developer',
-	aboutus_why_reason3_header: 'Header',
-	aboutus_why_reason3_desc: 'Desc',
+	aboutus_why_reason1_pos: 'Director/Mentor',
+	aboutus_why_reason1_desc: 'With over 20 years of experiences in Business Intelligence, he has had exposures to various industries ranging from financial, retail to technology companies.  From database administration to ETL development, Michael has progressed to various roles along the BI Stack.  His goal is to leverage the collaborative skills and knowledge of the consultants and strategic partners of DatzInfo to make it an international consulting company.',
+	aboutus_why_reason2_header: 'Jim Miller',
+	aboutus_why_reason2_pos: 'Datzinfo Strategic Partner',
+	aboutus_why_reason2_desc: 'He founded a successful Business Intelligence company called BITracks with consultants and developers spanning multiple countries.  Jim is not only an active technical consultant, he has also developed a commercial product called BimlSnap which speed up the development of SSIS packages without having to develop in .net or c#. ',
+	aboutus_why_reason3_header: 'Kaitlin Fung',
+	aboutus_why_reason3_pos: 'Developer',
+	aboutus_why_reason3_desc: 'After planning for a career in bio-technology, Kaitlin found a new interest in computer science.  The first assignment for her at DatzInfo was anything but trivial, she was tasked to design and develop our website using angular.js, bootstrap and CSS using MySQL as our backend database.  Kaitlin is interested in developing various business ideas using the technology she has learned in DatzInfo. ',
+	
 	
 	
 	
@@ -99,7 +116,7 @@ angular.module('dziws').constant('messages', {
 	//Consulting--Title Text//
 	consulting_banner_title1: 'Business Intelligence',
 	consulting_banner_desc: "'Every battle is won or lost before it's ever fought' - Sun Tzu (512 B.C.)",
-	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be preeminent to determine the eventual outcome.",
+	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be preeminentf to determine the eventual outcome.",
 	
 	//Consulting--Box Text//
 	consulting_box1_title: 'Empowerment Discovery Process',
