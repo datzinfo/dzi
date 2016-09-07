@@ -39,36 +39,34 @@
 						</div>
 						<div class="col-md-8">
 							<div class="contact-area-right">
-								<form
-									class="comments-form contact-form">
-									<div class="form-group">
-										<input type="text" class="form-control"
-											placeholder="Your Name" ng-model="ctrl.data.name"
-											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.name }"
-											required focus>
-									</div>
-									<div class="form-group">
-										<input type="email" class="form-control" placeholder="Email"
-											ng-model="ctrl.data.email"
-											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.email }"
-											required>
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Subject"
-											ng-model="ctrl.data.subject">
-									</div>
-									<div class="form-group">
-										<textarea placeholder="Message" rows="3" class="form-control"
-											ng-model="ctrl.data.msg"
-											ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.msg }"
-											required></textarea>
-									</div>
-									<!-- Start of submit button -->
-									<div class="center-component default-text">
-										<flip-btn click-func="ctrl.submit()" before-text="Submit" after-text="{{ ctrl.messages.contact_got_msg }}" error-text="{{ ctrl.error }}"></flip-btn>
-									</div>
-									<!-- End of submit button -->
-								</form>
+								class="comments-form contact-form">
+								<div class="form-group">
+									<input type="text" class="form-control"
+										placeholder="Your Name" ng-model="ctrl.data.name"
+										ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.name }"
+										required focus></input>
+								</div>
+								<div class="form-group">
+									<input type="email" class="form-control" placeholder="Email"
+										ng-model="ctrl.data.email"
+										ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.email }"
+										required></input>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Subject"
+										ng-model="ctrl.data.subject"></input>
+								</div>
+								<div class="form-group">
+									<textarea placeholder="Message" rows="3" class="form-control"
+										ng-model="ctrl.data.msg"
+										ng-class="{ 'error-border' : ctrl.isError && !ctrl.data.msg }"
+										required></textarea>
+								</div>
+								<!-- Start of submit button -->
+								<div class="center-component default-text">
+									<flip-btn click-func="ctrl.submit()" before-text="Submit" after-text="{{ ctrl.messages.contact_got_msg }}" error-text="{{ ctrl.error }}"></flip-btn>
+								</div>
+								<!-- End of submit button -->
 							</div>
 						</div>
 					</div>

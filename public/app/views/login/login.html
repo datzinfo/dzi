@@ -7,11 +7,11 @@
 			<form>
 				<div class="form-group">
 					<input type="text" placeholder="User name" class="form-control" ng-model="ctrl.username" focus="true"
-						ng-focus="ctrl.errorMsg=''">
+						ng-focus="ctrl.errorMsg=''"></input>
 				</div>
 				<div class="form-group">
 					<input type="password" placeholder="Password" class="form-control" ng-model="ctrl.password"
-						ng-focus="ctrl.errorMsg=''" ng-keyup="$event.keyCode == 13 && ctrl.onSignIn()">
+						ng-focus="ctrl.errorMsg=''" ng-keyup="$event.keyCode == 13 && ctrl.onSignIn()"></input>
 				</div>
 				<div ng-if="ctrl.errorMsg" class="text-warning">
 					{{ ctrl.errorMsg }}

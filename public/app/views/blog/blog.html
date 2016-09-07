@@ -63,19 +63,19 @@
 						height='auto'>
 						<p class="default-text">Your email address will not be
 							published.</p>
-						<form action="" class="comments-form" ng-submit="ctrl.addReply()">
+						<div class="comments-form">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Your Name"
 									ng-trim="true"
 									ng-model="ctrl.reply.name"
 									ng-class="{ 'error-border' : ctrl.isError && !ctrl.reply.name }"
 									required 
-									focus="ctrl.replyShown">
+									focus="ctrl.replyShown"></input>
 							</div>
 							<div class="form-group">
 								<input type="email" class="form-control" placeholder="Email"
 									ng-trim="true"
-									ng-model="ctrl.reply.email">
+									ng-model="ctrl.reply.email"></input>
 							</div>
 							<div class="form-group">
 								<textarea placeholder="Comment" rows="3" cols="400"
@@ -85,8 +85,8 @@
 									required
 									></textarea>
 							</div>
-							<button type="submit" class="comment-btn">Submit Comment</button>
-						</form>
+							<button ng-click="ctrl.addReply()" class="comment-btn">Submit Comment</button>
+						</div>
 					</dzi-dialog>
 				</div>
 			</div>

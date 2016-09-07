@@ -35,9 +35,8 @@ angular.module('dziws', [
         'adminpanel',
         'ngWig'
         ])
-   .config(['$locationProvider', '$routeProvider', function($locationProvider, $routerProvider) {
-//	   $routerProvider.when('/article', {redirectTo: '/blog'});
-	   $routerProvider.otherwise('/');
+   .config(['$locationProvider', '$routeProvider', function($locationProvider, $urlRouterProvider) {
+		  $urlRouterProvider.otherwise('/');
    }])
    .run(['$rootScope', '$location', '$anchorScroll', '$routeParams', 'messages', function($rootScope, $location, $anchorScroll, $routeParams, messages) {
 		$rootScope.messages = messages;

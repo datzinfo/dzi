@@ -100,16 +100,16 @@
 	<dzi-dialog id="writeReply" show='ctrl.replyShown' width=inherit
 		height='auto'>
 		<p style="margin:25px"></p>
-		<form action="" class="comments-form" ng-submit="ctrl.updateReply()">
+		<div class="comments-form">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Your Name"
-					ng-model="ctrl.reply.writer">
+					ng-model="ctrl.reply.writer"></input>
 			</div>
 			<div class="form-group">
 				<textarea placeholder="Comment" rows="3" cols="400" focus="ctrl.replyShown"
 					class="form-control" ng-model="ctrl.reply.message"></textarea>
 			</div>
-			<button type="submit" class="comment-btn">Submit Comment</button>
-		</form>
+			<button ng-click="ctrl.updateReply()" class="comment-btn">Submit Comment</button>
+		</div>
 	</dzi-dialog>
 </div>
