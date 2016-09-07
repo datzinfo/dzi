@@ -862,5 +862,7 @@ textarea.form-control {
 }
 
 .social-share .fa {
-	color: #000
+	color: #5c5c5c;
+    padding: 0 3px;
+    transition: all 0.5s ease 0s;
 }

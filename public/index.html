@@ -12,43 +12,40 @@
 		<!-- Open Graph data-->
 		<meta property="og:title" content="DatzInfo Inc">
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="http://dziws-dzisandbox.rhcloud.com">
-		<meta property="og:image" content="http://dziws-dzisandbox.rhcloud.com/images/datzinfo_logo1.png">
+		<meta property="og:url" content="http://www.datzinfo.com">
+		<meta property="og:image" content="http://www.datzinfo.com/images/datzinfo_logo1.png">
 		<meta property="og:description" content="Knowing Your Business Is The Key To Success.">
 		<meta property="og:site_name" content="www.datzinfo.com">
 
 		<!-- Schema.org markup for Google+ -->
 		<meta itemprop="name" content="DatzInfo Inc">
 		<meta itemprop="description" content="Knowing Your Business Is The Key To Success.">
-		<meta itemprop="image" content="http://dziws-dzisandbox.rhcloud.com/images/datzinfo_logo1.png">
+		<meta itemprop="image" content="http://www.datzinfo.com/images/datzinfo_logo1.png">
 		
 		<!-- Twitter Card data -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@datzinfo_inc" />
 		<meta name="twitter:title" content="DatzInfo Inc" />
 		<meta name="twitter:description" content="Knowing Your Business Is The Key To Success." />
-		<meta name="twitter:image" content="http://dziws-dzisandbox.rhcloud.com/images/datzinfo_logo1.png" />
+		<meta name="twitter:image" content="http://www.datzinfo.com/images/datzinfo_logo1.png" />
 
 		<meta name="pinterest-rich-pin" content="false" />
 		
 		<!-- Favicon-->
 		<link rel="shortcut icon" type="image/icon" href="images/favicon.ico">
-		<!-- Font Awesome-->
+
+		<!-- build:css app.min.css -->
 		<link href="css/font-awesome.css" rel="stylesheet">
-		<!-- Bootstrap-->
 		<link href="css/bootstrap.css" rel="stylesheet">
-		<!-- Slick slider-->
 		<link rel="stylesheet" type="text/css" href="css/slick.css">
-		<!-- Fancybox slider-->
 		<link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen">
-		<!-- Animate css-->
 		<link rel="stylesheet" type="text/css" href="css/animate.css">
-		<!-- Progress bar-->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap-progressbar-3.3.4.css">
-		<!-- Theme color-->
 		<link id="switcher" href="css/datzInfo_theme.css" rel="stylesheet">
-		<!-- Main Style-->
 		<link href="css/style.css" rel="stylesheet">
+		<link href="lib/ng-wig/css/ng-wig.css" rel="stylesheet">
+		<!-- endbuild -->
+		
 		<!-- Fonts-->
 		<!-- Open Sans for body font-->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
@@ -64,42 +61,29 @@
 		<div ng-view style="min-height: 90vh"></div>
 		<div id="footer" ng-include="'app/footer.html'"></div>
 	</body>
-	<!-- jQuery library-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Bootstrap-->
-	<script src="js/bootstrap.js"></script>
-	<!-- Slick Slider-->
-	<script type="text/javascript" src="js/slick.js"></script>
-	<!-- mixit slider-->
-	<script type="text/javascript" src="js/jquery.mixitup.js"></script>
-	<!-- Add fancyBox-->
-	<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-	<!-- counter-->
-	<script src="js/waypoints.js"></script>
-	<script src="js/jquery.counterup.js"></script>
-	<!-- Wow animation-->
-	<script type="text/javascript" src="js/wow.js"></script>
-	<!-- progress bar-->
-	<script type="text/javascript" src="js/bootstrap-progressbar.js"></script>
-	<!-- Custom js-->
-	<script type="text/javascript" src="js/custom.js"></script>
 	
-	<!-- Angular-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular-route/angular-route.min.js"></script>
 	<script type="text/javascript" src="lib/angular-css/angular-css.min.js"></script>
 	<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
 	<script type="text/javascript" src="lib/moment/moment.min.js"></script>
 	<script type="text/javascript" src="lib/angular-moment/angular-moment.min.js"></script>
-	
-	<!-- Third parties -->
 	<script type="text/javascript" src="lib/ng-wig/ng-wig.min.js"></script>
-	<link href="lib/ng-wig/css/ng-wig.css" rel="stylesheet">
-	
-	<!-- social -->
 	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-	<!-- dziws-->
+	<!-- build:js dependencies.min.js -->
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript" src="js/jquery.mixitup.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="js/waypoints.js"></script>
+	<script type="text/javascript" src="js/jquery.counterup.js"></script>
+	<script type="text/javascript" src="js/wow.js"></script>
+	<script type="text/javascript" src="js/bootstrap-progressbar.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+	<!-- endbuild -->
+
 	<!-- build:js app.min.js -->
 	<!-- inject:js -->
 	<!-- endinject -->
@@ -122,7 +106,6 @@
 	<script type="text/javascript" src="app/common/ngwig/custom.js"></script>
 	<script type="text/javascript" src="app/common/dziDialog.js"></script>
 	<script type="text/javascript" src="app/common/dziButton.js"></script>
+	<script type="text/javascript" src="app/common/dziSocial.js"></script>
 	<script type="text/javascript" src="app/common/messages.js"></script>
-	
-
 </html>

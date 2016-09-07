@@ -7,6 +7,11 @@ var router = express.Router();
 
 module.exports = router;
 
+router.get('/article', function(req, res, next) {
+	var postId = req.query.id || '';
+	res.redirect('../#/blog/'+postId);
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	res.sendFile('index.html');

@@ -4,10 +4,13 @@ angular.module('dziws').constant('messages', {
 	meta_desc: 'Knowing Your Business Is The Key To Success.',
 	social_title: 'DatzInfo Inc',
 	social_type: 'Insights into your business',
-	social_url: 'http://dziws-dzisandbox.rhcloud.com',
-	social_image: 'http://dziws-dzisandbox.rhcloud.com/images/datzinfo_logo.png',
+	social_url: 'http://www.datzinfo.com',
+	social_image: 'http://www.datzinfo.com/images/datzinfo_logo.png',
 	social_description: 'Knowing Your Business Is The Key To Success.',
 	social_site_name: 'www.datzinfo.com',
+	social_logo: 'http://www.datzinfo.com/images/datzinfo_logo1.png',
+	social_twitter: 'Tweet on what\'s new in business intelligence.',
+	social_linkedIn: 'LinkedIn on what\'s new in business intelligence.',
 	
 	//Menu//
 	menu_service1: 'Consultation',
