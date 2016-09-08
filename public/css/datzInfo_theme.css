@@ -595,8 +595,10 @@ Author URI : http://www.markups.io/
   }
 
 .enter {
-   animation: 
-      upThenRight 1s both ease-in; z-index: 9999, 
+   animation: upThenRight 1s both ease-in; z-index: 9999;
+   -webkit-animation: upThenRight 1s both ease-in; z-index: 9999;
+   -moz-animation: upThenRight 1s both ease-in; z-index: 9999;
+   -o-animation: upThenRight 1s both ease-in; z-index: 9999;
 }
 
 @-webkit-keyframes upThenRight {   
@@ -711,17 +713,10 @@ Author URI : http://www.markups.io/
 
 .ng-modal-dialog {
   z-index: 10000;
-/*   position: absolute; */
-/*  position: element(#replyLink_0_0); */
-/*   transform: translate(50%,-50%); */
   position: fixed;
   width: 40%;
   top: 50%;
   right: 50%;
-/*   left: 50%; */
-/*   transform: translate(50%, -118%); */
-/*   -webkit-transform: translate(-50%, -50%); */
-/*   -moz-transform: translate(-50%, -50%); */
   background-color: #fff;
   box-shadow: 2px 2px 10px gray;
   transition: transform 0.3s ease-out 0s;
