@@ -1,4 +1,5 @@
 module.exports = {
+	'sitename': 'datzinfo',
 	'hostname': process.env.OPENSHIFT_APP_DNS || 'localhost',
 	'secret': '#thrivesonhappycustomers@datzinfo',
 	'durationInMinutes': 60,

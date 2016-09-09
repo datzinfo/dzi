@@ -17,7 +17,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 function userIsAllowed(referer, callback) {
-	callback(referer && referer.indexOf(config.hostname) != -1);
+	callback(referer && (referer.indexOf(config.hostname) != -1 || referer.indexOf(config.sitename) != -1));
 };
 
 var protectPath = function(regex) {
