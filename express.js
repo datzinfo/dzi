@@ -36,9 +36,9 @@ var protectPath = function(regex) {
 	};
 };
 
-var publicDir = 'public';
+var publicDir = 'public-dist';
 if (app.get('env') === 'development') {
-//	publicDir = 'public-src';
+	publicDir = 'public';
 }
 
 app.use(protectPath(/^\/js|css|app\/.*$/));
