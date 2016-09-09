@@ -5,10 +5,9 @@
 			<a href="" ng-click="ctrl.onDetails(post.id)">{{ post.title }}</a>
 		</h2>
 		<p>
-			By {{ post.author }}
-<!-- 			<span am-time-ago="post.createdAt" class="blog-date" data-toggle="tooltip" title="{{ post.createdAt | date:'medium' }}"></span> -->
+			By {{ post.author }}&nbsp;-
 			<span class="blog-date" title="{{ post.createdAt | date:'medium' }}">
-				- {{ post.createdAt | amCalendar:referenceTime:formats }}
+				{{ post.createdAt | amCalendar:referenceTime:formats }}
 			</span>
 		</p>
 	</div>

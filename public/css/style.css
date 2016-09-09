@@ -2531,6 +2531,9 @@ img{
   .footer-right {
     text-align: center;
   }
+  .footer-left p {
+	font-size: 6px;
+  }
   .portfolio-menu {
     padding: 0;
   }
@@ -2611,6 +2614,9 @@ img{
   }
   .footer-right {
     text-align: center;
+  }
+  .footer-left p {
+	font-size: 6px;
   }
   #login-form .modal-dialog {  
     width: 350px;
@@ -2744,7 +2750,9 @@ img{
     font-size: 12px;
     width: 135%;
   }
-  
+  .footer-left p {
+	font-size: 6px;
+  }  
  .navbar-brand > img {
   	width: 80px;
   	height: auto;
@@ -2769,7 +2777,7 @@ img{
     font-size: 22px;
   }
   .footer-left p {
-    font-size: 12px;
+    font-size: 6px;
   }
   .footer-right a {
     font-size: 16px;
