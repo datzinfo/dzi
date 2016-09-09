@@ -79,10 +79,10 @@ angular.module('dziws').constant('messages', {
 	aboutus_why_reason1_desc: 'With over 20 years of experiences in Business Intelligence, he has had exposures to various industries ranging from financial, retail to technology companies.  From database administration to ETL development, Michael has progressed to various roles along the BI Stack.  His goal is to leverage the collaborative skills and knowledge of the consultants and strategic partners of DatzInfo to make it an international consulting company.',
 	aboutus_why_reason2_header: 'Jim Miller',
 	aboutus_why_reason2_pos: 'Datzinfo Strategic Partner',
-	aboutus_why_reason2_desc: 'He founded a successful Business Intelligence company called BITracks with consultants and developers spanning multiple countries.  Jim is not only an active technical consultant, he has also developed a commercial product called BimlSnap which speed up the development of SSIS packages without having to develop in .net or c#. ',
+	aboutus_why_reason2_desc: 'He founded a successful Business Intelligence company called BITracks with consultants and developers spanning multiple countries.  Jim is not only an active technical consultant, he has also developed a commercial product called BimlSnap which speed up the development of SSIS packages without having to develop in .net or c#.',
 	aboutus_why_reason3_header: 'Kaitlin Fung',
 	aboutus_why_reason3_pos: 'Developer',
-	aboutus_why_reason3_desc: 'After planning for a career in bio-technology, Kaitlin found a new interest in computer science.  The first assignment for her at DatzInfo was anything but trivial, she was tasked to design and develop our website using angular.js, bootstrap and CSS using MySQL as our backend database.  Kaitlin is interested in developing various business ideas using the technology she has learned in DatzInfo. ',
+	aboutus_why_reason3_desc: 'After planning for a career in bio-technology, Kaitlin found a new interest in computer science.  The first assignment for her at DatzInfo was anything but trivial, she was tasked to design and develop our website using AngularJS, Bootstrap and FontAwesome using MySQL as our backend database and Node.js as the web server.  Kaitlin is interested in developing various business ideas using the technologies she has learned in DatzInfo.',
 	
 	
 	

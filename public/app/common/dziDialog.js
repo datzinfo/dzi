@@ -17,16 +17,6 @@ angular.module('dziws')
 					scope.show = false;
 				};
 			},
-//			template : 	"<div>" +
-//			"<div class='modal fade' role='dialog'>" +
-//			"  <div class='modal-dialog'>" +
-//			"    <div class='modal-content'>" +
-//			"      <div class='modal-header'>" +
-//			"        <button type='button' class='close' data-dismiss='modal'>&times;</button>" +
-//			"      </div>" +
-//			"      <div class='modal-body' ng-transclude></div>" +
-//			"  </div>" +
-//			"</div></div>"
 			template : "<div class='ng-modal' ng-show='show'>" +
 			  			"  <div class='ng-modal-overlay' ng-click='hideModal()'></div>" +
 			  			"  <div class='ng-modal-dialog' ng-style='dialogStyle'>" +

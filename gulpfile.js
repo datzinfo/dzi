@@ -36,10 +36,11 @@
       .pipe($.if('index.html', $.inject(sources, {relative: true})))
       .pipe($.useref({searchPath: appDir},
             lazypipe().pipe($.sourcemaps.init, {loadMaps:true})))
-      .pipe($.if('**/dependencies.min.js', $.if(isProduction, $.uglify())))
-      .pipe($.if('**/app.min.js', $.if(isProduction, $.uglify())))
-      .pipe($.if('**/app.min.css', $.if(isProduction, $.minifyCss())))
+      .pipe($.if('**/dependencies.min.js', $.if(isProduction, $.uglify({preserveComments:'license'}))))
+      .pipe($.if('**/app.min.js', $.if(isProduction, $.uglify({preserveComments:'license'}))))
+      .pipe($.if('**/app.min.css', $.if(isProduction, $.minifyCss({preserveComments:'license'}))))
       .pipe($.if('*.html', $.if(isProduction, $.minifyHtml({ 'empty': true, 'quotes': true }))))
+      .pipe($.sourcemaps.write('./maps'))
       .pipe(gulp.dest(distDir))
       .pipe($.size({ 'title': 'html' }));
   });
