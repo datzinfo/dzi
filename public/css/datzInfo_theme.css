@@ -239,6 +239,10 @@ Author URI : http://www.markups.io/
   background-color: #ff871c;
 }
 
+.goBack {
+  background-color: #ff871c;
+}
+
 .scrollToTop:hover,
 .scrollToTop:focus{
   color: #ff871c;
@@ -716,7 +720,7 @@ Author URI : http://www.markups.io/
   position: fixed;
   width: 40%;
   top: 50%;
-  right: 50%;
+  right: 30%;
   background-color: #fff;
   box-shadow: 2px 2px 10px gray;
   transition: transform 0.3s ease-out 0s;

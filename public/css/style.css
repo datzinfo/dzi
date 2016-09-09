@@ -108,7 +108,31 @@ img{
   margin:-100px 0 0 -100px; /* is width and height divided by two */
 }
 
-/*scrol to top*/
+.goBack {
+    border-radius: 4px;
+    bottom: 60px;
+    color: gray;
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 28px;
+    right: 28px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+    width: 30px;
+    z-index: 999;
+}
+
+.goBack:hover,
+.goBack:focus{
+  background-color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+/*scroll to top*/
 
 .scrollToTop {
   bottom: 60px;
@@ -2396,10 +2420,11 @@ img{
   .main-slider {  
 /*     height: auto;     */
   }  
- .navbar-brand > img {
-  width: 120px;
-  height: auto;
-}}
+  .navbar-brand > img {
+  	width: 120px;
+  	height: auto;
+  }
+}
 
 
 @media(max-width:991px ){
@@ -2474,6 +2499,12 @@ img{
   }  
   #slider-text {
   	font-size: xx-large;
+  }
+  .goBack {
+    display: block !important;
+  }
+  .loading {
+  	width: 100% !important;
   }
 }
 
@@ -2551,10 +2582,15 @@ img{
  .navbar-brand > img {
   	width: 100px;
   	height: auto;
-  }
-  
+  } 
   #slider-text {
   font-size: x-large;
+  }
+  .goBack {
+    display: block !important;
+  }
+  .loading {
+  	width: 100% !important;
   }
 }
 
@@ -2652,6 +2688,16 @@ img{
   }
   #slider-text {
   	font-size: medium;
+  }
+  .ng-modal-dialog {
+  	width: 70% !important;
+    right: 15%;
+  } 
+  .goBack {
+    display: block !important;
+  }
+  .loading {
+  	width: 100% !important;
   }
 }
 
@@ -2760,6 +2806,16 @@ img{
   #slider-text {
   	font-size: medium;
   }
+  .ng-modal-dialog {
+  	width: 80% !important;
+    right: 10%;
+  } 
+  .goBack {
+    display: block !important;
+  }
+  .loading {
+  	width: 100% !important;
+  }
 } 
 
 
@@ -2795,6 +2851,16 @@ img{
   #slider-text {
   	font-size: medium;
   }
+  .ng-modal-dialog {
+  	width: 80% !important;
+    right: 10%;
+  }
+  .goBack {
+    display: block !important;
+  }
+  .loading {
+  	width: 100% !important;
+  }
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -2812,4 +2878,12 @@ img{
 
 .about-desc-font {
 	font-size: smaller !important;
+}
+
+.loading {
+	color: lightgray;
+    position: absolute;
+    text-align: center;
+    top: 120px;
+    width: 48%;
 }

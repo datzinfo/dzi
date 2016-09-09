@@ -49,12 +49,19 @@
 							</aside>
 						</div>
 						<div class="col-md-8">
+							<div class='loading' ng-show="!ctrl.posts">
+								<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+						<div class="col-md-8">
 							<div class="blog-archive-left">
 								<div ng-show="ctrl.posts.length == 0" class="default-text">
 									No posts yet.</div>
 								<div class="blog-include-container">
 									<div class="blog-include-animation" ng-cloak
-										ng-include="ctrl.subview.url" autoscroll="false"></div>
+										ng-include="ctrl.subview.url" autoscroll="false">
+									</div>
 								</div>
 							</div>
 						</div>

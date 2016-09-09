@@ -107,7 +107,7 @@ var BlogCtl = ['$scope', '$location', '$anchorScroll', '$routeParams', 'messages
 	ctrl.replyShown = false;
 	ctrl.openAddReply = function(event, origin, level1, level2) {
 		ctrl.replyShown = true;
-		angular.element('.ng-modal-dialog').attr('style', 'position:fixed; top:25%; right:30%;');
+		angular.element('.ng-modal-dialog').attr('style', 'position:fixed; top:25%;');
 		
 		ctrl.reply = {};
 		if (origin.commentId) {
