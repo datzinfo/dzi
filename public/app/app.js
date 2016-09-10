@@ -120,6 +120,16 @@
  * 
  * Project Font-Awesome https://github.com/FortAwesome/Font-Awesome
  * License http://fontawesome.io/license/
+ * 
+ * Project jquery https://github.com/jquery/jquery
+ * License https://github.com/jquery/jquery/blob/master/LICENSE.txt
+ * 
+ * Project fancybox https://github.com/fancyapps/fancyBox
+ * License http://fancyapps.com/fancybox/#license
+ * 
+ * Project bootstrap https://github.com/twbs/bootstrap
+ * License https://github.com/twbs/bootstrap/blob/v4-dev/LICENSE
+ * 
  */
 var isMobile = function() {
   var check = false;

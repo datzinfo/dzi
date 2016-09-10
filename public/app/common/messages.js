@@ -6,7 +6,7 @@ angular.module('dziws').constant('messages', {
 	social_type: 'Insights into your business',
 	social_url: 'http://www.datzinfo.com',
 	social_image: 'http://www.datzinfo.com/images/datzinfo_logo.png',
-	social_description: 'Knowing Your Business Is The Key To Success.',
+	social_description: 'When data is more than just ones and zeros, now DatzInfo. DatzInfo Inc provides business intelligence and web application development to empower your organization efficiency and effectiveness at every level.',
 	social_site_name: 'www.datzinfo.com',
 	social_logo: 'http://www.datzinfo.com/images/datzinfo_logo1.png',
 	social_twitter: 'Tweet on what\'s new in business intelligence.',
