@@ -606,15 +606,15 @@ Author URI : http://www.markups.io/
 }
 
 @-webkit-keyframes upThenRight {   
-    0%  {left:150px; top:400px;}
-   	50%   {left:150px; top:120px;}
-    100%  {left:60%; top:120px;}    
+    0%  {left:12%; top:83%;}
+   	50%   {left:12%; top:25%;}
+    100%  {left:52%; top:25%;}    
 }
 
 @keyframes upThenRight {
-    0%  {left:150px; top:400px;}
-   	50%   {left:150px; top:120px;}
-    100%  {left:60%; top:120px;}    
+    0%  {left:12%; top:83%;}
+   	50%   {left:12%; top:25%;}
+    100%  {left:52%; top:25%;}    
 }
 
 .carousel-control.left, .carousel-control.right {

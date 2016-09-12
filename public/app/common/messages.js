@@ -116,7 +116,7 @@ angular.module('dziws').constant('messages', {
 	//Consulting--Title Text//
 	consulting_banner_title1: 'Business Intelligence',
 	consulting_banner_desc: "'Every battle is won or lost before it's ever fought' - Sun Tzu (512 B.C.)",
-	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be preeminentf to determine the eventual outcome.",
+	consulting_banner_desc2: "The famous general, Sun Tzu, once described the importance of information in any campaign to be preeminent to determine the eventual outcome.",
 	
 	//Consulting--Box Text//
 	consulting_box1_title: 'Empowerment Discovery Process',
