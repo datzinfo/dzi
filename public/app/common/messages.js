@@ -82,7 +82,7 @@ angular.module('dziws').constant('messages', {
 	aboutus_why_reason2_desc: 'He founded a successful Business Intelligence company called BITracks with consultants and developers spanning multiple countries.  Jim is not only an active technical consultant, he has also developed a commercial product called BimlSnap which speed up the development of SSIS packages without having to develop in .net or c#.',
 	aboutus_why_reason3_header: 'Kaitlin Fung',
 	aboutus_why_reason3_pos: 'Developer',
-	aboutus_why_reason3_desc: 'After planning for a career in bio-technology, Kaitlin found a new interest in computer science.  The first assignment for her at DatzInfo was anything but trivial, she was tasked to design and develop our website using AngularJS, Bootstrap and FontAwesome using MySQL as our backend database and Node.js as the web server.  Kaitlin is interested in developing various business ideas using the technologies she has learned in DatzInfo.',
+	aboutus_why_reason3_desc: 'After planning for a career in bio-technology, Kaitlin found a new interest in computer science. The first assignment for her at DatzInfo was anything but trivial, she was tasked to design and develop our website using today\'s latest web development tools and learning the most popular programming languages. Kaitlin is interested in developing various business ideas using the technologies she has learned at DatzInfo.',
 	
 	
 	
